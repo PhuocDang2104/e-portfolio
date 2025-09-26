@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phước Đặng — Embedded & Edge AI Engineer</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav-wrap">
+  <div class="page">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <!-- left: avatar + brand -->
+      <div style="display:flex;gap:12px;align-items:center">
+        <a href="#home" class="nav-brand-link" aria-label="Go to home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+          <img src="../static/images/Phuoc_avatar.png" alt="Phước Đặng avatar" class="nav-avatar" />
+          <div class="brand">Phước Đặng <small>Embedded & Edge AI</small></div>
+        </a>
+      </div>
+
+      <!-- right: links & CTA -->
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="nav-links" id="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#exp">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <a class="cta-download" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span class="hamb-line"></span>
+          <span class="hamb-line"></span>
+          <span class="hamb-line"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#exp">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Hero">
+    <div class="page hero-inner">
+      <div class="hero-left">
+        <div class="kicker">Electrical - Electronic Engineering Student at HCMUT-VNU | Aspiring Embedded Engineer</div>
+        <h1 class="hero-title">Engineering resilient AIoT system architectures — hardware - firmware - software</h1>
+        <p class="lead">Skilled in ARM Cortex, RTOS, low-level drivers, and Edge AI deployment. Experienced in developing end-to-end IoT solutions from hardware and firmware to edge inference, gateways, and backend - frontend dashboards.</p>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#projects">Xem dự án nổi bật</a>
+          <a class="btn btn-ghost" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
+        </div>
+
+        <div class="meta-row" aria-hidden="true">
+            <div class="meta-pill">C/C++</div>
+            <div class="meta-pill">Python</div>
+            <div class="meta-pill">UART, SPI, I²C, CAN</div>
+            <div class="meta-pill">Thread, BLE</div>
+            <div class="meta-pill">RTOS (FreeRTOS, MicriumOS), Embedded Linux</div>
+            <div class="meta-pill">Edge AI</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <img src="../static/images/home_banner.png" alt="Hero image" class="hero-img-full" />
+        </div>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTIONS -->
+  <div class="page">
+    <section class="content" id="about" aria-labelledby="about-title">
+      <h2 class="section-title" id="about-title">About</h2>
+      <p class="muted">I am a third-year Electrical & Electronic Engineering student at HCMUT, aspiring to become an embedded engineer. I specialize in ARM Cortex firmware, RTOS, low-level drivers, and Edge AI deployment. I have designed and developed a range of IoT solutions, from hardware and firmware to edge inference, gateway, and cloud dashboards.</p>
+    </section>
+
+    <section class="content" id="projects" aria-labelledby="projects-title">
+      <h2 class="section-title" id="projects-title">Highlighted Products & Projects</h2>
+      <div class="projects-grid">
+  <!-- BIG LEFT: IoT Challenge -->
+<article class="project-card big" role="listitem">
+  <img src="../static/images/iot_challenge_banner.png" alt="SCENT — Smart Customer Experience" class="project-thumb" />
+  <div class="project-content">
+    <h3>SCENT — System for Customer EXperience, iNventory & Threats</h3>
+    <p class="muted">
+    <p style="font-size:13px;">
+  Designed & delivered a resilient <strong>end-to-end AIoT system</strong> spanning firmware, gateway, software, hardware, and AI platforms.
+</p>
+
+<ul style="font-size:14px;">
+  <li>
+    <strong>System design & integration:</strong> Architected a 24/7 AIoT system with robust dataflows over Thread, BLE, UART, I²C, MQTT.
+  </li>
+  <li>
+    <strong>MCU firmware (EFR32):</strong>
+    <ul>
+      <li>Developed HX711 load-cell driver & IR sensor interrupts.</li>
+      <li>MicriumOS tasks:
+        <ul>
+          <li>Glass-break detection (I2S mic, 200 ms loop).</li>
+          <li>Temp/humidity sensing (SI7021, every 5s).</li>
+          <li>Continuous OpenThread networking.</li>
+        </ul>
+      </li>
+      <li>Enabled Thread-to-gateway messaging with failover.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Edge gateway (Raspberry Pi 4):</strong>
+    <ul>
+      <li>Configured as OTBR (MG21 RCP + Spinel).</li>
+      <li>Python scripts for Thread parsing, UART, I²C LCD1602.</li>
+      <li>MQTT gateway + PostgreSQL schema & ETL scripts.</li>
+      <li>Local DB for scent notes & shelf ops with sync/offline mode.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Software & data platform:</strong>
+    <ul>
+      <li>Full-stack Flask app (APIs, templates, admin).</li>
+      <li>Smart Screen UI/UX (HTML, CSS, JS).</li>
+      <li>Backend with Redis + PostgreSQL; Python workers for sync.</li>
+      <li>Collected & processed 5k+ interactions for analytics & retraining.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Hardware engineering:</strong>
+    <ul>
+      <li>Integrated sensors (load cell, cam, mic) with MCUs & Pi.</li>
+      <li>PCB soldering, wiring validation, shelf-mounting design.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>AI:</strong>
+    <ul>
+      <li>Python pipelines for dataset generation & labeling.</li>
+      <li>NLP pipeline (BERT + spaCy NER) for keyword extraction.</li>
+      <br>
+    </ul>
+  </li>
+</ul>
+
+      <strong>Awards:</strong> 1st runner up (SILABS IoT Challenge) — <em>Granted Internship Certification</em>
+      <strong>Github Link:</strong> https:// ...
+    </p>
+  </div>
+  <div style="margin-top:18px; text-align:center;">
+  <a href="#" class="btn btn-case-study">View case study</a>
+</div>
+</article>
+
+  <!-- RIGHT COLUMN: 3 stacked -->
+  <div class="projects-col">
+    <article class="project-card" role="listitem">
+      <img src="../static/images/humanlog2025_banner.png" alt="Logistics Rescue Map" class="project-thumb" />
+      <div class="project-content">
+        <h3>ESP32Cam and RFID AIoT Solution in Warehouse Distribution</h3>
+        <p class="muted">
+        <strong>Built a compact <em>AIoT logistics MVP</em> integrating hardware, software, and system evaluation.</strong><br><br>
+            • <strong>Hardware:</strong> ESP32-CAM/S3, DHT22, RFID RC522; PCB & PCBA for classification and cabin control.<br>
+            • <strong>Prototype:</strong> Assembled within 15-hour hackathon.<br>
+            • <strong>Software:</strong> Flask app with SQL backend for real-time monitoring.<br>
+            • <strong>Evaluation:</strong> Assessed installability, power usage, and offline operation.<br><br>
+
+        <strong>Awards:</strong> 2nd runner up (HumanLog 2025) <br>
+            <a href="#" class="link-accent">View case study</a>
+            </p>
+      </div>
+    </article>
+
+
+    <article class="project-card" role="listitem">
+      <img src="../static/images/intel_ai_banner.png" alt="Edge AI — Fruit quality" class="project-thumb" />
+      <div class="project-content">
+        <h3>AIMING - AIoT Infravision for Agricultural Quality</h3>
+            <p class="muted">
+            <strong>Edge AIoT system on Intel hardware ensuring produce quality via dual AI modules.</strong><br><br>
+            • <strong>Hardware:</strong> Intel® NUC (CPU+GPU), 720p camera.<br>
+            • <strong>Software:</strong> OpenVINO™, Intel® Tiber™ Cloud, Edge Software Hub.<br>
+            • <strong>AI Modules:</strong>  <br>
+            – <em>Vision AI:</em> fruit type, count, ripeness, external defects.<br>
+            – <em>NIR AI:</em> °Brix, moisture, internal bruises, pest/disease detection.<br>
+            • <strong>Evaluation:</strong> Real-time grading, defect detection, SDG-aligned impact.<br>
+            </p>
+          <a href="#" class="link-accent">View case study</a>
+        </p>
+      </div>
+    </article>
+
+    
+
+    
+  </div>
+</div>
+    </section>
+
+<section class="content" id="exp" aria-labelledby="exp-title">
+  <h2 class="section-title" id="exp-title">Certifications</h2>
+  <div class="timeline">
+    <div class="item">
+      <strong>IELTS 6.5</strong>
+    </div>
+    <div class="item">
+      <strong>Udemy Advanced Python / C / C++ Course</strong>
+    </div>
+    <div class="item">
+      <strong>UEHG club</strong>
+      <div class="muted small">Charitable journeys to Bình Thuận & Đắk Nông schools</div>
+    </div>
+  </div>
+
+  <h2 class="section-title" style="margin-top:32px">Awards & Achievements</h2>
+  <div class="timeline">
+    <div class="item">
+      <strong>Top 2 / 140 - FPT IoT Challenge 2025</strong>
+      <div class="muted small">Nationwide Competition - Leader</div>
+    </div>
+    <div class="item">
+      <strong>Top 3 / 165 - HumanLog 2025</strong>
+      <div class="muted small">Nationwide Competition</div>
+    </div>
+    <div class="item">
+      <strong>Top 10 / 132 - RMIT Hackathon 2025</strong>
+      <div class="muted small">City Level Competition - Leader</div>
+    </div>
+  </div>
+</section>
+
+    <section class="content" id="skills" aria-labelledby="skills-title">
+  <h2 class="section-title" id="skills-title">Skills & Tools</h2>
+  
+  <div class="skills-groups">
+
+    <div class="skills-row">
+      <div class="skills-label">Programming Languages</div>
+      <div class="skills-grid">
+        <span class="skill">C</span>
+        <span class="skill">C++</span>
+        <span class="skill">Python</span>
+        <span class="skill">Assembly</span>
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="skills-row">
+      <div class="skills-label">Technical Tools</div>
+      <div class="skills-grid">
+        <span class="skill">Altium Designer</span>
+        <span class="skill">EasyEDA</span>
+        <span class="skill">Proteus</span>
+        <span class="skill">SketchUp</span>
+        <span class="skill">GitHub</span>
+        <span class="skill">Git</span>
+        <span class="skill">CMake</span>
+      </div>
+    </div>
+
+    <div class="skills-row">
+      <div class="skills-label">Hardware Skills</div>
+      <div class="skills-grid">
+        <span class="skill">Soldering PCBA</span>
+        <span class="skill">PCB Design</span>
+        <span class="skill">Electrical Circuits</span>
+        <span class="skill">Electronic Circuits</span>
+      </div>
+    </div>
+
+    <div class="skills-row">
+      <div class="skills-label">Microcontrollers / Microprocessors</div>
+      <div class="skills-grid">
+        <span class="skill">ARM Cortex-M</span>
+        <span class="skill">AVR</span>
+        <span class="skill">Raspberry Pi 4</span>
+        <span class="skill">ESP32</span>
+        <span class="skill">EFR32xG26</span>
+        <span class="skill">EFR32MG21</span>
+        <span class="skill">ESP8266</span>
+        <span class="skill">STM32</span>
+        <span class="skill">BGM220</span>
+      </div>
+    </div>
+
+    <div class="skills-row">
+      <div class="skills-label">Serial & Industrial Communication</div>
+      <div class="skills-grid">
+        <span class="skill">UART</span>
+        <span class="skill">SPI</span>
+        <span class="skill">I²C</span>
+        <span class="skill">CAN</span>
+      </div>
+    </div>
+
+    <div class="skills-row">
+      <div class="skills-label">Wireless Protocols</div>
+      <div class="skills-grid">
+        <span class="skill">Thread</span>
+        <span class="skill">BLE</span>
+      </div>
+    </div>
+
+    <div class="skills-row">
+      <div class="skills-label">Real-time & Embedded OS</div>
+      <div class="skills-grid">
+        <span class="skill">RTOS (FreeRTOS, MicriumOS)</span>
+        <span class="skill">Embedded Linux</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <section class="content" id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">Contact</h2>
+      <div class="contact-card">
+        <div class="contact-grid">
+          <div>
+            <p class="muted">Email: <a href="mailto:phuoc.dang2104@gmail.com" class="link-normal">phuoc.dang2104@gmail.com</a></p>
+            <p class="muted">GitHub: <a href="https://github.com/PhuocDang2104" target="_blank" class="link-normal">PhuocDang2104</a></p>
+            <p class="muted">LinkedIn: <a href="#" target="_blank" class="link-normal">Phuoc Dang</a></p>
+            <div class="contact-buttons">
+                <a class="btn btn-primary" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
+                <a class="btn btn-ghost" href="mailto:phuoc.dang2104@gmail.com">Email me</a>
+            </div>
+          </div>
+
+          <div>
+            <form id="contactForm">
+              <label class="muted small" for="subject">Short message</label>
+              <input id="subject" name="subject" placeholder="Subject" />
+              <textarea id="message" name="message" rows="4" placeholder="Message..."></textarea>
+              <div style="margin-top:8px">
+                <button class="btn btn-primary" type="submit">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages
+    </footer>
+  </div>
+
+  <script src="../static/js/main.js"></script>
+</body>
+</html>
