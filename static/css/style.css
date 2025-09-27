@@ -61,6 +61,60 @@ nav.navbar{
 .brand{font-weight:700;font-size:18px;letter-spacing:0.2px}
 .brand small{display:block;font-weight:500;color:var(--muted);font-size:12px}
 .nav-links{display:flex;gap:18px;align-items:center}
+.nav-links {
+      position: relative;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .nav-links .dropdown {
+      position: relative;
+    }
+
+    .nav-links .dropdown > a {
+      cursor: pointer;
+    }
+
+   /* menu ẩn mặc định */
+.nav-links .dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: var(--card, #0d1722);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  border-radius: 8px;
+  padding: 8px 0;
+  z-index: 1000;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s ease; /* mượt */
+}
+
+/* link trong menu */
+.nav-links .dropdown-content a {
+  display: block;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--text, #e9f2ff);
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.nav-links .dropdown-content a:hover {
+  background: var(--glass, rgba(255,255,255,0.08));
+}
+
+/* khi hover thì fade-in + trượt lên */
+.nav-links .dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .nav-links a{color:var(--muted);text-decoration:none;font-weight:500;font-size:14px;padding:8px}
 .nav-links a:hover{color:#fff}
 .cta-download{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:10px;color:white;text-decoration:none;font-weight:600;font-size:14px}

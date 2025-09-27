@@ -30,8 +30,16 @@
         <div class="nav-links" id="nav-links">
           <a href="#home">Home</a>
           <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#exp">Experience</a>
+          <div class="dropdown">
+              <a href="#projects">Projects ▾</a>
+              <div class="dropdown-content">
+                <a href="{{ url_for('iot_challenge_product') }}">SCENT — Smart Customer Experience</a>
+                <a href="{{ url_for('klu_hackathon_project') }}">ESP32Cam RFID AIoT in Warehouse</a>
+                <a href="{{ url_for('intel_ai_project') }}">AIMING - Agricultural AIoT</a>
+                <a href="{{ url_for('rmit_hackathon_project') }}">RMIT logistic AIoT</a>
+              </div>
+            </div>
+          <a href="#exp">Certifications</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </div>
@@ -165,7 +173,7 @@
     </p>
   </div>
   <div style="margin-top:18px; text-align:center;">
-  <a href="#" class="btn btn-case-study">View case study</a>
+  <a href="{{ url_for('iot_challenge_product') }}" class="btn btn-case-study">View case study</a>
 </div>
 </article>
 
@@ -295,6 +303,7 @@
         <span class="skill">Raspberry Pi 4</span>
         <span class="skill">ESP32</span>
         <span class="skill">EFR32xG26</span>
+        <span class="skill">EFR32xG24</span>
         <span class="skill">EFR32MG21</span>
         <span class="skill">ESP8266</span>
         <span class="skill">STM32</span>

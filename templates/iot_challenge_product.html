@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SCENT — Smart Customer Experience · Phước Đặng</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- original global styles (keep) -->
+  <link rel="stylesheet" href="../static/css/style.css">
+
+  <!-- page-specific styles (this file) -->
+  <link rel="stylesheet" href="../static/css/iot_challenge_product.css">
+</head>
+<body>
+
+  <!-- NAV (kept EXACT as your homepage) -->
+  <div class="nav-wrap">
+  <div class="page">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <!-- left: avatar + brand -->
+      <div style="display:flex;gap:12px;align-items:center">
+        <a href="#home" class="nav-brand-link" aria-label="Go to home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+          <img src="../static/images/Phuoc_avatar.png" alt="Phước Đặng avatar" class="nav-avatar" />
+          <div class="brand">Phước Đặng <small>Embedded & Edge AI</small></div>
+        </a>
+      </div>
+
+      <!-- right: links & CTA -->
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="nav-links" id="nav-links">
+          <a href="/">Home</a>
+          <a href="#about">About</a>
+          <div class="dropdown">
+              <a href="#projects">Projects ▾</a>
+              <div class="dropdown-content">
+                <a href="{{ url_for('iot_challenge_product') }}">SCENT — Smart Customer Experience</a>
+                <a href="{{ url_for('klu_hackathon_project') }}">ESP32Cam RFID AIoT in Warehouse</a>
+                <a href="{{ url_for('intel_ai_project') }}">AIMING - Agricultural AIoT</a>
+                <a href="{{ url_for('rmit_hackathon_project') }}">RMIT logistic AIoT</a>
+              </div>
+            </div>
+          <a href="#exp">Certifications</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <a class="cta-download" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span class="hamb-line"></span>
+          <span class="hamb-line"></span>
+          <span class="hamb-line"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#exp">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO (project-specific, keeps same layout classes) -->
+  <section class="hero project-hero" id="home" aria-label="Project hero">
+    <div class="page hero-inner">
+      <div class="hero-left">
+        <div class="kicker">Fsoft / SILABS IoT Challenge 2025 · 1st Runner-up · Leader of Edgelectronix</div>
+        <h1 class="hero-title">SCENT — Smart Customer Experience & Edge AIoT</h1>
+        <p class="lead">End-to-end 24/7 AIoT system: MCU firmware (EFR32), Edge Gateway (Raspberry Pi 4), Flask backend, Redis + PostgreSQL, and NLP/Edge-CV pipelines for retail scent recommendations & inventory/threat monitoring.</p>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#technical">Technical details</a>
+          <a class="btn btn-ghost" href="#data">Data & AI</a>
+          <a class="btn btn-ghost" id="copyGithub">Copy GitHub</a>
+        </div>
+
+        <div class="meta-row" aria-hidden="true">
+            <div class="meta-pill">EFR32 · RPi4 </div>
+            <div class="meta-pill">RTOS (MicriumOS) · Linux</div>
+            <div class="meta-pill">Thread · BLE · MQTT</div>
+            <div class="meta-pill">Flask · PostgreSQL · Redis</div>
+            <div class="meta-pill">UART · I2C</div>
+            <div class="meta-pill">BERT · spaCy NER </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <img src="../static/images/iot_challenge/1.png" alt="SCENT banner" class="hero-img-full" />
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT: keep .page wrapper (like homepage) -->
+  <div class="page">
+
+    <!-- Overview -->
+    <section id="overview" class="content reveal" aria-labelledby="overview-title">
+      <h2 class="section-title" id="overview-title">Project Overview</h2>
+      <p class="muted">SCENT is an offline-capable AIoT system for retail: personalized scent suggestions, inventory sensing, and environmental threat detection. Designed for continuous operation with local buffering & sync, and on-device/edge inference for low-latency experience.</p>
+
+      <div class="quick-grid" style="margin-top:16px">
+        <div class="quick-card">
+          <strong>Role</strong>
+          <div class="muted">Team leader — Edgelectronix</div>
+        </div>
+        <div class="quick-card">
+          <strong>Award</strong>
+          <div class="muted">1st Runner-up · Internship Certification from FPT</div>
+        </div>
+        <div class="quick-card">
+          <strong>Product Scope</strong>
+          <div class="muted">Hardware → Firmware → Network → Software</div>
+        </div>
+      </div>
+    </section>
+
+
+      <!-- architecture -->
+      <div class="arch-wrap">
+        <h4 style="margin-top:12px">System Architecture</h4>
+        <div class="arch">
+          <div class="box device">EFR32 Nodes<br><span class="small-muted">HX711, IR, I2S mic, SI7021</span></div>
+          <div class="arrow">→</div>
+          <div class="box gateway">Raspberry Pi 4 (OTBR + MQTT)<br><span class="small-muted">Parsers, LCD, MQTT</span></div>
+          <div class="arrow">→</div>
+          <div class="box backend">Flask API + Redis + PostgreSQL<br><span class="small-muted">Workers, ETL, Admin</span></div>
+          <div class="arrow">→</div>
+          <div class="box ai">AI Pipeline (BERT, spaCy, Edge CV)<br><span class="small-muted">Personalization & retrain</span></div>
+        </div>
+      </div>
+
+      <!-- ======= STACK CAROUSEL (icons now images) ======= -->
+<div class="stack-carousel-wrap" aria-label="Product stacks">
+  <h4 style="margin-top:20px">Product Stacks</h4>
+
+  <div class="stack-carousel" id="stackCarousel" tabindex="0" aria-roledescription="carousel">
+    <button class="stack-nav stack-nav-left" id="stackPrev" aria-label="Previous stack">◀</button>
+
+    <div class="stack-track" id="stackTrack">
+      <!-- 1) Firmware -->
+      <div class="stack-item" 
+           data-title="Firmware (EFR32)" 
+           data-desc="Low-level firmware for sensors and edge communication." 
+           data-detail='[
+             "HX711 load-cell driver",
+             "Interrupt-driven IR pickup",
+             "SI7021 environmental sensing",
+             "MicriumOS tasks: glass-break & OpenThread",
+             "Local event buffer for offline mode"
+           ]' 
+           data-image="../static/images/iot_challenge/suggestion_AI_banner.png">
+        <div class="stack-card">
+          <img class="stack-icon-img" src="../static/images/iot_challenge/suggestion_AI.png" alt="Firmware icon">
+          <div class="stack-name">EFR32xg24 <br> <i>AI perfume suggestion</i></div>
+        </div>
+      </div>
+
+      <!-- 2) Edge Gateway -->
+      <div class="stack-item" 
+           data-title="Edge Gateway" 
+           data-desc="Gateway bridging Thread network to backend services." 
+           data-detail='[
+             "Raspberry Pi 4 as OTBR (MG21 + Spinel)",
+             "Custom UART/I²C drivers",
+             "Thread parser and MQTT bridge",
+             "Local PostgreSQL with ETL workers"
+           ]' 
+           data-image="../static/images/iot_challenge/drop_detect_AI_banner.png">
+        <div class="stack-card">
+          <img class="stack-icon-img" src="../static/images/iot_challenge/drop_detect_AI.png" alt="Gateway icon">
+          <div class="stack-name">EFR32xg26 <br> <i>AI drop detect</i></div>
+        </div>
+      </div>
+
+      <!-- 3) Backend & APIs -->
+      <div class="stack-item" 
+           data-title="Backend & APIs" 
+           data-desc="Scalable backend services and APIs for data flow." 
+           data-detail='[
+             "Flask REST APIs with Redis queue",
+             "Admin panel for monitoring & control",
+             "ETL workers for ingestion & sync",
+             "PostgreSQL schema optimized for analytics"
+           ]' 
+           data-image="../static/images/iot_challenge/xg26_sensors_banner.png">
+        <div class="stack-card">
+          <img class="stack-icon-img" src="../static/images/iot_challenge/xg26_sensors.png" alt="Backend icon">
+          <div class="stack-name">EFR32xg26 <br> <i>HX711 + IR</i></div>
+        </div>
+      </div>
+
+      <!-- 4) Data & AI -->
+      <div class="stack-item" 
+           data-title="Data & AI" 
+           data-desc="AI models and analytics powering smart retail insights." 
+           data-detail='[
+             "BERT + spaCy NER for perfume keywords",
+             "Perfume embeddings → interactive scent map",
+             "Edge CV for shelf product counting",
+             "Retraining pipeline from 5k+ interactions"
+           ]' 
+           data-image="../static/images/iot_challenge/rp4_mg21_banner.png">
+        <div class="stack-card">
+          <img class="stack-icon-img" src="../static/images/iot_challenge/rp4_mg21.png" alt="AI icon">
+          <div class="stack-name">Raspi 4 + MG21 <br> <i>Open Thread Border Router</i></div>
+        </div>
+      </div>
+
+      <!-- 5) Hardware & Mechanical -->
+      <div class="stack-item" 
+           data-title="Hardware & Mechanical" 
+           data-desc="Custom hardware and mechanical integration." 
+           data-detail='[
+             "Custom PCBA soldering & assembly",
+             "Shelf-mount mechanical design",
+             "Power & wiring validation",
+             "Integration of load-cell, camera & mic"
+           ]' 
+           data-image="../static/images/iot_challenge/software_banner.png">
+        <div class="stack-card">
+          <img class="stack-icon-img" src="../static/images/iot_challenge/software.png" alt="Hardware icon">
+          <div class="stack-name">Desktop Admin <br> <i>Software + DB</i></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="stack-nav stack-nav-right" id="stackNext" aria-label="Next stack">▶</button>
+  </div>
+
+  <!-- details area: LEFT = text, RIGHT = illustrative image -->
+  <div class="stack-details split" id="stackDetails" aria-live="polite">
+    <div class="stack-details-left">
+      <h5 id="stackDetailsTitle">Firmware (EFR32)</h5>
+      <div id="stackDetailsText">
+        <!-- JS sẽ render desc + list -->
+      </div>
+    </div>
+    <div class="stack-details-right">
+      <img id="stackDetailsImg" src="../static/images/iot_challenge/stack_firmware.png" alt="Firmware illustration">
+    </div>
+  </div>
+</div>
+<!-- ======= END stack carousel ======= -->
+
+    </section>
+
+<!-- Technical -->
+    <section id="technical" class="content reveal" aria-labelledby="tech-title">
+      <h2 class="section-title" id="tech-title">Technical — Firmware & Gateway</h2>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>MCU Firmware (EFR32)</h3>
+          <ul>
+            <li><strong>HX711 driver</strong> for load-cell ADC (high-rate sampling + filtered average).</li>
+            <li>Interrupt-driven IR pickup detection with debounce & event queue.</li>
+            <li>MicriumOS tasks:
+              <ul>
+                <li>Glass-break detection via I2S mic (200 ms loop)</li>
+                <li>Temp/humidity: SI7021 every 5s</li>
+                <li>OpenThread background task for mesh comms</li>
+              </ul>
+            </li>
+            <li>Local event buffering + periodic sync to gateway (robust to network dropouts).</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Edge Gateway (Raspberry Pi 4)</h3>
+          <ul>
+            <li>Configured as OTBR using MG21 RCP + Spinel.</li>
+            <li>Python services: Thread payload parsing, UART gateway, I²C LCD1602 status UI.</li>
+            <li>MQTT bridge & PostgreSQL local DB (scent notes, shelf map).</li>
+            <li>ETL workers to ingest events into analytics-ready schemas.</li>
+          </ul>
+        </article>
+      </div>
+
+    <!-- Data & AI -->
+    <section id="data" class="content reveal" aria-labelledby="data-title">
+      <h2 class="section-title" id="data-title">Data & AI</h2>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Data pipeline</h3>
+          <ul>
+            <li>Local event store → batch ETL → PostgreSQL (analytics tables).</li>
+            <li>Redis-backed queues for ingestion resilience.</li>
+            <li>Collected & labeled 5k+ interactions (pickup, feedback, dwell time).</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Machine Learning</h3>
+          <ul>
+            <li>NLP: BERT embeddings + spaCy NER to extract perfume preference features.</li>
+            <li>Edge CV: lightweight model for shelf occupancy & product counting.</li>
+            <li>Retraining pipeline using labeled interactions for personalization.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="content reveal" aria-labelledby="timeline-title">
+      <h2 class="section-title" id="timeline-title">Timeline & Milestones</h2>
+      <div class="timeline">
+        <div class="item">
+          <strong>Hackathon Prototype</strong>
+          <div class="muted small">Working MVP assembled in 15 hours (hardware + demo flow).</div>
+        </div>
+        <div class="item">
+          <strong>Edge & Backend Integration</strong>
+          <div class="muted small">OTBR, MQTT bridge, local DB & dashboard.</div>
+        </div>
+        <div class="item">
+          <strong>Field Data Collection</strong>
+          <div class="muted small">5k+ interactions used for analytics & model training.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="content reveal" aria-labelledby="gallery-title">
+      <h2 class="section-title" id="gallery-title">Gallery & Artifacts</h2>
+      <div class="gallery-grid">
+        <img src="../static/images/gallery1.png" alt="Board" class="gallery-thumb" data-large="../static/images/gallery1.png">
+        <img src="../static/images/gallery2.png" alt="PCB" class="gallery-thumb" data-large="../static/images/gallery2.png">
+        <img src="../static/images/gallery3.png" alt="Demo" class="gallery-thumb" data-large="../static/images/gallery3.png">
+      </div>
+    </section>
+
+    <!-- Downloads -->
+    <section id="downloads" class="content reveal" aria-labelledby="downloads-title">
+      <h2 class="section-title" id="downloads-title">Downloads & Links</h2>
+      <div class="download-row">
+        <a class="btn btn-case-study" href="../static/docs/SCENT_case_study.pdf" download>Download Case Study (PDF)</a>
+        <a class="btn btn-ghost" id="copyGithub2" href="#">Copy GitHub URL</a>
+        <a class="btn btn-ghost" href="../static/docs/SCENT_slides.pdf" download>Presentation slides</a>
+      </div>
+    </section>
+
+    <!-- Contact (reuse original contact) -->
+    <section class="content" id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">Contact</h2>
+      <div class="contact-card">
+        <div class="contact-grid">
+          <div>
+            <p class="muted">Email: <a href="mailto:phuoc.dang2104@gmail.com" class="link-normal">phuoc.dang2104@gmail.com</a></p>
+            <p class="muted">GitHub: <a href="https://github.com/PhuocDang2104" target="_blank" class="link-normal">PhuocDang2104</a></p>
+            <p class="muted">LinkedIn: <a href="#" target="_blank" class="link-normal">Phuoc Dang</a></p>
+            <div class="contact-buttons">
+                <a class="btn btn-primary" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
+                <a class="btn btn-ghost" href="mailto:phuoc.dang2104@gmail.com">Email me</a>
+            </div>
+          </div>
+
+          <div>
+            <form id="contactForm">
+              <label class="muted small" for="subject">Short message</label>
+              <input id="subject" name="subject" placeholder="Subject" />
+              <textarea id="message" name="message" rows="4" placeholder="Message..."></textarea>
+              <div style="margin-top:8px">
+                <button class="btn btn-primary" type="submit">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer (kept same) -->
+    <footer>
+      © <span id="year"></span> Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages
+    </footer>
+  </div>
+
+  <!-- Lightbox (hidden by default) -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button id="lbClose" class="lb-close" aria-label="Close">✕</button>
+      <img id="lbImg" src="" alt="Preview">
+    </div>
+  </div>
+
+  <!-- original global JS -->
+  <script src="../static/js/main.js"></script>
+  <!-- page-specific JS (this file) -->
+  <script src="../static/js/iot_challenge_product.js"></script>
+</body>
+</html>

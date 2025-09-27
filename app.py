@@ -6,6 +6,22 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route("/iot_challenge_product")
+def iot_challenge_product():
+    return render_template("iot_challenge_product.html")
+
+@app.route("/klu_hackathon_project")
+def klu_hackathon_project():
+    return render_template("klu_hackathon_project.html")
+
+@app.route("/intel_ai_project")
+def intel_ai_project():
+    return render_template("intel_ai_project.html")
+
+@app.route("/rmit_hackathon_project")
+def rmit_hackathon_project():
+    return render_template("rmit_hackathon_project.html")
+
 @app.route('/about')
 def about():
     return render_template('about.html')
