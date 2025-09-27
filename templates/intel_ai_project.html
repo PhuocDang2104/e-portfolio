@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phước Đặng — Embedded & Edge AI Engineer</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/rmit_hackathon_project.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <div class="page">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <!-- left: avatar + brand -->
+        <div style="display:flex;gap:12px;align-items:center">
+          <a href="#home" class="nav-brand-link" aria-label="Go to home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+            <img src="../static/images/Phuoc_avatar.png" alt="Phước Đặng avatar" class="nav-avatar" />
+            <div class="brand">Phước Đặng <small>Embedded & Edge AI</small></div>
+          </a>
+        </div>
+
+        <!-- right: links & CTA -->
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#exp">Certifications</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <a class="cta-download" href="../static/Dang Nhu Phuoc _ CV _ Embedded Engineer.pdf" download>Download CV</a>
+          <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span class="hamb-line"></span>
+            <span class="hamb-line"></span>
+            <span class="hamb-line"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- UNDER CONSTRUCTION -->
+  <main class="under-construction">
+    <div class="icon">🚧</div>
+    <h1>Under Construction</h1>
+    <p>Sorry for inconvenience, this page is being updated.</p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -125,8 +125,8 @@
 
 
       <!-- architecture -->
-      <div class="arch-wrap">
-        <h4 style="margin-top:12px">System Architecture</h4>
+      <div class= "arch-wrap">
+        <h4 class="section-title" style="margin-top:12px">System Architecture</h4>
         <div class="arch">
           <div class="box device">EFR32 Nodes<br><span class="small-muted">HX711, IR, I2S mic, SI7021</span></div>
           <div class="arrow">→</div>
@@ -135,6 +135,10 @@
           <div class="box backend">Flask API + Redis + PostgreSQL<br><span class="small-muted">Workers, ETL, Admin</span></div>
           <div class="arrow">→</div>
           <div class="box ai">AI Pipeline (BERT, spaCy, Edge CV)<br><span class="small-muted">Personalization & retrain</span></div>
+
+            <div class="arch-banner">
+                <img src="../static/images/iot_challenge/6.png" alt="System Architecture Banner">
+            </div>
         </div>
       </div>
 
@@ -148,15 +152,22 @@
     <div class="stack-track" id="stackTrack">
       <!-- 1) Firmware -->
       <div class="stack-item" 
-           data-title="Firmware (EFR32)" 
-           data-desc="Low-level firmware for sensors and edge communication." 
-           data-detail='[
-             "HX711 load-cell driver",
-             "Interrupt-driven IR pickup",
-             "SI7021 environmental sensing",
-             "MicriumOS tasks: glass-break & OpenThread",
-             "Local event buffer for offline mode"
-           ]' 
+            data-title="EFR32xG24 - Perfume Suggestion DL Model"
+            data-desc="A deep learning–based recommendation system that personalizes perfume suggestions. 
+                        It generates compact 64D embeddings from user preferences (gender, brand, notes, accords, sillage, longevity, price), 
+                        compares them with a curated catalog of perfumes, and returns the most relevant matches. 
+                        Designed for edge deployment on EFR32xG26 microcontrollers, it leverages TensorFlow Lite quantization for efficient, 
+                        low-power inference while retaining recommendation quality."
+            data-detail='[
+            "Personalized perfume recommendation based on structured inputs: gender, brand, fragrance notes, accords, sillage, longevity, and price category.",
+            "Neural network model trained on a curated dataset of 50+ perfumes, producing 64-dimensional embeddings optimized for cosine similarity search.",
+            "Dual training strategy: classification loss combined with contrastive fine-tuning for better embedding separation.",
+            "Export pipeline generates quantized int8 TensorFlow Lite Micro model plus C++ headers for integration into EFR32xG26 firmware.",
+            "PREF line input format encodes user preferences as feature vectors, enabling consistent parsing and testing both on desktop and on-device.",
+            "Interactive Tkinter GUI tool for quickly generating preference lines and validating recommendations.",
+            "On-device inference pipeline: parse PREF line → encode 260D vector → quantize → run TFLite model → compute similarity → return top-ranked perfumes.",
+            "Lightweight and memory-efficient, designed to run fully offline on constrained hardware without external servers."
+            ]' 
            data-image="../static/images/iot_challenge/suggestion_AI_banner.png">
         <div class="stack-card">
           <img class="stack-icon-img" src="../static/images/iot_challenge/suggestion_AI.png" alt="Firmware icon">
@@ -166,14 +177,21 @@
 
       <!-- 2) Edge Gateway -->
       <div class="stack-item" 
-           data-title="Edge Gateway" 
-           data-desc="Gateway bridging Thread network to backend services." 
-           data-detail='[
-             "Raspberry Pi 4 as OTBR (MG21 + Spinel)",
-             "Custom UART/I²C drivers",
-             "Thread parser and MQTT bridge",
-             "Local PostgreSQL with ETL workers"
-           ]' 
+             data-title="EFR32xG26 - Drop Detection AI + SI7021 → Thread"
+            data-desc="Firmware for detecting perfume glass bottle drops using embedded AI on the EFR32xG26. 
+                        The system combines real-time audio inference with environmental sensing (SI7021) 
+                        and seamlessly forwards events over Thread networking to backend services. 
+                        Optimized for MicriumOS task scheduling, it runs fully on constrained IoT hardware."
+            data-detail='[
+            "Embedded AI model trained to detect perfume bottle drop sounds while rejecting background noises (e.g., claps, collisions).",
+            "MicriumOS pipeline: Voice Task (continuous audio recording & inference), Sensor Task (SI7021 temp/humidity sampling), OT Task (Thread UDP networking).",
+            "Data preprocessing pipeline: dataset collection, augmentation, spectrogram feature extraction, and CNN-based training in TensorFlow/Keras.",
+            "Deployed TFLite Micro quantized model (.tflite) integrated into Simplicity Studio firmware project.",
+            "Well-structured dataset (~4.5k drop samples + auxiliary classes: clap, object collision, ambient sounds).",
+            "Project structure includes firmware sources, pre-trained models, dataset scripts, and Simplicity Studio build files (.sls).",
+            "On-device workflow: record audio → preprocess → run AI inference → enqueue result → Thread UDP message dispatch.",
+            "Scalable design: can be extended to other sound event detection tasks and additional wireless protocols."
+            ]'
            data-image="../static/images/iot_challenge/drop_detect_AI_banner.png">
         <div class="stack-card">
           <img class="stack-icon-img" src="../static/images/iot_challenge/drop_detect_AI.png" alt="Gateway icon">
@@ -183,14 +201,21 @@
 
       <!-- 3) Backend & APIs -->
       <div class="stack-item" 
-           data-title="Backend & APIs" 
-           data-desc="Scalable backend services and APIs for data flow." 
-           data-detail='[
-             "Flask REST APIs with Redis queue",
-             "Admin panel for monitoring & control",
-             "ETL workers for ingestion & sync",
-             "PostgreSQL schema optimized for analytics"
-           ]' 
+            data-title="EFR32xG26 - HX711 / IR → Thread"
+            data-desc="Firmware for the second EFR32xG26 device, integrating dual HX711 load-cell sensors and 8 IR sensor interrupts. 
+                        It detects weight changes and product movements in real time, then transmits structured events over the Thread network 
+                        to the Raspberry Pi 4 border router. Built on bare-metal OpenThread, it demonstrates efficient sensor fusion, 
+                        low-latency interrupt handling, and reliable UDP/IPv6 communication."
+            data-detail='[
+            "HX711 dual-channel driver: reads load cell data every 500 ms, converts raw ADC values into grams, and reports weight drops ≥ 100 g as product events (e.g., P017, P026).",
+            "IR sensor interface: 8 GPIO-driven sensors with interrupt + debounce logic (500 ms). Each valid trigger increments a counter and maps to a product code (e.g., P001, P045).",
+            "Thread networking stack: pre-configured Active Operational Dataset, UDP socket (port 12346), IPv6 communication with Raspberry Pi 4 OTBR gateway.",
+            "Bare-metal firmware design: written in C for Simplicity Studio 5, integrating HX711 + IR logic into app.c.",
+            "Serial debugging: CLI enabled via otCliOutputFormat, supporting commands such as ifconfig up, thread start, udp open, and udp send.",
+            "Folder structure includes source code, Simplicity Studio project files, and README_CODE.md for implementation details.",
+            "Deployment workflow: flash Gecko Bootloader → flash application firmware → monitor via serial console (115200 baud).",
+            "Scalable design for retail or warehouse IoT: can be extended to more sensors or adapted for BLE/Zigbee connectivity."
+            ]'
            data-image="../static/images/iot_challenge/xg26_sensors_banner.png">
         <div class="stack-card">
           <img class="stack-icon-img" src="../static/images/iot_challenge/xg26_sensors.png" alt="Backend icon">
@@ -200,14 +225,16 @@
 
       <!-- 4) Data & AI -->
       <div class="stack-item" 
-           data-title="Data & AI" 
-           data-desc="AI models and analytics powering smart retail insights." 
-           data-detail='[
-             "BERT + spaCy NER for perfume keywords",
-             "Perfume embeddings → interactive scent map",
-             "Edge CV for shelf product counting",
-             "Retraining pipeline from 5k+ interactions"
-           ]' 
+            data-title="Raspberry Pi 4 + MG21 - OpenThread Border Router | Backend for Customer Smart UI/UX" 
+            data-desc="Smart retail backbone combining OTBR, MQTT bridge, real-time LCD, and NLP-powered analytics." 
+            data-detail='[
+            "Operates as the OpenThread Border Router using Raspberry Pi 4 and Silicon Labs MG21 for IPv6/Thread connectivity",
+            "Bridges Thread ↔ MQTT, forwarding multi-sensor telemetry from EFR32 devices into backend services",
+            "Runs a local LCD controller to visualize shelf events, stock levels, and quick diagnostic data in real time",
+            "Integrates tightly with Flask-based admin UI, REST APIs, PostgreSQL, and Redis for monitoring, logging, and synchronization",
+            "Implements customer-facing live updates via Socket.IO and pub/sub architecture",
+            "Hosts NLP pipeline (BERT + spaCy NER) to extract structured perfume preferences and enable smart recommendation UX"
+            ]'
            data-image="../static/images/iot_challenge/rp4_mg21_banner.png">
         <div class="stack-card">
           <img class="stack-icon-img" src="../static/images/iot_challenge/rp4_mg21.png" alt="AI icon">
@@ -217,14 +244,19 @@
 
       <!-- 5) Hardware & Mechanical -->
       <div class="stack-item" 
-           data-title="Hardware & Mechanical" 
-           data-desc="Custom hardware and mechanical integration." 
-           data-detail='[
-             "Custom PCBA soldering & assembly",
-             "Shelf-mount mechanical design",
-             "Power & wiring validation",
-             "Integration of load-cell, camera & mic"
-           ]' 
+             data-title="Admin Desktop - Store Management Software + DB" 
+            data-desc="Flask + Socket.IO powered admin panel with PostgreSQL, Redis, and MQTT bridge." 
+            data-detail='[
+            "Flask backend serving Jinja2 templates for dashboard, authentication pages, and system config",
+            "Implements REST APIs for product stock queries, KPI retrieval, and shelf management",
+            "Real-time updates via Flask-SocketIO integrated with Redis pub/sub (eventlet backend)",
+            "PostgreSQL database schema handling products, shelves, transactions, and user accounts",
+            "Threading-based background tasks for KPI aggregation, log rotation, and data synchronization",
+            "MQTT bridge (Paho client) forwarding EFR32 telemetry into Redis channels and backend services",
+            "Session handling and role-based access control via Flask-Login and secure cookies",
+            "Admin UI with live KPI cards, searchable inventory tables, and real-time shelf event feed",
+            "Integrated LCD controller sync to display shelf alerts and local status information"
+            ]'
            data-image="../static/images/iot_challenge/software_banner.png">
         <div class="stack-card">
           <img class="stack-icon-img" src="../static/images/iot_challenge/software.png" alt="Hardware icon">

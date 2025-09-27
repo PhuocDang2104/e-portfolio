@@ -29,6 +29,17 @@ html,body{height:100%}
   color: transparent;
   font-weight: 700;
 }
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* hover/focus effect */
 .nav-brand-link:hover .nav-avatar,
 .nav-brand-link:focus .nav-avatar{
@@ -147,7 +158,7 @@ nav.navbar{
 }
 .hero::after{
     content:'';position:absolute;inset:0;
-    background: linear-gradient(135deg, rgba(139,92,246,0.45) 0%, rgba(30,136,229,0.18) 40%, rgba(4,6,12,0.75) 75%);
+     background: transparent !important;
     mix-blend-mode: multiply;
     z-index:1;
 }

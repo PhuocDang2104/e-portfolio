@@ -44,7 +44,7 @@
           <a href="#contact">Contact</a>
         </div>
 
-        <a class="cta-download" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
+        <a class="cta-download" href="../static/Dang Nhu Phuoc _ CV _ Embedded Engineer.pdf" download>Download CV</a>
 
         <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
           <span class="hamb-line"></span>
@@ -67,16 +67,16 @@
   </div>
 
   <!-- HERO -->
-  <section class="hero" id="home" aria-label="Hero">
+  <section class="hero reveal" id="home" aria-label="Hero">
     <div class="page hero-inner">
-      <div class="hero-left">
+      <div class="hero-left reveal">
         <div class="kicker">Electrical - Electronic Engineering Student at HCMUT-VNU | Aspiring Embedded Engineer</div>
         <h1 class="hero-title">Engineering resilient AIoT system architectures — hardware - firmware - software</h1>
         <p class="lead">Skilled in ARM Cortex, RTOS, low-level drivers, and Edge AI deployment. Experienced in developing end-to-end IoT solutions from hardware and firmware to edge inference, gateways, and backend - frontend dashboards.</p>
 
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#projects">Xem dự án nổi bật</a>
-          <a class="btn btn-ghost" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
+          <a class="btn btn-ghost" href="../static/Dang Nhu Phuoc _ CV _ Embedded Engineer.pdf" download>Download CV</a>
         </div>
 
         <div class="meta-row" aria-hidden="true">
@@ -89,24 +89,24 @@
         </div>
       </div>
 
-      <div class="hero-right">
+      <div class="hero-right reveal">
         <img src="../static/images/home_banner.png" alt="Hero image" class="hero-img-full" />
-        </div>
+      </div>
     </div>
   </section>
 
   <!-- CONTENT SECTIONS -->
   <div class="page">
-    <section class="content" id="about" aria-labelledby="about-title">
+    <section class="content reveal" id="about" aria-labelledby="about-title">
       <h2 class="section-title" id="about-title">About</h2>
       <p class="muted">I am a third-year Electrical & Electronic Engineering student at HCMUT, aspiring to become an embedded engineer. I specialize in ARM Cortex firmware, RTOS, low-level drivers, and Edge AI deployment. I have designed and developed a range of IoT solutions, from hardware and firmware to edge inference, gateway, and cloud dashboards.</p>
     </section>
 
-    <section class="content" id="projects" aria-labelledby="projects-title">
+    <section class="content reveal" id="projects" aria-labelledby="projects-title">
       <h2 class="section-title" id="projects-title">Highlighted Products & Projects</h2>
       <div class="projects-grid">
   <!-- BIG LEFT: IoT Challenge -->
-<article class="project-card big" role="listitem">
+<article class="project-card big reveal" role="listitem">
   <img src="../static/images/iot_challenge_banner.png" alt="SCENT — Smart Customer Experience" class="project-thumb" />
   <div class="project-content">
     <h3>SCENT — System for Customer EXperience, iNventory & Threats</h3>
@@ -179,10 +179,10 @@
 
   <!-- RIGHT COLUMN: 3 stacked -->
   <div class="projects-col">
-    <article class="project-card" role="listitem">
+    <article class="project-card reveal" role="listitem">
       <img src="../static/images/humanlog2025_banner.png" alt="Logistics Rescue Map" class="project-thumb" />
       <div class="project-content">
-        <h3>ESP32Cam and RFID AIoT Solution in Warehouse Distribution</h3>
+        <h3>ESP32Cam and RFID AIoT Solution in Warehouse</h3>
         <p class="muted">
         <strong>Built a compact <em>AIoT logistics MVP</em> integrating hardware, software, and system evaluation.</strong><br><br>
             • <strong>Hardware:</strong> ESP32-CAM/S3, DHT22, RFID RC522; PCB & PCBA for classification and cabin control.<br>
@@ -191,13 +191,13 @@
             • <strong>Evaluation:</strong> Assessed installability, power usage, and offline operation.<br><br>
 
         <strong>Awards:</strong> 2nd runner up (HumanLog 2025) <br>
-            <a href="#" class="link-accent">View case study</a>
+            <a href="{{ url_for('klu_hackathon_project') }}" class="link-accent">View case study</a>
             </p>
       </div>
     </article>
 
 
-    <article class="project-card" role="listitem">
+    <article class="project-card reveal" role="listitem">
       <img src="../static/images/intel_ai_banner.png" alt="Edge AI — Fruit quality" class="project-thumb" />
       <div class="project-content">
         <h3>AIMING - AIoT Infravision for Agricultural Quality</h3>
@@ -210,28 +210,25 @@
             – <em>NIR AI:</em> °Brix, moisture, internal bruises, pest/disease detection.<br>
             • <strong>Evaluation:</strong> Real-time grading, defect detection, SDG-aligned impact.<br>
             </p>
-          <a href="#" class="link-accent">View case study</a>
+          <a href="{{ url_for('intel_ai_project') }}" class="link-accent">View case study</a>
         </p>
       </div>
     </article>
 
-    
-
-    
   </div>
 </div>
     </section>
 
-<section class="content" id="exp" aria-labelledby="exp-title">
+<section class="content reveal" id="exp" aria-labelledby="exp-title">
   <h2 class="section-title" id="exp-title">Certifications</h2>
   <div class="timeline">
-    <div class="item">
+    <div class="item reveal">
       <strong>IELTS 6.5</strong>
     </div>
-    <div class="item">
+    <div class="item reveal">
       <strong>Udemy Advanced Python / C / C++ Course</strong>
     </div>
-    <div class="item">
+    <div class="item reveal">
       <strong>UEHG club</strong>
       <div class="muted small">Charitable journeys to Bình Thuận & Đắk Nông schools</div>
     </div>
@@ -239,27 +236,27 @@
 
   <h2 class="section-title" style="margin-top:32px">Awards & Achievements</h2>
   <div class="timeline">
-    <div class="item">
+    <div class="item reveal">
       <strong>Top 2 / 140 - FPT IoT Challenge 2025</strong>
       <div class="muted small">Nationwide Competition - Leader</div>
     </div>
-    <div class="item">
+    <div class="item reveal">
       <strong>Top 3 / 165 - HumanLog 2025</strong>
       <div class="muted small">Nationwide Competition</div>
     </div>
-    <div class="item">
+    <div class="item reveal">
       <strong>Top 10 / 132 - RMIT Hackathon 2025</strong>
       <div class="muted small">City Level Competition - Leader</div>
     </div>
   </div>
 </section>
 
-    <section class="content" id="skills" aria-labelledby="skills-title">
+    <section class="content reveal" id="skills" aria-labelledby="skills-title">
   <h2 class="section-title" id="skills-title">Skills & Tools</h2>
   
   <div class="skills-groups">
 
-    <div class="skills-row">
+    <div class="skills-row reveal">
       <div class="skills-label">Programming Languages</div>
       <div class="skills-grid">
         <span class="skill">C</span>
@@ -272,7 +269,7 @@
       </div>
     </div>
 
-    <div class="skills-row">
+    <div class="skills-row reveal">
       <div class="skills-label">Technical Tools</div>
       <div class="skills-grid">
         <span class="skill">Altium Designer</span>
@@ -285,7 +282,7 @@
       </div>
     </div>
 
-    <div class="skills-row">
+    <div class="skills-row reveal">
       <div class="skills-label">Hardware Skills</div>
       <div class="skills-grid">
         <span class="skill">Soldering PCBA</span>
@@ -295,7 +292,7 @@
       </div>
     </div>
 
-    <div class="skills-row">
+    <div class="skills-row reveal">
       <div class="skills-label">Microcontrollers / Microprocessors</div>
       <div class="skills-grid">
         <span class="skill">ARM Cortex-M</span>
@@ -311,7 +308,7 @@
       </div>
     </div>
 
-    <div class="skills-row">
+    <div class="skills-row reveal">
       <div class="skills-label">Serial & Industrial Communication</div>
       <div class="skills-grid">
         <span class="skill">UART</span>
@@ -321,7 +318,7 @@
       </div>
     </div>
 
-    <div class="skills-row">
+    <div class="skills-row reveal">
       <div class="skills-label">Wireless Protocols</div>
       <div class="skills-grid">
         <span class="skill">Thread</span>
@@ -329,7 +326,7 @@
       </div>
     </div>
 
-    <div class="skills-row">
+    <div class="skills-row reveal">
       <div class="skills-label">Real-time & Embedded OS</div>
       <div class="skills-grid">
         <span class="skill">RTOS (FreeRTOS, MicriumOS)</span>
@@ -340,7 +337,7 @@
   </div>
 </section>
 
-    <section class="content" id="contact" aria-labelledby="contact-title">
+    <section class="content reveal" id="contact" aria-labelledby="contact-title">
       <h2 class="section-title" id="contact-title">Contact</h2>
       <div class="contact-card">
         <div class="contact-grid">
@@ -349,7 +346,7 @@
             <p class="muted">GitHub: <a href="https://github.com/PhuocDang2104" target="_blank" class="link-normal">PhuocDang2104</a></p>
             <p class="muted">LinkedIn: <a href="#" target="_blank" class="link-normal">Phuoc Dang</a></p>
             <div class="contact-buttons">
-                <a class="btn btn-primary" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
+                <a class="btn btn-primary" href="../static/Dang Nhu Phuoc _ CV _ Embedded Engineer.pdf" download>Download CV</a>
                 <a class="btn btn-ghost" href="mailto:phuoc.dang2104@gmail.com">Email me</a>
             </div>
           </div>

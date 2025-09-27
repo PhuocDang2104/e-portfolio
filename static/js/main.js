@@ -4,6 +4,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+
+  // scroll reveal (pop up effect)
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-show');
+        observer.unobserve(entry.target); // chỉ animate lần đầu
+      }
+    });
+  }, { threshold: 0.2 }); // 20% hiện trong màn hình thì trigger
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
   // hamburger & mobile menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
