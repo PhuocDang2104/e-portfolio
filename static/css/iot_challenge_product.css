@@ -216,8 +216,8 @@ nav.navbar{
 }
 
 /* left ~55%, right ~45% (keeps original layout) */
-.stack-details-left { flex: 0 0 55%; }
-.stack-details-right { flex: 0 0 45%; }
+.stack-details-left { flex: 0 0 60%; }
+.stack-details-right { flex: 0 0 40%; }
 
 /* remove fixed aspect-ratio so right box can stretch to match left height */
 /* ensure visual frame, allow image to fill the container */

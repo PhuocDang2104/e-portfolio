@@ -18,22 +18,22 @@
 
   <!-- NAV (kept EXACT as your homepage) -->
   <div class="nav-wrap">
-  <div class="page">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <!-- left: avatar + brand -->
-      <div style="display:flex;gap:12px;align-items:center">
-        <a href="#home" class="nav-brand-link" aria-label="Go to home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
-          <img src="../static/images/Phuoc_avatar.png" alt="Phước Đặng avatar" class="nav-avatar" />
-          <div class="brand">Phước Đặng <small>Embedded & Edge AI</small></div>
-        </a>
-      </div>
+    <div class="page">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <!-- left: avatar + brand -->
+        <div style="display:flex;gap:12px;align-items:center">
+          <a href="/" class="nav-brand-link" aria-label="Go to home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+            <img src="../static/images/Phuoc_avatar.png" alt="Phước Đặng avatar" class="nav-avatar" />
+            <div class="brand">Phước Đặng <small>Embedded & Edge AI</small></div>
+          </a>
+        </div>
 
-      <!-- right: links & CTA -->
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="nav-links" id="nav-links">
-          <a href="/">Home</a>
-          <a href="#about">About</a>
-          <div class="dropdown">
+        <!-- right: links & CTA -->
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="nav-links" id="nav-links">
+            <a href="/">Home</a>
+            <a href="#overview">About</a>
+            <div class="dropdown">
               <a href="#projects">Projects ▾</a>
               <div class="dropdown-content">
                 <a href="{{ url_for('iot_challenge_product') }}">SCENT — Smart Customer Experience</a>
@@ -42,37 +42,37 @@
                 <a href="{{ url_for('rmit_hackathon_project') }}">RMIT logistic AIoT</a>
               </div>
             </div>
-          <a href="#exp">Certifications</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+            <a href="#timeline">Certifications</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <a class="cta-download" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
+
+          <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span class="hamb-line"></span>
+            <span class="hamb-line"></span>
+            <span class="hamb-line"></span>
+          </button>
         </div>
-
-        <a class="cta-download" href="Dang_Nhu_Phuoc_Resume.pdf" download>Download CV</a>
-
-        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
-          <span class="hamb-line"></span>
-          <span class="hamb-line"></span>
-          <span class="hamb-line"></span>
-        </button>
-      </div>
-    </nav>
-  </div>
+      </nav>
+    </div>
 
     <!-- mobile menu -->
     <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
       <a href="#home">Home</a>
-      <a href="#about">About</a>
+      <a href="#overview">About</a>
       <a href="#projects">Projects</a>
-      <a href="#exp">Experience</a>
+      <a href="#timeline">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
 
   <!-- HERO (project-specific, keeps same layout classes) -->
-  <section class="hero project-hero" id="home" aria-label="Project hero">
+  <section class="hero project-hero reveal" id="home" aria-label="Project hero">
     <div class="page hero-inner">
-      <div class="hero-left">
+      <div class="hero-left reveal">
         <div class="kicker">Fsoft / SILABS IoT Challenge 2025 · 1st Runner-up · Leader of Edgelectronix</div>
         <h1 class="hero-title">SCENT — Smart Customer Experience & Edge AIoT</h1>
         <p class="lead">End-to-end 24/7 AIoT system: MCU firmware (EFR32), Edge Gateway (Raspberry Pi 4), Flask backend, Redis + PostgreSQL, and NLP/Edge-CV pipelines for retail scent recommendations & inventory/threat monitoring.</p>
@@ -93,7 +93,7 @@
         </div>
       </div>
 
-      <div class="hero-right">
+      <div class="hero-right reveal">
         <img src="../static/images/iot_challenge/1.png" alt="SCENT banner" class="hero-img-full" />
       </div>
     </div>
@@ -123,42 +123,44 @@
       </div>
     </section>
 
+    <!-- System Architecture (banner + arch boxes) -->
+    <section id="architecture" class="content reveal" aria-labelledby="arch-title">
+      <h2 class="section-title" id="arch-title">System Architecture</h2>
 
-      <!-- architecture -->
-      <div class= "arch-wrap">
-        <h4 class="section-title" style="margin-top:12px">System Architecture</h4>
-        <div class="arch">
-          <div class="box device">EFR32 Nodes<br><span class="small-muted">HX711, IR, I2S mic, SI7021</span></div>
-          <div class="arrow">→</div>
-          <div class="box gateway">Raspberry Pi 4 (OTBR + MQTT)<br><span class="small-muted">Parsers, LCD, MQTT</span></div>
-          <div class="arrow">→</div>
-          <div class="box backend">Flask API + Redis + PostgreSQL<br><span class="small-muted">Workers, ETL, Admin</span></div>
-          <div class="arrow">→</div>
-          <div class="box ai">AI Pipeline (BERT, spaCy, Edge CV)<br><span class="small-muted">Personalization & retrain</span></div>
-
-            <div class="arch-banner">
-                <img src="../static/images/iot_challenge/6.png" alt="System Architecture Banner">
-            </div>
-        </div>
+      <!-- new banner image (16:9) -->
+      <div class="arch-banner">
+        <img src="../static/images/iot_challenge/6.png" alt="System Architecture Banner">
       </div>
 
-      <!-- ======= STACK CAROUSEL (icons now images) ======= -->
-<div class="stack-carousel-wrap" aria-label="Product stacks">
-  <h4 style="margin-top:20px">Product Stacks</h4>
+      <div class="arch" style="margin-top:12px">
+        <div class="box device">EFR32 Nodes<br><span class="small-muted">HX711, IR, I2S mic, SI7021</span></div>
+        <div class="arrow">→</div>
+        <div class="box gateway">Raspberry Pi 4 (OTBR + MQTT)<br><span class="small-muted">Parsers, LCD, MQTT</span></div>
+        <div class="arrow">→</div>
+        <div class="box backend">Flask API + Redis + PostgreSQL<br><span class="small-muted">Workers, ETL, Admin</span></div>
+        <div class="arrow">→</div>
+        <div class="box ai">AI Pipeline<br><span class="small-muted">Personalization & retrain</span></div>
+      </div>
+    </section>
 
-  <div class="stack-carousel" id="stackCarousel" tabindex="0" aria-roledescription="carousel">
-    <button class="stack-nav stack-nav-left" id="stackPrev" aria-label="Previous stack">◀</button>
+    <!-- ======= STACK CAROUSEL (icons now images) ======= -->
+    <section id="stacks" class="content reveal" aria-labelledby="stacks-title">
+      <h2 class="section-title" id="stacks-title">Product Stacks</h2>
 
-    <div class="stack-track" id="stackTrack">
-      <!-- 1) Firmware -->
-      <div class="stack-item" 
-            data-title="EFR32xG24 - Perfume Suggestion DL Model"
-            data-desc="A deep learning–based recommendation system that personalizes perfume suggestions. 
+      <div class="stack-carousel-wrap" aria-label="Product stacks">
+        <div class="stack-carousel" id="stackCarousel" tabindex="0" aria-roledescription="carousel">
+          <button class="stack-nav stack-nav-left" id="stackPrev" aria-label="Previous stack">◀</button>
+
+          <div class="stack-track" id="stackTrack">
+            <!-- 1) Firmware -->
+            <div class="stack-item" 
+                  data-title="EFR32xG24 - Perfume Suggestion DL Model"
+                  data-desc="A deep learning–based recommendation system that personalizes perfume suggestions. 
                         It generates compact 64D embeddings from user preferences (gender, brand, notes, accords, sillage, longevity, price), 
                         compares them with a curated catalog of perfumes, and returns the most relevant matches. 
                         Designed for edge deployment on EFR32xG26 microcontrollers, it leverages TensorFlow Lite quantization for efficient, 
                         low-power inference while retaining recommendation quality."
-            data-detail='[
+                  data-detail='[
             "Personalized perfume recommendation based on structured inputs: gender, brand, fragrance notes, accords, sillage, longevity, and price category.",
             "Neural network model trained on a curated dataset of 50+ perfumes, producing 64-dimensional embeddings optimized for cosine similarity search.",
             "Dual training strategy: classification loss combined with contrastive fine-tuning for better embedding separation.",
@@ -168,21 +170,21 @@
             "On-device inference pipeline: parse PREF line → encode 260D vector → quantize → run TFLite model → compute similarity → return top-ranked perfumes.",
             "Lightweight and memory-efficient, designed to run fully offline on constrained hardware without external servers."
             ]' 
-           data-image="../static/images/iot_challenge/suggestion_AI_banner.png">
-        <div class="stack-card">
-          <img class="stack-icon-img" src="../static/images/iot_challenge/suggestion_AI.png" alt="Firmware icon">
-          <div class="stack-name">EFR32xg24 <br> <i>AI perfume suggestion</i></div>
-        </div>
-      </div>
+                   data-image="../static/images/iot_challenge/suggestion_AI_banner.png">
+              <div class="stack-card">
+                <img class="stack-icon-img" src="../static/images/iot_challenge/suggestion_AI.png" alt="Firmware icon">
+                <div class="stack-name">EFR32xg24 <br> <i>AI perfume suggestion</i></div>
+              </div>
+            </div>
 
-      <!-- 2) Edge Gateway -->
-      <div class="stack-item" 
-             data-title="EFR32xG26 - Drop Detection AI + SI7021 → Thread"
-            data-desc="Firmware for detecting perfume glass bottle drops using embedded AI on the EFR32xG26. 
+            <!-- 2) Edge Gateway -->
+            <div class="stack-item" 
+                 data-title="EFR32xG26 - Drop Detection AI + SI7021 → Thread"
+                 data-desc="Firmware for detecting perfume glass bottle drops using embedded AI on the EFR32xG26. 
                         The system combines real-time audio inference with environmental sensing (SI7021) 
                         and seamlessly forwards events over Thread networking to backend services. 
                         Optimized for MicriumOS task scheduling, it runs fully on constrained IoT hardware."
-            data-detail='[
+                 data-detail='[
             "Embedded AI model trained to detect perfume bottle drop sounds while rejecting background noises (e.g., claps, collisions).",
             "MicriumOS pipeline: Voice Task (continuous audio recording & inference), Sensor Task (SI7021 temp/humidity sampling), OT Task (Thread UDP networking).",
             "Data preprocessing pipeline: dataset collection, augmentation, spectrogram feature extraction, and CNN-based training in TensorFlow/Keras.",
@@ -192,21 +194,21 @@
             "On-device workflow: record audio → preprocess → run AI inference → enqueue result → Thread UDP message dispatch.",
             "Scalable design: can be extended to other sound event detection tasks and additional wireless protocols."
             ]'
-           data-image="../static/images/iot_challenge/drop_detect_AI_banner.png">
-        <div class="stack-card">
-          <img class="stack-icon-img" src="../static/images/iot_challenge/drop_detect_AI.png" alt="Gateway icon">
-          <div class="stack-name">EFR32xg26 <br> <i>AI drop detect</i></div>
-        </div>
-      </div>
+                 data-image="../static/images/iot_challenge/drop_detect_AI_banner.png">
+              <div class="stack-card">
+                <img class="stack-icon-img" src="../static/images/iot_challenge/drop_detect_AI.png" alt="Gateway icon">
+                <div class="stack-name">EFR32xg26 <br> <i>AI drop detect</i></div>
+              </div>
+            </div>
 
-      <!-- 3) Backend & APIs -->
-      <div class="stack-item" 
-            data-title="EFR32xG26 - HX711 / IR → Thread"
-            data-desc="Firmware for the second EFR32xG26 device, integrating dual HX711 load-cell sensors and 8 IR sensor interrupts. 
+            <!-- 3) Backend & APIs -->
+            <div class="stack-item" 
+                  data-title="EFR32xG26 - HX711 / IR → Thread"
+                  data-desc="Firmware for the second EFR32xG26 device, integrating dual HX711 load-cell sensors and 8 IR sensor interrupts. 
                         It detects weight changes and product movements in real time, then transmits structured events over the Thread network 
                         to the Raspberry Pi 4 border router. Built on bare-metal OpenThread, it demonstrates efficient sensor fusion, 
                         low-latency interrupt handling, and reliable UDP/IPv6 communication."
-            data-detail='[
+                  data-detail='[
             "HX711 dual-channel driver: reads load cell data every 500 ms, converts raw ADC values into grams, and reports weight drops ≥ 100 g as product events (e.g., P017, P026).",
             "IR sensor interface: 8 GPIO-driven sensors with interrupt + debounce logic (500 ms). Each valid trigger increments a counter and maps to a product code (e.g., P001, P045).",
             "Thread networking stack: pre-configured Active Operational Dataset, UDP socket (port 12346), IPv6 communication with Raspberry Pi 4 OTBR gateway.",
@@ -216,18 +218,18 @@
             "Deployment workflow: flash Gecko Bootloader → flash application firmware → monitor via serial console (115200 baud).",
             "Scalable design for retail or warehouse IoT: can be extended to more sensors or adapted for BLE/Zigbee connectivity."
             ]'
-           data-image="../static/images/iot_challenge/xg26_sensors_banner.png">
-        <div class="stack-card">
-          <img class="stack-icon-img" src="../static/images/iot_challenge/xg26_sensors.png" alt="Backend icon">
-          <div class="stack-name">EFR32xg26 <br> <i>HX711 + IR</i></div>
-        </div>
-      </div>
+                 data-image="../static/images/iot_challenge/xg26_sensors_banner.png">
+              <div class="stack-card">
+                <img class="stack-icon-img" src="../static/images/iot_challenge/xg26_sensors.png" alt="Backend icon">
+                <div class="stack-name">EFR32xg26 <br> <i>HX711 + IR</i></div>
+              </div>
+            </div>
 
-      <!-- 4) Data & AI -->
-      <div class="stack-item" 
-            data-title="Raspberry Pi 4 + MG21 - OpenThread Border Router | Backend for Customer Smart UI/UX" 
-            data-desc="Smart retail backbone combining OTBR, MQTT bridge, real-time LCD, and NLP-powered analytics." 
-            data-detail='[
+            <!-- 4) Data & AI -->
+            <div class="stack-item" 
+                  data-title="Raspberry Pi 4 + MG21 - OpenThread Border Router | Backend for Customer Smart UI/UX" 
+                  data-desc="Smart retail backbone combining OTBR, MQTT bridge, real-time LCD, and NLP-powered analytics." 
+                  data-detail='[
             "Operates as the OpenThread Border Router using Raspberry Pi 4 and Silicon Labs MG21 for IPv6/Thread connectivity",
             "Bridges Thread ↔ MQTT, forwarding multi-sensor telemetry from EFR32 devices into backend services",
             "Runs a local LCD controller to visualize shelf events, stock levels, and quick diagnostic data in real time",
@@ -235,18 +237,18 @@
             "Implements customer-facing live updates via Socket.IO and pub/sub architecture",
             "Hosts NLP pipeline (BERT + spaCy NER) to extract structured perfume preferences and enable smart recommendation UX"
             ]'
-           data-image="../static/images/iot_challenge/rp4_mg21_banner.png">
-        <div class="stack-card">
-          <img class="stack-icon-img" src="../static/images/iot_challenge/rp4_mg21.png" alt="AI icon">
-          <div class="stack-name">Raspi 4 + MG21 <br> <i>Open Thread Border Router</i></div>
-        </div>
-      </div>
+                 data-image="../static/images/iot_challenge/rp4_mg21_banner.png">
+              <div class="stack-card">
+                <img class="stack-icon-img" src="../static/images/iot_challenge/rp4_mg21.png" alt="AI icon">
+                <div class="stack-name">Raspi 4 + MG21 <br> <i>Open Thread Border Router</i></div>
+              </div>
+            </div>
 
-      <!-- 5) Hardware & Mechanical -->
-      <div class="stack-item" 
-             data-title="Admin Desktop - Store Management Software + DB" 
-            data-desc="Flask + Socket.IO powered admin panel with PostgreSQL, Redis, and MQTT bridge." 
-            data-detail='[
+            <!-- 5) Hardware & Mechanical -->
+            <div class="stack-item" 
+                 data-title="Admin Desktop - Store Management Software + DB" 
+                 data-desc="Flask + Socket.IO powered admin panel with PostgreSQL, Redis, and MQTT bridge." 
+                 data-detail='[
             "Flask backend serving Jinja2 templates for dashboard, authentication pages, and system config",
             "Implements REST APIs for product stock queries, KPI retrieval, and shelf management",
             "Real-time updates via Flask-SocketIO integrated with Redis pub/sub (eventlet backend)",
@@ -257,37 +259,36 @@
             "Admin UI with live KPI cards, searchable inventory tables, and real-time shelf event feed",
             "Integrated LCD controller sync to display shelf alerts and local status information"
             ]'
-           data-image="../static/images/iot_challenge/software_banner.png">
-        <div class="stack-card">
-          <img class="stack-icon-img" src="../static/images/iot_challenge/software.png" alt="Hardware icon">
-          <div class="stack-name">Desktop Admin <br> <i>Software + DB</i></div>
+                 data-image="../static/images/iot_challenge/software_banner.png">
+              <div class="stack-card">
+                <img class="stack-icon-img" src="../static/images/iot_challenge/software.png" alt="Hardware icon">
+                <div class="stack-name">Desktop Admin <br> <i>Software + DB</i></div>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="stack-nav stack-nav-right" id="stackNext" aria-label="Next stack">▶</button>
+        </div>
+
+        <!-- details area: LEFT = text, RIGHT = illustrative image -->
+        <div class="stack-details split" id="stackDetails" aria-live="polite">
+          <div class="stack-details-left">
+            <h5 id="stackDetailsTitle">Firmware (EFR32)</h5>
+            <div id="stackDetailsText">
+              <!-- JS will render desc + list -->
+            </div>
+          </div>
+          <div class="stack-details-right">
+            <img id="stackDetailsImg" src="../static/images/iot_challenge/stack_firmware.png" alt="Firmware illustration">
+          </div>
         </div>
       </div>
-    </div>
-
-    <button class="stack-nav stack-nav-right" id="stackNext" aria-label="Next stack">▶</button>
-  </div>
-
-  <!-- details area: LEFT = text, RIGHT = illustrative image -->
-  <div class="stack-details split" id="stackDetails" aria-live="polite">
-    <div class="stack-details-left">
-      <h5 id="stackDetailsTitle">Firmware (EFR32)</h5>
-      <div id="stackDetailsText">
-        <!-- JS sẽ render desc + list -->
-      </div>
-    </div>
-    <div class="stack-details-right">
-      <img id="stackDetailsImg" src="../static/images/iot_challenge/stack_firmware.png" alt="Firmware illustration">
-    </div>
-  </div>
-</div>
-<!-- ======= END stack carousel ======= -->
-
     </section>
 
-<!-- Technical -->
+    <!-- Technical — Firmware & Gateway -->
     <section id="technical" class="content reveal" aria-labelledby="tech-title">
-      <h2 class="section-title" id="tech-title">Technical — Firmware & Gateway</h2>
+      <h2 class="section-title" id="tech-title">System Flow</h2>
 
       <div class="grid-2">
         <article class="card">
@@ -316,6 +317,7 @@
           </ul>
         </article>
       </div>
+    </section>
 
     <!-- Data & AI -->
     <section id="data" class="content reveal" aria-labelledby="data-title">
@@ -342,7 +344,7 @@
       </div>
     </section>
 
-    <!-- Timeline -->
+    <!-- Timeline & Milestones -->
     <section id="timeline" class="content reveal" aria-labelledby="timeline-title">
       <h2 class="section-title" id="timeline-title">Timeline & Milestones</h2>
       <div class="timeline">
@@ -365,9 +367,9 @@
     <section id="gallery" class="content reveal" aria-labelledby="gallery-title">
       <h2 class="section-title" id="gallery-title">Gallery & Artifacts</h2>
       <div class="gallery-grid">
-        <img src="../static/images/gallery1.png" alt="Board" class="gallery-thumb" data-large="../static/images/gallery1.png">
-        <img src="../static/images/gallery2.png" alt="PCB" class="gallery-thumb" data-large="../static/images/gallery2.png">
-        <img src="../static/images/gallery3.png" alt="Demo" class="gallery-thumb" data-large="../static/images/gallery3.png">
+        <img src="../static/images/iot_challenge/2.png" alt="Board" class="gallery-thumb" data-large="../static/images/gallery1.png">
+        <img src="../static/images/iot_challenge/3.png" alt="PCB" class="gallery-thumb" data-large="../static/images/gallery2.png">
+        <img src="../static/images/iot_challenge/4.png" alt="Demo" class="gallery-thumb" data-large="../static/images/gallery3.png">
       </div>
     </section>
 
