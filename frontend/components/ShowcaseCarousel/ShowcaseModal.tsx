@@ -30,7 +30,7 @@ const ShowcaseModal = ({ open, onClose, show }: ShowcaseModalProps) => {
       role="dialog"
       aria-modal="true"
       aria-label={`Details for ${show.title}`}
-      className="fixed inset-0 z-[200] flex items-center justify-center px-4 py-6"
+      className="fixed inset-0 z-[9999] flex items-center justify-center px-4 py-6"
     >
       <div
         className="absolute inset-0 bg-black/70 backdrop-blur-md"
@@ -75,6 +75,17 @@ const ShowcaseModal = ({ open, onClose, show }: ShowcaseModalProps) => {
               <strong className="text-foam">{show.location}</strong>
             </p>
             <p className="text-sm text-foam/80">{show.fullDescription}</p>
+            <div className="pt-2">
+              <a
+                href={show.projectUrl}
+                className="project-detail-btn"
+              >
+                <span>Project detail</span>
+                <span className="project-detail-btn__arrow" aria-hidden="true">
+                  -&gt;
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

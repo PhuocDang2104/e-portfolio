@@ -126,8 +126,7 @@ const ShowcaseCarousel = () => {
   return (
     <section
       id="achievements"
-      className="relative isolate w-screen overflow-hidden py-8"
-      style={{ marginLeft: "calc(50% - 50vw)", marginRight: "calc(50% - 50vw)" }}
+      className="relative isolate w-full overflow-hidden py-8"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#0b1020] via-[#0f182e] to-[#0b1226]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(142,240,255,0.12),transparent_45%),radial-gradient(circle_at_80%_10%,rgba(255,141,106,0.12),transparent_45%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,0.04),transparent_40%)]" />

@@ -11,7 +11,8 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <div className="nav-wrap">
+      <div className="x-clip">
+        <div className="nav-wrap">
         <div className="page">
           <nav className="navbar" role="navigation" aria-label="main navigation">
             <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
@@ -310,9 +311,11 @@ export default function Page() {
             </div>
           </div>
         </section>
+      </div>
 
-        <ShowcaseCarousel />
+      <ShowcaseCarousel />
 
+      <div className="page">
         <section className="content reveal" id="exp" aria-labelledby="exp-title">
           <h2 className="section-title" id="exp-title">
             Certifications
@@ -488,6 +491,8 @@ export default function Page() {
         <footer>
           © <span id="year"></span> Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages
         </footer>
+      </div>
+
       </div>
 
       <Script src="/static/js/main.js" strategy="afterInteractive" />
