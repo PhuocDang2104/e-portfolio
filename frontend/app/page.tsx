@@ -1,0 +1,496 @@
+import Script from "next/script";
+
+import ShowcaseCarousel from "@/components/ShowcaseCarousel/ShowcaseCarousel";
+import { EncryptedText } from "@/components/ui/encrypted-text";
+import HomeAsk from "./_components/HomeAsk";
+
+export const metadata = {
+  title: "Phước Đặng — Embedded & Edge AI Engineer"
+};
+
+export default function Page() {
+  return (
+    <>
+      <div className="nav-wrap">
+        <div className="page">
+          <nav className="navbar" role="navigation" aria-label="main navigation">
+            <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+              <a
+                href="#home"
+                className="nav-brand-link"
+                aria-label="Go to home"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  textDecoration: "none"
+                }}
+              >
+                <img
+                  src="../static/images/Phuoc_avatar.png"
+                  alt="Phước Đặng avatar"
+                  className="nav-avatar"
+                />
+                <div className="brand">
+                  Đặng Như Phước <small>Embedded & Edge AI Engineer</small>
+                </div>
+              </a>
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div className="nav-links" id="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <div className="dropdown">
+                  <a href="#projects">Projects ▾</a>
+                  <div className="dropdown-content">
+                    <a href="/iot_challenge_product">SCENT — Smart Customer Experience</a>
+                    <a href="/klu_hackathon_project">ESP32Cam RFID AIoT in Warehouse</a>
+                    <a href="/intel_ai_project">AIMING - Agricultural AIoT</a>
+                    <a href="/rmit_hackathon_project">RMIT logistic AIoT</a>
+                  </div>
+                </div>
+                <a href="#achievements">Achievements</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+              </div>
+
+              <a
+                className="cta-download"
+                href="../static/Dang Nhu Phuoc _ CV _ Embedded Engineer.pdf"
+                download
+              >
+                Download CV
+              </a>
+
+              <button className="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+                <span className="hamb-line"></span>
+                <span className="hamb-line"></span>
+                <span className="hamb-line"></span>
+              </button>
+            </div>
+          </nav>
+        </div>
+
+        <div id="mobileMenu" className="mobile-menu" aria-hidden="true">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <section className="hero home-hero reveal" id="home" aria-label="Hero">
+        <div className="home-hero-gradients" aria-hidden="true">
+          <span className="home-hero-gradient home-hero-gradient--first"></span>
+          <span className="home-hero-gradient home-hero-gradient--second"></span>
+          <span className="home-hero-gradient home-hero-gradient--third"></span>
+          <span className="home-hero-gradient home-hero-gradient--fourth"></span>
+          <span className="home-hero-gradient home-hero-gradient--fifth"></span>
+        </div>
+
+        <div className="home-hero-visuals" aria-hidden="true">
+          <img
+            src="/static/images/hero/hero-2.png"
+            alt=""
+            className="home-hero-visual home-hero-visual--two"
+          />
+          <img
+            src="/static/images/hero/hero-3.png"
+            alt=""
+            className="home-hero-visual home-hero-visual--three"
+          />
+          <img
+            src="/static/images/hero/hero-4.png"
+            alt=""
+            className="home-hero-visual home-hero-visual--four"
+          />
+        </div>
+
+        <div className="home-hero-scroll-anchor" aria-hidden="true"></div>
+
+        <div className="page hero-inner home-hero-inner">
+          <div className="hero-left home-hero-content reveal">
+            <h1 className="home-hero-title">
+              <EncryptedText text="Đặng Như Phước" />
+            </h1>
+            <p className="home-hero-subtitle">
+              <EncryptedText text="Electrical - Electronic Engineering Student at HCMUT-VNU | Aspiring AI Engineer" />
+            </p>
+            <HomeAsk />
+          </div>
+        </div>
+
+        <div className="home-scroll-cue" aria-hidden="true">
+          <span className="home-scroll-line"></span>
+          <span className="home-scroll-text">Scroll</span>
+        </div>
+      </section>
+
+      <div className="scroll-media" aria-hidden="true">
+        <img src="/static/images/hero/hero-1.png" alt="" className="scroll-media-img" />
+      </div>
+
+      <div className="page">
+        <section className="content reveal" id="about" aria-labelledby="about-title">
+          <div className="about-grid">
+            <div className="about-media" aria-hidden="true"></div>
+            <div className="about-body">
+              <h2 className="section-title" id="about-title">
+                About
+              </h2>
+              <p className="muted">
+                I am a third-year Electrical & Electronic Engineering student at Ho Chi Minh City
+                University of Technology (HCMUT), specializing in AI-driven software systems. My
+                work focuses on designing and implementing end-to-end AI solutions, from data
+                pipelines and model development to scalable Python-based backends and
+                production-ready AI services.
+              </p>
+              <p className="muted about-paragraph">
+                I have hands-on experience with LLMs, machine learning, deep learning, NLP, and
+                computer vision, and I am particularly interested in building reliable,
+                deployable systems that operate under real-world constraints such as latency,
+                data quality, and system safety. Through multiple national-level hackathons, I
+                have applied these skills to deliver functional AI products, gaining practical
+                experience in system design, deployment, and cross-disciplinary collaboration.
+              </p>
+              <div className="about-tags">
+                <span className="about-tag">LLM Systems</span>
+                <span className="about-tag">Agentic RAG</span>
+                <span className="about-tag">ML/DL</span>
+                <span className="about-tag">Backend APIs</span>
+                <span className="about-tag">Data Platforms</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="content reveal" id="projects" aria-labelledby="projects-title">
+          <h2 className="section-title" id="projects-title">
+            Highlighted Products & Projects
+          </h2>
+          <div className="projects-grid">
+            <article className="project-card big reveal" role="listitem">
+              <img
+                src="../static/images/iot_challenge_banner.png"
+                alt="SCENT — Smart Customer Experience"
+                className="project-thumb"
+              />
+              <div className="project-content">
+                <h3>SCENT — System for Customer EXperience, iNventory & Threats</h3>
+                <p className="muted"></p>
+                <p style={{ fontSize: "13px" }}>
+                  Designed & delivered a resilient <strong>end-to-end AIoT system</strong>
+                  spanning firmware, gateway, software, hardware, and AI platforms.
+                </p>
+
+                <ul style={{ fontSize: "14px" }}>
+                  <li>
+                    <strong>System design & integration:</strong> Architected a 24/7 AIoT system
+                    with robust dataflows over Thread, BLE, UART, I²C, MQTT.
+                  </li>
+                  <li>
+                    <strong>MCU firmware (EFR32):</strong>
+                    <ul>
+                      <li>Developed HX711 load-cell driver & IR sensor interrupts.</li>
+                      <li>
+                        MicriumOS tasks:
+                        <ul>
+                          <li>Glass-break detection (I2S mic, 200 ms loop).</li>
+                          <li>Temp/humidity sensing (SI7021, every 5s).</li>
+                          <li>Continuous OpenThread networking.</li>
+                        </ul>
+                      </li>
+                      <li>Enabled Thread-to-gateway messaging with failover.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Edge gateway (Raspberry Pi 4):</strong>
+                    <ul>
+                      <li>Configured as OTBR (MG21 RCP + Spinel).</li>
+                      <li>Python scripts for Thread parsing, UART, I²C LCD1602.</li>
+                      <li>MQTT gateway + PostgreSQL schema & ETL scripts.</li>
+                      <li>Local DB for scent notes & shelf ops with sync/offline mode.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Software & data platform:</strong>
+                    <ul>
+                      <li>Full-stack Flask app (APIs, templates, admin).</li>
+                      <li>Smart Screen UI/UX (HTML, CSS, JS).</li>
+                      <li>Backend with Redis + PostgreSQL; Python workers for sync.</li>
+                      <li>Collected & processed 5k+ interactions for analytics & retraining.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>Hardware engineering:</strong>
+                    <ul>
+                      <li>Integrated sensors (load cell, cam, mic) with MCUs & Pi.</li>
+                      <li>PCB soldering, wiring validation, shelf-mounting design.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <strong>AI:</strong>
+                    <ul>
+                      <li>Python pipelines for dataset generation & labeling.</li>
+                      <li>NLP pipeline (BERT + spaCy NER) for keyword extraction.</li>
+                      <br />
+                    </ul>
+                  </li>
+                </ul>
+
+                <strong>Awards:</strong> 1st runner up (SILABS IoT Challenge) —{" "}
+                <em>Granted Internship Certification</em>{" "}
+                <strong>Github Link:</strong> https:// ...
+              </div>
+              <div style={{ marginTop: "18px", textAlign: "center" }}>
+                <a href="/iot_challenge_product" className="btn btn-case-study">
+                  View case study
+                </a>
+              </div>
+            </article>
+
+            <div className="projects-col">
+              <article className="project-card reveal" role="listitem">
+                <img
+                  src="../static/images/humanlog2025_banner.png"
+                  alt="Logistics Rescue Map"
+                  className="project-thumb"
+                />
+                <div className="project-content">
+                  <h3>ESP32Cam and RFID AIoT Solution in Warehouse</h3>
+                  <p className="muted">
+                    <strong>
+                      Built a compact <em>AIoT logistics MVP</em> integrating hardware, software,
+                      and system evaluation.
+                    </strong>
+                    <br />
+                    <br />• <strong>Hardware:</strong> ESP32-CAM/S3, DHT22, RFID RC522; PCB & PCBA
+                    for classification and cabin control.
+                    <br />• <strong>Prototype:</strong> Assembled within 15-hour hackathon.
+                    <br />• <strong>Software:</strong> Flask app with SQL backend for real-time
+                    monitoring.
+                    <br />• <strong>Evaluation:</strong> Assessed installability, power usage, and
+                    offline operation.
+                    <br />
+                    <br />
+                    <strong>Awards:</strong> 2nd runner up (HumanLog 2025) <br />
+                    <a href="/klu_hackathon_project" className="link-accent">
+                      View case study
+                    </a>
+                  </p>
+                </div>
+              </article>
+
+              <article className="project-card reveal" role="listitem">
+                <img
+                  src="../static/images/intel_ai_banner.png"
+                  alt="Edge AI — Fruit quality"
+                  className="project-thumb"
+                />
+                <div className="project-content">
+                  <h3>AIMING - AIoT Infravision for Agricultural Quality</h3>
+                  <p className="muted">
+                    <strong>Edge AIoT system on Intel hardware ensuring produce quality via dual AI modules.</strong>
+                    <br />
+                    <br />• <strong>Hardware:</strong> Intel® NUC (CPU+GPU), 720p camera.
+                    <br />• <strong>Software:</strong> OpenVINO™, Intel® Tiber™ Cloud, Edge Software Hub.
+                    <br />• <strong>AI Modules:</strong> <br />– <em>Vision AI:</em> fruit type, count, ripeness, external defects.
+                    <br />– <em>NIR AI:</em> °Brix, moisture, internal bruises, pest/disease detection.
+                    <br />• <strong>Evaluation:</strong> Real-time grading, defect detection, SDG-aligned impact.
+                    <br />
+                  </p>
+                  <a href="/intel_ai_project" className="link-accent">
+                    View case study
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <ShowcaseCarousel />
+
+        <section className="content reveal" id="exp" aria-labelledby="exp-title">
+          <h2 className="section-title" id="exp-title">
+            Certifications
+          </h2>
+          <div className="timeline">
+            <div className="item reveal">
+              <strong>IELTS 6.5</strong>
+            </div>
+            <div className="item reveal">
+              <strong>Udemy Advanced Python / C / C++ Course</strong>
+            </div>
+            <div className="item reveal">
+              <strong>UEHG club</strong>
+              <div className="muted small">Charitable journeys to Bình Thuận & Đắk Nông schools</div>
+            </div>
+          </div>
+        </section>
+
+        <section className="content reveal" id="skills" aria-labelledby="skills-title">
+          <h2 className="section-title" id="skills-title">
+            Skills & Tools
+          </h2>
+
+          <div className="skills-groups">
+            <div className="skills-row reveal">
+              <div className="skills-label">Programming Languages</div>
+              <div className="skills-grid">
+                <span className="skill">Python</span>
+                <span className="skill">C/C++</span>
+                <span className="skill">TypeScript/JavaScript</span>
+                <span className="skill">SQL</span>
+                <span className="skill">HTML/CSS</span>
+              </div>
+            </div>
+
+            <div className="skills-row reveal">
+              <div className="skills-label">GenAI / LLM Systems</div>
+              <div className="skills-grid">
+                <span className="skill">Agentic RAG (hybrid retrieval, citations)</span>
+                <span className="skill">tool-calling APIs</span>
+                <span className="skill">prompt orchestration (LangGraph/ LangChain)</span>
+                <span className="skill">safety/guardrails & evaluation (grounding/faithfulness)</span>
+              </div>
+            </div>
+
+            <div className="skills-row reveal">
+              <div className="skills-label">ML / DL</div>
+              <div className="skills-grid">
+                <span className="skill">NLP (Hugging Face Transformers, spaCy, BERT/NER)</span>
+                <span className="skill">Deep Learning (1D-CNN, MLP)</span>
+                <span className="skill">classical ML (XGBoost)</span>
+                <span className="skill">dataset prep & evaluation (TensorFlow)</span>
+              </div>
+            </div>
+
+            <div className="skills-row reveal">
+              <div className="skills-label">Backend Engineering</div>
+              <div className="skills-grid">
+                <span className="skill">FastAPI/Flask</span>
+                <span className="skill">REST APIs</span>
+                <span className="skill">WebSocket</span>
+                <span className="skill">async/background jobs (Redis, Celery)</span>
+                <span className="skill">service modularization</span>
+                <span className="skill">API design & integration</span>
+              </div>
+            </div>
+
+            <div className="skills-row reveal">
+              <div className="skills-label">DevOps / Production</div>
+              <div className="skills-grid">
+                <span className="skill">Dockerized services</span>
+                <span className="skill">basic CI/CD</span>
+                <span className="skill">deployment & production debugging</span>
+                <span className="skill">logging/monitoring</span>
+              </div>
+            </div>
+
+            <div className="skills-row reveal">
+              <div className="skills-label">Vector Search & Data Stores</div>
+              <div className="skills-grid">
+                <span className="skill">PostgreSQL</span>
+                <span className="skill">pgvector</span>
+                <span className="skill">TimescaleDB</span>
+              </div>
+            </div>
+
+            <div className="skills-row reveal">
+              <div className="skills-label">Developer Tools</div>
+              <div className="skills-grid">
+                <span className="skill">Git/GitHub</span>
+                <span className="skill">Docker</span>
+                <span className="skill">CMake</span>
+                <span className="skill">Jupyter</span>
+                <span className="skill">VSCode</span>
+                <span className="skill">Bash scripting & cron automation</span>
+              </div>
+            </div>
+
+            <div className="skills-row reveal">
+              <div className="skills-label">IoT / Real-time OS</div>
+              <div className="skills-grid">
+                <span className="skill">Thread</span>
+                <span className="skill">BLE</span>
+                <span className="skill">MQTT/TCP-IP basics</span>
+                <span className="skill">RTOS (FreeRTOS, MicriumOS)</span>
+                <span className="skill">Embedded Linux</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="content reveal" id="contact" aria-labelledby="contact-title">
+          <h2 className="section-title" id="contact-title">
+            Contact
+          </h2>
+          <div className="contact-card">
+            <div className="contact-grid">
+              <div>
+                <p className="muted">
+                  Email:{" "}
+                  <a href="mailto:phuoc.dang2104@gmail.com" className="link-normal">
+                    phuoc.dang2104@gmail.com
+                  </a>
+                </p>
+                <p className="muted">
+                  GitHub:{" "}
+                  <a
+                    href="https://github.com/PhuocDang2104"
+                    target="_blank"
+                    className="link-normal"
+                  >
+                    PhuocDang2104
+                  </a>
+                </p>
+                <p className="muted">
+                  LinkedIn:{" "}
+                  <a href="#" target="_blank" className="link-normal">
+                    Phuoc Dang
+                  </a>
+                </p>
+                <div className="contact-buttons">
+                  <a
+                    className="btn btn-primary"
+                    href="../static/Dang Nhu Phuoc _ CV _ Embedded Engineer.pdf"
+                    download
+                  >
+                    Download CV
+                  </a>
+                  <a className="btn btn-ghost" href="mailto:phuoc.dang2104@gmail.com">
+                    Email me
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <form id="contactForm">
+                  <label className="muted small" htmlFor="subject">
+                    Short message
+                  </label>
+                  <input id="subject" name="subject" placeholder="Subject" />
+                  <textarea id="message" name="message" rows={4} placeholder="Message..."></textarea>
+                  <div style={{ marginTop: "8px" }}>
+                    <button className="btn btn-primary" type="submit">
+                      Send
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          © <span id="year"></span> Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages
+        </footer>
+      </div>
+
+      <Script src="/static/js/main.js" strategy="afterInteractive" />
+    </>
+  );
+}

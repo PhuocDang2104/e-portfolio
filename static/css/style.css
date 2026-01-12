@@ -62,12 +62,16 @@ body{
 .page{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
 
 /* NAVBAR */
-.nav-wrap{position:fixed;top:0;left:0;right:0;z-index:50;}
-nav.navbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 22px;background:linear-gradient(180deg, rgba(7,11,18,0.35), rgba(7,11,18,0.05));
+.nav-wrap{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:linear-gradient(180deg, rgba(7,11,18,0.6), rgba(7,11,18,0.2));
   backdrop-filter: blur(6px);
   border-bottom:1px solid rgba(255,255,255,0.03);
+}
+nav.navbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;
+  background:transparent;
 }
 .brand{font-weight:700;font-size:18px;letter-spacing:0.2px}
 .brand small{display:block;font-weight:500;color:var(--muted);font-size:12px}
@@ -230,6 +234,29 @@ h1.hero-title{font-size:44px;line-height:1.02;margin:0 0 12px 0;font-weight:800;
 /* SECTIONS */
 section.content{padding:44px 22px;border-radius:12px;margin-top:24px;background:transparent}
 h2.section-title{font-size:22px;margin:0 0 12px 0}
+.about-grid{
+  display:grid;
+  grid-template-columns:minmax(240px, 1fr) 1.35fr;
+  gap:24px;
+  align-items:center;
+}
+.about-media{
+  min-height:260px;
+  border-radius:16px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.about-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.about-body{display:flex;flex-direction:column;gap:10px}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .projects-grid{
   display:grid;
@@ -448,6 +475,8 @@ footer{margin:36px 0 64px 0;color:var(--muted);text-align:center;font-size:13px}
   .hero-right{display:none}
   .cards{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .about-media{min-height:220px}
 }
 @media (max-width:720px){
   .nav-links{display:none}

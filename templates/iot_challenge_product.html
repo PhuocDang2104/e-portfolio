@@ -24,7 +24,7 @@
         <div style="display:flex;gap:12px;align-items:center">
           <a href="/" class="nav-brand-link" aria-label="Go to home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
             <img src="../static/images/Phuoc_avatar.png" alt="Phước Đặng avatar" class="nav-avatar" />
-            <div class="brand">Phước Đặng <small>Embedded & Edge AI</small></div>
+            <div class="brand">Đặng Như Phước <small>Embedded & Edge AI Engineer</small></div>
           </a>
         </div>
 
@@ -79,7 +79,7 @@
 
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#technical">Technical details</a>
-          <a class="btn btn-ghost" href="#data">Data & AI</a>
+          <a class="btn btn-ghost" href="#data">Product Sketch</a>
           <a class="btn btn-ghost" id="copyGithub">Copy GitHub</a>
         </div>
 
@@ -123,6 +123,17 @@
       </div>
     </section>
 
+
+    <!-- Certifications -->
+    <section id="certifications" class="content reveal" aria-labelledby="certifications-title">
+          <h2 class="section-title" id="certifications-title">Certifications</h2>
+          <div class="gallery-grid iot-prize">
+            <img src="../static/images/iot_challenge/fsoft_2nd_prize.jpg" alt="Certification 1" class="gallery-thumb" data-large="../static/images/iot_challenge/fsoft_2nd_prize.jpg">
+            <img src="../static/images/iot_challenge/fsoft_top20.jpg" alt="Certification 2" class="gallery-thumb" data-large="../static/images/iot_challenge/fsoft_top20.jpg">
+          </div>
+        </section>
+
+
     <!-- System Architecture (banner + arch boxes) -->
     <section id="architecture" class="content reveal" aria-labelledby="arch-title">
       <h2 class="section-title" id="arch-title">System Architecture</h2>
@@ -135,11 +146,11 @@
       <div class="arch" style="margin-top:12px">
         <div class="box device">EFR32 Nodes<br><span class="small-muted">HX711, IR, I2S mic, SI7021</span></div>
         <div class="arrow">→</div>
-        <div class="box gateway">Raspberry Pi 4 (OTBR + MQTT)<br><span class="small-muted">Parsers, LCD, MQTT</span></div>
+        <div class="box gateway">Raspberry Pi 4 (OTBR + MQTT)<br><span class="small-muted">Parsers, Smart LCD, MQTT broker</span></div>
         <div class="arrow">→</div>
-        <div class="box backend">Flask API + Redis + PostgreSQL<br><span class="small-muted">Workers, ETL, Admin</span></div>
+        <div class="box backend">Desktop ( Redis / Flask + Postgres)<br><span class="small-muted">Workers, ETL, Software</span></div>
         <div class="arrow">→</div>
-        <div class="box ai">AI Pipeline<br><span class="small-muted">Personalization & retrain</span></div>
+        <div class="box ai">AI & Data Pipeline<br><span class="small-muted">Datalake, Personalization & retrain</span></div>
       </div>
     </section>
 
@@ -292,74 +303,78 @@
 
       <div class="grid-2">
         <article class="card">
-          <h3>MCU Firmware (EFR32)</h3>
+          <h3>System Flow & Connectivity</h3>
           <ul>
-            <li><strong>HX711 driver</strong> for load-cell ADC (high-rate sampling + filtered average).</li>
-            <li>Interrupt-driven IR pickup detection with debounce & event queue.</li>
-            <li>MicriumOS tasks:
+            <li><strong>Sensor Layer → Edge MCU</strong>:
               <ul>
-                <li>Glass-break detection via I2S mic (200 ms loop)</li>
-                <li>Temp/humidity: SI7021 every 5s</li>
-                <li>OpenThread background task for mesh comms</li>
+                <li>IR + Loadcell (HX711) → EFR32xG26 (Sensors) via GPIO interrupts</li>
+                <li>SI7021 (Temp/Humidity) + Mic I²S → EFR32xG26 (Edge Drop Detection AI) via GPIO/I²S</li>
               </ul>
             </li>
-            <li>Local event buffering + periodic sync to gateway (robust to network dropouts).</li>
+            <li><strong>Edge AI Processing</strong>:
+              <ul>
+                <li>EFR32xG26 (sound/drop AI) → UDP results</li>
+                <li>EFR32xG24 (Perfume Suggestion DL) → LEDs via GPIO + UART</li>
+              </ul>
+            </li>
+            <li><strong>Connectivity Backbone</strong>:
+              <ul>
+                <li>All EFR32 boards on Thread protocol</li>
+                <li>MG21 bridges Thread → Raspberry Pi 4</li>
+              </ul>
+            </li>
+            <li><strong>Embedded PC Layer (Raspberry Pi 4)</strong>:
+              <ul>
+                <li>Runs Customer Classification AI</li>
+                <li>LCD Touch (iPad) user interface</li>
+                <li>NLP Transformer for text understanding</li>
+              </ul>
+            </li>
+            <li><strong>Backend & Admin Management</strong>:
+              <ul>
+                <li>Raspberry Pi ↔ Backend over LAN</li>
+                <li>Pipeline: MQTT/Redis ↔ Flask ↔ WebSocket ↔ Frontend</li>
+                <li>PostgreSQL + Admin Website</li>
+              </ul>
+            </li>
           </ul>
         </article>
 
         <article class="card">
-          <h3>Edge Gateway (Raspberry Pi 4)</h3>
-          <ul>
-            <li>Configured as OTBR using MG21 RCP + Spinel.</li>
-            <li>Python services: Thread payload parsing, UART gateway, I²C LCD1602 status UI.</li>
-            <li>MQTT bridge & PostgreSQL local DB (scent notes, shelf map).</li>
-            <li>ETL workers to ingest events into analytics-ready schemas.</li>
-          </ul>
+          <img class="gallery-thumb" src="../static/images/iot_challenge/7.png" alt="" data-large="../static/images/iot_challenge/7.png">
         </article>
       </div>
     </section>
 
     <!-- Data & AI -->
     <section id="data" class="content reveal" aria-labelledby="data-title">
-      <h2 class="section-title" id="data-title">Data & AI</h2>
+      <h2 class="section-title" id="data-title">S.C.E.N.T Shelf BOM</h2>
 
       <div class="grid-2">
         <article class="card">
-          <h3>Data pipeline</h3>
-          <ul>
-            <li>Local event store → batch ETL → PostgreSQL (analytics tables).</li>
-            <li>Redis-backed queues for ingestion resilience.</li>
-            <li>Collected & labeled 5k+ interactions (pickup, feedback, dwell time).</li>
-          </ul>
+            <img class="gallery-thumb" src="../static/images/iot_challenge/8.png" alt="" data-large="../static/images/iot_challenge/8.png">
         </article>
 
         <article class="card">
-          <h3>Machine Learning</h3>
+          <h3>Smart Shelf Summary</h3>
           <ul>
-            <li>NLP: BERT embeddings + spaCy NER to extract perfume preference features.</li>
-            <li>Edge CV: lightweight model for shelf occupancy & product counting.</li>
-            <li>Retraining pipeline using labeled interactions for personalization.</li>
+            <li><strong>MCU/Embedded PC:</strong> EFR32xG26, EFR32xG24, Raspberry Pi 4, EFRMG21</li>
+            <li><strong>Sensors:</strong> HX711 load cells, IR, PIR, Si7021</li>
+            <li><strong>LEDs:</strong> 10 product highlights + 3m decorative strip</li>
+            <li><strong>Connectivity:</strong> Wi-Fi, BLE/Thread, UART/EN0</li>
+            <li><strong>Power:</strong> 220V → multiple 5V adapters</li>
+            <li><strong>Capacity:</strong> Up to 13 SKUs (3 loadcell + 10 IR)</li>
+            <li><strong>Constraints:</strong> 5 kg max/loadcell, PIR 0.5–2 m</li>
+          </ul>
+          <br>  
+          <h3>Pros</h3>
+          <ul>
+            <li>Scalable, flexible, energy-efficient</li>
+            <li>IoT-ready with real-time connectivity</li>
+            <li>Multi-sensor fusion for reliable detection</li>
+            <li>Engaging UX with LEDs for highlight & decoration</li>
           </ul>
         </article>
-      </div>
-    </section>
-
-    <!-- Timeline & Milestones -->
-    <section id="timeline" class="content reveal" aria-labelledby="timeline-title">
-      <h2 class="section-title" id="timeline-title">Timeline & Milestones</h2>
-      <div class="timeline">
-        <div class="item">
-          <strong>Hackathon Prototype</strong>
-          <div class="muted small">Working MVP assembled in 15 hours (hardware + demo flow).</div>
-        </div>
-        <div class="item">
-          <strong>Edge & Backend Integration</strong>
-          <div class="muted small">OTBR, MQTT bridge, local DB & dashboard.</div>
-        </div>
-        <div class="item">
-          <strong>Field Data Collection</strong>
-          <div class="muted small">5k+ interactions used for analytics & model training.</div>
-        </div>
       </div>
     </section>
 
@@ -367,9 +382,14 @@
     <section id="gallery" class="content reveal" aria-labelledby="gallery-title">
       <h2 class="section-title" id="gallery-title">Gallery & Artifacts</h2>
       <div class="gallery-grid">
-        <img src="../static/images/iot_challenge/2.png" alt="Board" class="gallery-thumb" data-large="../static/images/gallery1.png">
-        <img src="../static/images/iot_challenge/3.png" alt="PCB" class="gallery-thumb" data-large="../static/images/gallery2.png">
-        <img src="../static/images/iot_challenge/4.png" alt="Demo" class="gallery-thumb" data-large="../static/images/gallery3.png">
+        <img src="../static/images/iot_challenge/2.png" alt="Board" class="gallery-thumb" data-large="../static/images/iot_challenge/2.png">
+        <img src="../static/images/iot_challenge/3.png" alt="PCB" class="gallery-thumb" data-large="../static/images/iot_challenge/3.png">
+        <img src="../static/images/iot_challenge/4.png" alt="Demo" class="gallery-thumb" data-large="../static/images/iot_challenge/4.png">
+      </div>
+      <div class="gallery-grid">
+        <img src="../static/images/iot_challenge/1.png" alt="Board" class="gallery-thumb" data-large="../static/images/iot_challenge/1.png">
+        <img src="../static/images/iot_challenge/5.png" alt="PCB" class="gallery-thumb" data-large="../static/images/iot_challenge/5.png">
+        <img src="../static/images/iot_challenge/9.jpg" alt="Demo" class="gallery-thumb" data-large="../static/images/iot_challenge/9.jpg">
       </div>
     </section>
 
@@ -377,9 +397,8 @@
     <section id="downloads" class="content reveal" aria-labelledby="downloads-title">
       <h2 class="section-title" id="downloads-title">Downloads & Links</h2>
       <div class="download-row">
-        <a class="btn btn-case-study" href="../static/docs/SCENT_case_study.pdf" download>Download Case Study (PDF)</a>
+        <a class="btn btn-case-study" href="../static/images/iot_challenge/Edgelectronix.pptx" download>Download Presentation Slides ( PPTX )</a>
         <a class="btn btn-ghost" id="copyGithub2" href="#">Copy GitHub URL</a>
-        <a class="btn btn-ghost" href="../static/docs/SCENT_slides.pdf" download>Presentation slides</a>
       </div>
     </section>
 

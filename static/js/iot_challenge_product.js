@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 4) Copy GitHub URL helper for two possible buttons
   (function copyGit() {
-    const repoURL = 'https://github.com/PhuocDang2104/SCENT'; // change if needed
+    const repoURL = 'https://github.https://github.com/PhuocDang2104/fptsoftware-iot-challenge-2025-SCENT-System/PhuocDang2104'; // change if needed
     const ids = ['copyGithub', 'copyGithub2'];
     ids.forEach(id => {
       const el = document.getElementById(id);
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ---------- Copy GitHub (reuse) ----------
   (function copyGit() {
-    const repoURL = 'https://github.com/PhuocDang2104/SCENT';
+    const repoURL = 'https://github.com/PhuocDang2104/fptsoftware-iot-challenge-2025-SCENT-System';
     ['copyGithub','copyGithub2'].forEach(id => {
       const el = document.getElementById(id);
       if (!el) return;
