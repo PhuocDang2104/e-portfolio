@@ -175,76 +175,94 @@ export default function Page() {
           <div className="projects-grid">
             <article className="project-card big reveal" role="listitem">
               <img
-                src="../static/images/iot_challenge_banner.png"
-                alt="SCENT — Smart Customer Experience"
+                src="/static/images/vnpt-ai/vnpt-ai-banner.png"
+                alt="VNPT AI Hackathon 2025"
                 className="project-thumb"
               />
               <div className="project-content">
-                <h3>SCENT — System for Customer EXperience, iNventory & Threats</h3>
-                <p className="muted"></p>
-                <p style={{ fontSize: "13px" }}>
-                  Designed & delivered a resilient <strong>end-to-end AIoT system</strong>
-                  spanning firmware, gateway, software, hardware, and AI platforms.
+                <h3>VNPT AI Hackathon 2025 | Leader of SAVINAI | 2nd Runner-up Prize</h3>
+                <p className="muted project-subtitle">
+                  MeetMate SAAR - Self-Reflective Agentic RAG Engine for Meeting Intelligence
+                  <span className="project-subtitle-note">In production rollout at LPBank</span>
                 </p>
-
-                <ul style={{ fontSize: "14px" }}>
+                <ul className="project-list">
                   <li>
-                    <strong>System design & integration:</strong> Architected a 24/7 AIoT system
-                    with robust dataflows over Thread, BLE, UART, I²C, MQTT.
-                  </li>
-                  <li>
-                    <strong>MCU firmware (EFR32):</strong>
+                    <strong>Agentic Architecture (LangGraph)</strong>
                     <ul>
-                      <li>Developed HX711 load-cell driver & IR sensor interrupts.</li>
                       <li>
-                        MicriumOS tasks:
-                        <ul>
-                          <li>Glass-break detection (I2S mic, 200 ms loop).</li>
-                          <li>Temp/humidity sensing (SI7021, every 5s).</li>
-                          <li>Continuous OpenThread networking.</li>
-                        </ul>
+                        Built a stage-aware (Pre/In/Post) LangGraph system with a single-entry
+                        StateGraph, routing by stage / sensitivity / SLA to switch realtime vs
+                        batch execution profiles
                       </li>
-                      <li>Enabled Thread-to-gateway messaging with failover.</li>
+                      <li>
+                        Defined a typed MeetingState (agenda/transcript/RAG/citations/tools/metrics)
+                        to ensure cross-stage consistency, reduce re-computation, and support
+                        audit-friendly replay
+                      </li>
                     </ul>
                   </li>
                   <li>
-                    <strong>Edge gateway (Raspberry Pi 4):</strong>
+                    <strong>RAG Systems (Enterprise, Permission-Aware)</strong>
                     <ul>
-                      <li>Configured as OTBR (MG21 RCP + Spinel).</li>
-                      <li>Python scripts for Thread parsing, UART, I²C LCD1602.</li>
-                      <li>MQTT gateway + PostgreSQL schema & ETL scripts.</li>
-                      <li>Local DB for scent notes & shelf ops with sync/offline mode.</li>
+                      <li>
+                        Implemented Self-Reflective/Corrective RAG (SAAR) with pgvector + BM25
+                        hybrid retrieval, ACL /metadata /effective-date filtering, and controlled
+                        query rewrite + retries
+                      </li>
+                      <li>
+                        Enforced "no-source -> no-answer" with mandatory citations for regulated
+                        domains to reduce hallucinations and strengthen compliance
+                      </li>
                     </ul>
                   </li>
                   <li>
-                    <strong>Software & data platform:</strong>
+                    <strong>Realtime LLM Orchestration:</strong> Shipped dual-tick scheduling for
+                    in-meeting runtime: Intent/ADR (~10s) + Recap (~60s) with event-driven Q&A
+                    force-tick for instant Ask-AI responses under token/latency budgets
+                  </li>
+                  <li>
+                    <strong>LLM Reliability (Evaluation & Guardrails)</strong>
                     <ul>
-                      <li>Full-stack Flask app (APIs, templates, admin).</li>
-                      <li>Smart Screen UI/UX (HTML, CSS, JS).</li>
-                      <li>Backend with Redis + PostgreSQL; Python workers for sync.</li>
-                      <li>Collected & processed 5k+ interactions for analytics & retraining.</li>
+                      <li>
+                        Added retrieval grading + faithfulness checks to gate outputs, trigger
+                        corrective retrieval, and fail safely when evidence is insufficient,
+                        improving answer groundedness and reducing hallucination risk
+                      </li>
+                      <li>
+                        Implemented policy-based tool gating (stage/sensitivity allow-lists +
+                        confidence gating) to prevent unsafe actions during realtime sessions
+                      </li>
                     </ul>
                   </li>
                   <li>
-                    <strong>Hardware engineering:</strong>
+                    <strong>Tool-Calling & Workflow Automation</strong>
                     <ul>
-                      <li>Integrated sensors (load cell, cam, mic) with MCUs & Pi.</li>
-                      <li>PCB soldering, wiring validation, shelf-mounting design.</li>
+                      <li>
+                        Designed schema-first tool-calling (tasks/follow-ups/docs) with idempotency
+                        keys, human-in-the-loop approval, and auditable execution logs for
+                        enterprise integrations
+                      </li>
                     </ul>
                   </li>
                   <li>
-                    <strong>AI:</strong>
-                    <ul>
-                      <li>Python pipelines for dataset generation & labeling.</li>
-                      <li>NLP pipeline (BERT + spaCy NER) for keyword extraction.</li>
-                      <br />
-                    </ul>
+                    <strong>Streaming Integration:</strong> Co-designed REST + WebSocket API
+                    handshake with VNPT Senior Engineers to trigger per-endpoint meeting events
+                    and stream audio -> ASR -> transcript events into the AI pipeline reliably
+                  </li>
+                  <li>
+                    <strong>Production Readiness (BFSI / LPBank):</strong> Delivered a private
+                    SaaS backend deployed on VNPT Cloud for LPBank, with audit-ready logging and
+                    an extensible stack for PostgreSQL OLTP + vector store + RAG hub + multi-LLM
+                    providers
                   </li>
                 </ul>
-
-                <strong>Awards:</strong> 1st runner up (SILABS IoT Challenge) —{" "}
-                <em>Granted Internship Certification</em>{" "}
-                <strong>Github Link:</strong> https:// ...
+                <p className="muted project-links">
+                  <strong>Link github:</strong> ...
+                  <br />
+                  <strong>Link certification:</strong> ...
+                  <br />
+                  <strong>Link Product MVP:</strong> ...
+                </p>
               </div>
               <div style={{ marginTop: "18px", textAlign: "center" }}>
                 <a href="/iot_challenge_product" className="btn btn-case-study">
@@ -256,32 +274,90 @@ export default function Page() {
             <div className="projects-col">
               <article className="project-card reveal" role="listitem">
                 <img
-                  src="../static/images/humanlog2025_banner.png"
-                  alt="Logistics Rescue Map"
+                  src="../static/images/iot_challenge_banner.png"
+                  alt="SCENT — Smart Customer Experience"
                   className="project-thumb"
                 />
                 <div className="project-content">
-                  <h3>ESP32Cam and RFID AIoT Solution in Warehouse</h3>
-                  <p className="muted">
-                    <strong>
-                      Built a compact <em>AIoT logistics MVP</em> integrating hardware, software,
-                      and system evaluation.
-                    </strong>
-                    <br />
-                    <br />• <strong>Hardware:</strong> ESP32-CAM/S3, DHT22, RFID RC522; PCB & PCBA
-                    for classification and cabin control.
-                    <br />• <strong>Prototype:</strong> Assembled within 15-hour hackathon.
-                    <br />• <strong>Software:</strong> Flask app with SQL backend for real-time
-                    monitoring.
-                    <br />• <strong>Evaluation:</strong> Assessed installability, power usage, and
-                    offline operation.
-                    <br />
-                    <br />
-                    <strong>Awards:</strong> 2nd runner up (HumanLog 2025) <br />
-                    <a href="/klu_hackathon_project" className="link-accent">
-                      View case study
-                    </a>
-                  </p>
+                  <h3>SCENT — System for Customer EXperience, iNventory & Threats</h3>
+                  <div className="project-card__short">
+                    <p className="muted project-body">
+                      End-to-end AIoT system spanning firmware, gateway, software, hardware, and
+                      AI platforms.
+                    </p>
+                    <ul className="project-list project-list--compact">
+                      <li>Thread/BLE/UART/I2C/MQTT dataflows on EFR32 + Raspberry Pi.</li>
+                      <li>Flask APIs + PostgreSQL + Redis with analytics-ready pipelines.</li>
+                      <li>1st runner up (SILABS IoT Challenge).</li>
+                    </ul>
+                  </div>
+                  <div className="project-card__full">
+                    <p className="muted project-body">
+                      Designed & delivered a resilient <strong>end-to-end AIoT system</strong>{" "}
+                      spanning firmware, gateway, software, hardware, and AI platforms.
+                    </p>
+                    <ul className="project-list">
+                      <li>
+                        <strong>System design & integration:</strong> Architected a 24/7 AIoT
+                        system with robust dataflows over Thread, BLE, UART, I²C, MQTT.
+                      </li>
+                      <li>
+                        <strong>MCU firmware (EFR32):</strong>
+                        <ul>
+                          <li>Developed HX711 load-cell driver & IR sensor interrupts.</li>
+                          <li>
+                            MicriumOS tasks:
+                            <ul>
+                              <li>Glass-break detection (I2S mic, 200 ms loop).</li>
+                              <li>Temp/humidity sensing (SI7021, every 5s).</li>
+                              <li>Continuous OpenThread networking.</li>
+                            </ul>
+                          </li>
+                          <li>Enabled Thread-to-gateway messaging with failover.</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <strong>Edge gateway (Raspberry Pi 4):</strong>
+                        <ul>
+                          <li>Configured as OTBR (MG21 RCP + Spinel).</li>
+                          <li>Python scripts for Thread parsing, UART, I²C LCD1602.</li>
+                          <li>MQTT gateway + PostgreSQL schema & ETL scripts.</li>
+                          <li>Local DB for scent notes & shelf ops with sync/offline mode.</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <strong>Software & data platform:</strong>
+                        <ul>
+                          <li>Full-stack Flask app (APIs, templates, admin).</li>
+                          <li>Smart Screen UI/UX (HTML, CSS, JS).</li>
+                          <li>Backend with Redis + PostgreSQL; Python workers for sync.</li>
+                          <li>Collected & processed 5k+ interactions for analytics & retraining.</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <strong>Hardware engineering:</strong>
+                        <ul>
+                          <li>Integrated sensors (load cell, cam, mic) with MCUs & Pi.</li>
+                          <li>PCB soldering, wiring validation, shelf-mounting design.</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <strong>AI:</strong>
+                        <ul>
+                          <li>Python pipelines for dataset generation & labeling.</li>
+                          <li>NLP pipeline (BERT + spaCy NER) for keyword extraction.</li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <p className="muted project-body">
+                      <strong>Awards:</strong> 1st runner up (SILABS IoT Challenge) —{" "}
+                      <em>Granted Internship Certification</em>{" "}
+                      <strong>Github Link:</strong> https:// ...
+                    </p>
+                  </div>
+                  <a href="/iot_challenge_product" className="link-accent">
+                    View case study
+                  </a>
                 </div>
               </article>
 
@@ -293,16 +369,59 @@ export default function Page() {
                 />
                 <div className="project-content">
                   <h3>AIMING - AIoT Infravision for Agricultural Quality</h3>
-                  <p className="muted">
-                    <strong>Edge AIoT system on Intel hardware ensuring produce quality via dual AI modules.</strong>
-                    <br />
-                    <br />• <strong>Hardware:</strong> Intel® NUC (CPU+GPU), 720p camera.
-                    <br />• <strong>Software:</strong> OpenVINO™, Intel® Tiber™ Cloud, Edge Software Hub.
-                    <br />• <strong>AI Modules:</strong> <br />– <em>Vision AI:</em> fruit type, count, ripeness, external defects.
-                    <br />– <em>NIR AI:</em> °Brix, moisture, internal bruises, pest/disease detection.
-                    <br />• <strong>Evaluation:</strong> Real-time grading, defect detection, SDG-aligned impact.
-                    <br />
-                  </p>
+                  <div className="project-card__short">
+                    <p className="muted project-body">
+                      <strong>Edge AIoT system on Intel hardware ensuring produce quality via dual AI modules.</strong>
+                      <br />
+                      <br />• <strong>Hardware:</strong> Intel® NUC (CPU+GPU), 720p camera.
+                      <br />• <strong>Software:</strong> OpenVINO™, Intel® Tiber™ Cloud, Edge Software Hub.
+                      <br />• <strong>AI Modules:</strong> <br />– <em>Vision AI:</em> fruit type, count, ripeness, external defects.
+                      <br />– <em>NIR AI:</em> °Brix, moisture, internal bruises, pest/disease detection.
+                      <br />• <strong>Evaluation:</strong> Real-time grading, defect detection, SDG-aligned impact.
+                      <br />
+                    </p>
+                  </div>
+                  <div className="project-card__full">
+                    <p className="muted project-body">
+                      Architected and delivered an edge AIoT grading system on an Intel® industrial
+                      PC (CPU/GPU), integrating NIR spectral sensing + metadata pipeline for
+                      on-site agricultural quality assessment.
+                    </p>
+                    <p className="muted project-body">
+                      Built an end-to-end ML pipeline in Python: feature engineering from 6-channel
+                      NIR spectra (610-860nm) + fruit-type one-hot + ripeness (10-dim input),
+                      scaling (StandardScaler), train/validation split, and evaluation with
+                      regression + classification metrics.
+                    </p>
+                    <p className="muted project-body">
+                      <strong>Multi-task deep learning model (TensorFlow/Keras):</strong> Multi-branch
+                      1D CNN residual blocks (kernel 2 & 5) + positional embedding + 2-layer
+                      Multi-Head Self-Attention + attention pooling + shared MLP with multi-head
+                      outputs:
+                    </p>
+                    <ul className="project-list">
+                      <li>
+                        <strong>Regression:</strong> °Brix & Moisture
+                      </li>
+                      <li>
+                        <strong>Classification:</strong> Grade (A/B/C), Defect (Y/N), Fungus (Y/N)
+                      </li>
+                    </ul>
+                    <p className="muted project-body">
+                      Training included Huber loss (regression) + focal losses (classification),
+                      loss weighting, and EarlyStopping for stability.
+                    </p>
+                    <p className="muted project-body">
+                      Productionized inference for Intel hardware: exported Keras to ONNX (tf2onnx)
+                      and converted ONNX/OpenVINO to OpenVINO IR (.xml/.bin), achieving up to ~3x
+                      faster inference on Intel® devices.
+                    </p>
+                    <p className="muted project-body">
+                      Built a real-time monitoring dashboard (frontend + backend) with MQTT +
+                      Redis to stream and visualize grading outputs, enabling live operational
+                      monitoring and faster on-site decision-making.
+                    </p>
+                  </div>
                   <a href="/intel_ai_project" className="link-accent">
                     View case study
                   </a>
