@@ -132,7 +132,9 @@ nav.navbar{
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 220px;
+  min-width: 280px;
+  width: 320px;
+  max-width: 360px;
   background: var(--card, #0d1722);
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   border-radius: 8px;
@@ -157,6 +159,41 @@ nav.navbar{
 
 .nav-links .dropdown-content a:hover {
   background: var(--glass, rgba(255,255,255,0.08));
+}
+
+.dropdown-label{
+  padding:8px 16px;
+  font-size:11px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:rgba(233,242,255,0.55);
+  font-weight:600;
+}
+
+.dropdown-item{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:10px 16px;
+}
+
+.dropdown-item-title{
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+  line-height:1.35;
+}
+
+.dropdown-item-meta{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.35;
+}
+
+.dropdown-divider{
+  height:1px;
+  margin:6px 12px;
+  background:rgba(255,255,255,0.08);
 }
 
 /* khi hover thì fade-in + trượt lên */
