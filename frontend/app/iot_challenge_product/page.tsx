@@ -34,10 +34,10 @@ export default function Page() {
                 <a href="/">Home</a>
                 <a href="#overview">About</a>
                 <div className="dropdown">
-                  <a href="#projects">Projects ▾</a>
+                  <a href="/#projects">Projects ▾</a>
                   <div className="dropdown-content">
                     <div className="dropdown-label">Projects</div>
-                    <a className="dropdown-item" href="/#vnpt-ai">
+                    <a className="dropdown-item" href="/vnpt_ai_project">
                       <span className="dropdown-item-title">VNPT AI Hackathon: MeetMate SAAR</span>
                       <span className="dropdown-item-meta">2nd Runner-up | LPBank rollout</span>
                     </a>
@@ -65,7 +65,7 @@ export default function Page() {
                     <div className="dropdown-label">Research Paper</div>
                   </div>
                 </div>
-                <a href="#timeline">Certifications</a>
+                <a href="#certifications">Certifications</a>
                 <a href="#skills">Skills</a>
                 <a href="#contact">Contact</a>
               </div>
@@ -86,8 +86,8 @@ export default function Page() {
         <div id="mobileMenu" className="mobile-menu" aria-hidden="true">
           <a href="#home">Home</a>
           <a href="#overview">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#timeline">Experience</a>
+          <a href="/#projects">Projects</a>
+          <a href="#certifications">Experience</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </div>
@@ -642,9 +642,7 @@ export default function Page() {
           </div>
         </section>
 
-        <footer>
-          © <span id="year"></span> Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages
-        </footer>
+        <footer>© 2026 Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages</footer>
       </div>
 
       <div id="lightbox" className="lightbox" aria-hidden="true">

@@ -46,7 +46,7 @@ export default function Page() {
                   <a href="#projects">Projects ▾</a>
                   <div className="dropdown-content">
                     <div className="dropdown-label">Projects</div>
-                    <a className="dropdown-item" href="#vnpt-ai">
+                    <a className="dropdown-item" href="/vnpt_ai_project">
                       <span className="dropdown-item-title">VNPT AI Hackathon: MeetMate SAAR</span>
                       <span className="dropdown-item-meta">2nd Runner-up | LPBank rollout</span>
                     </a>
@@ -288,7 +288,7 @@ export default function Page() {
                 </p>
               </div>
               <div style={{ marginTop: "18px", textAlign: "center" }}>
-                <a href="#vnpt-ai" className="btn btn-case-study">
+                <a href="/vnpt_ai_project" className="btn btn-case-study">
                   View case study
                 </a>
               </div>
@@ -405,45 +405,47 @@ export default function Page() {
                     </p>
                   </div>
                   <div className="project-card__full">
-                    <p className="muted project-body">
-                      Architected and delivered an edge AIoT grading system on an Intel® industrial
-                      PC (CPU/GPU), integrating NIR spectral sensing + metadata pipeline for
-                      on-site agricultural quality assessment.
-                    </p>
-                    <p className="muted project-body">
-                      Built an end-to-end ML pipeline in Python: feature engineering from 6-channel
-                      NIR spectra (610-860nm) + fruit-type one-hot + ripeness (10-dim input),
-                      scaling (StandardScaler), train/validation split, and evaluation with
-                      regression + classification metrics.
-                    </p>
-                    <p className="muted project-body">
-                      <strong>Multi-task deep learning model (TensorFlow/Keras):</strong> Multi-branch
-                      1D CNN residual blocks (kernel 2 & 5) + positional embedding + 2-layer
-                      Multi-Head Self-Attention + attention pooling + shared MLP with multi-head
-                      outputs:
-                    </p>
                     <ul className="project-list">
                       <li>
-                        <strong>Regression:</strong> °Brix & Moisture
+                        Architected and delivered an edge AIoT grading system on an Intel® industrial
+                        PC (CPU/GPU), integrating NIR spectral sensing + metadata pipeline for
+                        on-site agricultural quality assessment.
                       </li>
                       <li>
-                        <strong>Classification:</strong> Grade (A/B/C), Defect (Y/N), Fungus (Y/N)
+                        Built an end-to-end ML pipeline in Python: feature engineering from 6-channel
+                        NIR spectra (610-860nm) + fruit-type one-hot + ripeness (10-dim input),
+                        scaling (StandardScaler), train/validation split, and evaluation with
+                        regression + classification metrics.
+                      </li>
+                      <li>
+                        <strong>Multi-task deep learning model (TensorFlow/Keras):</strong> Multi-branch
+                        1D CNN residual blocks (kernel 2 & 5) + positional embedding + 2-layer
+                        Multi-Head Self-Attention + attention pooling + shared MLP with multi-head
+                        outputs:
+                        <ul>
+                          <li>
+                            <strong>Regression:</strong> °Brix & Moisture
+                          </li>
+                          <li>
+                            <strong>Classification:</strong> Grade (A/B/C), Defect (Y/N), Fungus (Y/N)
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        Training included Huber loss (regression) + focal losses (classification),
+                        loss weighting, and EarlyStopping for stability.
+                      </li>
+                      <li>
+                        Productionized inference for Intel hardware: exported Keras to ONNX (tf2onnx)
+                        and converted ONNX/OpenVINO to OpenVINO IR (.xml/.bin), achieving up to ~3x
+                        faster inference on Intel® devices.
+                      </li>
+                      <li>
+                        Built a real-time monitoring dashboard (frontend + backend) with MQTT +
+                        Redis to stream and visualize grading outputs, enabling live operational
+                        monitoring and faster on-site decision-making.
                       </li>
                     </ul>
-                    <p className="muted project-body">
-                      Training included Huber loss (regression) + focal losses (classification),
-                      loss weighting, and EarlyStopping for stability.
-                    </p>
-                    <p className="muted project-body">
-                      Productionized inference for Intel hardware: exported Keras to ONNX (tf2onnx)
-                      and converted ONNX/OpenVINO to OpenVINO IR (.xml/.bin), achieving up to ~3x
-                      faster inference on Intel® devices.
-                    </p>
-                    <p className="muted project-body">
-                      Built a real-time monitoring dashboard (frontend + backend) with MQTT +
-                      Redis to stream and visualize grading outputs, enabling live operational
-                      monitoring and faster on-site decision-making.
-                    </p>
                   </div>
                   <a href="/intel_ai_project" className="link-accent">
                     View case study
@@ -630,10 +632,127 @@ export default function Page() {
           </div>
         </section>
 
-        <footer>
-          © <span id="year"></span> Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages
-        </footer>
       </div>
+
+      <footer className="site-footer" aria-labelledby="footer-title">
+        <div className="footer-inner">
+          <div className="footer-main">
+            <div className="footer-col footer-brand">
+              <div className="footer-brand-header">
+                <img
+                  src="/static/images/Phuoc_avatar.png"
+                  alt="Đặng Như Phước avatar"
+                  className="footer-avatar"
+                />
+                <div>
+                  <div className="footer-brand-name">Đặng Như Phước</div>
+                  <div className="footer-brand-role">
+                    AI & Embedded Software Engineer • Building deployable AI systems
+                  </div>
+                </div>
+              </div>
+              <p className="footer-desc">
+                I build end-to-end AI systems: data → models → APIs → production, with reliability
+                & safety in mind.
+              </p>
+              <div className="footer-tags">
+                <span>LLM Systems</span>
+                <span>Agentic RAG</span>
+                <span>FastAPI</span>
+                <span>Edge/IoT</span>
+              </div>
+            </div>
+
+            <div className="footer-col">
+              <h4 className="footer-title" id="footer-title">
+                Navigation
+              </h4>
+              <ul className="footer-links">
+                <li>
+                  <a href="#home">Home</a>
+                </li>
+                <li>
+                  <a href="#about">About</a>
+                </li>
+                <li>
+                  <a href="#projects">Projects</a>
+                </li>
+                <li>
+                  <a href="#achievements">Achievements</a>
+                </li>
+                <li>
+                  <a href="#contact">Contact</a>
+                </li>
+                <li>
+                  <a href="../static/Dang Nhu Phuoc _ CV _ Embedded Engineer.pdf" download>
+                    Download CV
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="footer-col">
+              <h4 className="footer-title">Contact</h4>
+              <ul className="footer-links">
+                <li>
+                  <span className="footer-label">Email:</span>{" "}
+                  <a href="mailto:phuoc.dang2104@gmail.com">phuoc.dang2104@gmail.com</a>
+                </li>
+                <li>
+                  <span className="footer-label">GitHub:</span>{" "}
+                  <a href="https://github.com/PhuocDang2104" target="_blank">
+                    PhuocDang2104
+                  </a>
+                </li>
+                <li>
+                  <span className="footer-label">LinkedIn:</span>{" "}
+                  <a href="#" target="_blank">
+                    Phuoc Dang
+                  </a>
+                </li>
+                <li>
+                  <span className="footer-label">Location:</span> HCMC, Vietnam
+                </li>
+                <li>
+                  <span className="footer-label">Timezone:</span> GMT+7 (HCMC)
+                </li>
+              </ul>
+              <a className="footer-cta" href="#contact">
+                Have a project or role in mind? → Send a message
+              </a>
+            </div>
+
+            <div className="footer-col">
+              <h4 className="footer-title">Tech / Trust</h4>
+              <div className="footer-status">Status: Open to opportunities</div>
+              <div className="footer-subtitle">Infrastructure</div>
+              <ul className="footer-links footer-links--tight">
+                <li>Frontend: Next.js on Vercel</li>
+                <li>Backend: Render</li>
+                <li>Database: Aiven (PostgreSQL)</li>
+              </ul>
+              <div className="footer-subtitle">Notes</div>
+              <ul className="footer-links footer-links--tight">
+                <li>Designed for fast load & reliability</li>
+                <li>Evidence-first AI outputs (citations when available)</li>
+                <li>Privacy: No tracking cookies</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <span>
+              © 2026 Phước Đặng — Built with Next.js · Deployed on Vercel · Backend on Render · DB
+              on Aiven
+            </span>
+            <div className="footer-bottom-links">
+              <a href="/privacy">Privacy</a>
+              <a href="/terms">Terms</a>
+              <a href="/sitemap">Sitemap</a>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       </div>
 

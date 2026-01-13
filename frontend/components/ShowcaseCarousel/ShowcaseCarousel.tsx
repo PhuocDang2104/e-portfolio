@@ -15,6 +15,8 @@ const normalizeOffset = (value: number, width: number) => {
   return next;
 };
 
+const buildPdfSrc = (src: string) => `${src}#toolbar=0&navpanes=0&scrollbar=0`;
+
 const ShowcaseCarousel = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -171,50 +173,66 @@ const ShowcaseCarousel = () => {
             className="flex h-full w-max items-center justify-start gap-5 py-4 box-border will-change-transform"
             style={{ transform: "translate3d(0,0,0)" }}
           >
-            {duplicated.map((item, idx) => (
-              <CardContainer
-                key={`${item.id}-${idx}`}
-                className="inter-var w-[270px] shrink-0 sm:w-[290px]"
-                onClick={() => {
-                  if (dragMovedRef.current) return;
-                  setActiveShow(item);
-                  setModalOpen(true);
-                }}
-              >
-                <CardBody className="relative flex h-[320px] w-full flex-col gap-4 overflow-hidden rounded-xl border border-white/10 bg-gray-50/5 p-5 shadow-[0_18px_50px_rgba(0,0,0,0.4)] transition duration-300 ease-out group-hover/card:scale-[1.04] group-hover/card:shadow-[0_26px_70px_rgba(0,0,0,0.45)] dark:bg-black/50 sm:h-[350px] md:h-[370px]">
-                  <div>
-                    <CardItem
-                      translateZ="60"
-                      className="text-base font-bold text-foam transition group-hover/card:text-pearl group-hover/card:translate-z-[80px] sm:text-lg"
-                    >
-                      {item.title}
-                    </CardItem>
-                    <CardItem
-                      as="p"
-                      translateZ="80"
-                      className="mt-1 text-xs text-foam/70 transition group-hover/card:translate-z-[90px] sm:text-sm"
-                    >
-                      {item.subtitle}
-                    </CardItem>
-                  </div>
-                  <CardItem
-                    translateZ="120"
-                    rotateX={16}
-                    rotateZ={-8}
-                    className="mt-4 w-full transition group-hover/card:translate-z-[140px]"
-                  >
-                    <div className="aspect-[4/3] w-full overflow-hidden rounded-xl">
-                      <img
-                        src={item.posterSrc}
-                        alt={item.title}
-                        className="h-full w-full object-cover transition group-hover/card:shadow-2xl group-hover/card:scale-[1.03]"
-                        draggable={false}
-                      />
+            {duplicated.map((item, idx) => {
+              const isPdf = item.posterSrc.toLowerCase().endsWith(".pdf");
+              return (
+                <CardContainer
+                  key={`${item.id}-${idx}`}
+                  className="inter-var w-[270px] shrink-0 sm:w-[290px]"
+                  onClick={() => {
+                    if (dragMovedRef.current) return;
+                    setActiveShow(item);
+                    setModalOpen(true);
+                  }}
+                >
+                  <CardBody className="relative flex h-[320px] w-full flex-col gap-4 overflow-hidden rounded-xl border border-white/10 bg-gray-50/5 p-5 shadow-[0_18px_50px_rgba(0,0,0,0.4)] transition duration-300 ease-out group-hover/card:scale-[1.04] group-hover/card:shadow-[0_26px_70px_rgba(0,0,0,0.45)] dark:bg-black/50 sm:h-[350px] md:h-[370px]">
+                    <div>
+                      <CardItem
+                        translateZ="60"
+                        className="text-base font-bold text-foam transition group-hover/card:text-pearl group-hover/card:translate-z-[80px] sm:text-lg"
+                      >
+                        {item.title}
+                      </CardItem>
+                      <CardItem
+                        as="p"
+                        translateZ="80"
+                        className="mt-1 text-xs text-foam/70 transition group-hover/card:translate-z-[90px] sm:text-sm"
+                      >
+                        {item.subtitle}
+                      </CardItem>
                     </div>
-                  </CardItem>
-                </CardBody>
-              </CardContainer>
-            ))}
+                    <CardItem
+                      translateZ="120"
+                      rotateX={16}
+                      rotateZ={-8}
+                      className="mt-4 w-full transition group-hover/card:translate-z-[140px]"
+                    >
+                      <div className="aspect-[4/3] w-full overflow-hidden rounded-xl">
+                        {isPdf ? (
+                          <object
+                            data={buildPdfSrc(item.posterSrc)}
+                            type="application/pdf"
+                            className="h-full w-full transition group-hover/card:shadow-2xl group-hover/card:scale-[1.03] pointer-events-none"
+                            aria-label={`${item.title} PDF`}
+                          >
+                            <div className="flex h-full w-full items-center justify-center bg-white/5 text-xs text-foam/70">
+                              PDF preview unavailable
+                            </div>
+                          </object>
+                        ) : (
+                          <img
+                            src={item.posterSrc}
+                            alt={item.title}
+                            className="h-full w-full object-cover transition group-hover/card:shadow-2xl group-hover/card:scale-[1.03]"
+                            draggable={false}
+                          />
+                        )}
+                      </div>
+                    </CardItem>
+                  </CardBody>
+                </CardContainer>
+              );
+            })}
           </div>
         </div>
       </div>

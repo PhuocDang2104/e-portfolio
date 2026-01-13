@@ -31,13 +31,13 @@ export default function Page() {
 
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <div className="nav-links" id="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
+                <a href="/">Home</a>
+                <a href="/#about">About</a>
                 <div className="dropdown">
-                  <a href="#projects">Projects ▾</a>
+                  <a href="/#projects">Projects ▾</a>
                   <div className="dropdown-content">
                     <div className="dropdown-label">Projects</div>
-                    <a className="dropdown-item" href="/#vnpt-ai">
+                    <a className="dropdown-item" href="/vnpt_ai_project">
                       <span className="dropdown-item-title">VNPT AI Hackathon: MeetMate SAAR</span>
                       <span className="dropdown-item-meta">2nd Runner-up | LPBank rollout</span>
                     </a>
@@ -65,9 +65,9 @@ export default function Page() {
                     <div className="dropdown-label">Research Paper</div>
                   </div>
                 </div>
-                <a href="#exp">Certifications</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
+                <a href="/#achievements">Achievements</a>
+                <a href="/#skills">Skills</a>
+                <a href="/#contact">Contact</a>
               </div>
               <a
                 className="cta-download"
@@ -92,13 +92,7 @@ export default function Page() {
         <p>Sorry for inconvenience, this page is being updated.</p>
       </main>
 
-      <footer>
-        © <span id="year"></span> Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages
-      </footer>
-
-            <Script id="year-script" strategy="afterInteractive">
-        {`document.getElementById("year").textContent = new Date().getFullYear();`}
-      </Script>
+      <footer>© 2026 Phước Đặng — Built with HTML/CSS/JS · Hosted on GitHub Pages</footer>
     </>
   );
 }

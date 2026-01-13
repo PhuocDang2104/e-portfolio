@@ -9,6 +9,8 @@ type ShowcaseModalProps = {
   show?: ShowItem;
 };
 
+const buildPdfSrc = (src: string) => `${src}#toolbar=0&navpanes=0&scrollbar=0`;
+
 const ShowcaseModal = ({ open, onClose, show }: ShowcaseModalProps) => {
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
@@ -24,6 +26,7 @@ const ShowcaseModal = ({ open, onClose, show }: ShowcaseModalProps) => {
   }, [open, onClose]);
 
   if (!open || !show) return null;
+  const isPdf = show.posterSrc.toLowerCase().endsWith(".pdf");
 
   return (
     <div
@@ -46,12 +49,35 @@ const ShowcaseModal = ({ open, onClose, show }: ShowcaseModalProps) => {
           <div className="relative w-full md:w-5/12">
             <div className="relative aspect-[4/3] w-full">
               <div className="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_20%_20%,rgba(142,240,255,0.14),transparent_50%),radial-gradient(circle_at_70%_0%,rgba(255,141,106,0.12),transparent_45%)] blur-2xl" />
-              <img
-                src={show.posterSrc}
-                alt={show.title}
-                className="relative z-10 h-full w-full rounded-xl object-cover shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
-              />
+              {isPdf ? (
+                <object
+                  data={buildPdfSrc(show.posterSrc)}
+                  type="application/pdf"
+                  className="relative z-10 h-full w-full rounded-xl shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
+                  aria-label={`${show.title} PDF`}
+                >
+                  <div className="flex h-full w-full items-center justify-center rounded-xl bg-white/5 text-xs text-foam/70">
+                    PDF preview unavailable
+                  </div>
+                </object>
+              ) : (
+                <img
+                  src={show.posterSrc}
+                  alt={show.title}
+                  className="relative z-10 h-full w-full rounded-xl object-cover shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
+                />
+              )}
             </div>
+            {isPdf && (
+              <a
+                href={show.posterSrc}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex text-xs font-semibold text-foam underline decoration-white/30 underline-offset-4 transition hover:text-pearl"
+              >
+                Open PDF
+              </a>
+            )}
           </div>
           <div className="flex-1 space-y-3">
             <div className="flex items-start justify-between gap-3">
