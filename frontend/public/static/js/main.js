@@ -54,10 +54,16 @@ function init() {
   }
 
   // smooth scroll for internal links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
+  const isHome = window.location.pathname === '/' || window.location.pathname === '';
+  document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(a => {
     a.addEventListener('click', function (e) {
       const href = a.getAttribute('href');
-      const target = document.querySelector(href);
+      if (!href || href === '#' || href === '/#') return;
+      const isRootHash = href.startsWith('/#');
+      if (isRootHash && !isHome) return;
+      const selector = isRootHash ? href.slice(1) : href;
+      if (selector === '#') return;
+      const target = document.querySelector(selector);
       if (target) {
         e.preventDefault();
         const offset = 72; // navbar

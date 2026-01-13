@@ -780,23 +780,38 @@ input:focus, textarea:focus{
   margin:56px 0 0;
   padding:0;
   width:100%;
+  position:relative;
+  overflow:hidden;
   border-top:1px solid rgba(255,255,255,0.08);
-  background:linear-gradient(180deg, rgba(8,12,20,0.98), rgba(6,9,14,0.98));
+  background:linear-gradient(180deg, rgba(9,14,24,0.98), rgba(5,8,14,0.98));
   text-align:left;
   color:rgba(233,242,255,0.78);
   font-size:13px;
   font-weight:400;
   letter-spacing:normal;
 }
+.site-footer::before{
+  content:"";
+  position:absolute;
+  inset:-25% 0 0 0;
+  background:
+    radial-gradient(38% 38% at 12% 18%, rgba(139,92,246,0.22), transparent 60%),
+    radial-gradient(32% 32% at 88% 12%, rgba(30,136,229,0.2), transparent 60%),
+    linear-gradient(120deg, rgba(139,92,246,0.12), rgba(30,136,229,0.08), transparent 60%);
+  opacity:0.85;
+  pointer-events:none;
+}
 .footer-inner{
-  max-width:var(--maxw);
+  max-width:min(1400px, 100%);
   margin:0 auto;
-  padding:36px 22px 28px;
+  padding:38px clamp(20px, 3vw, 48px) 30px;
+  position:relative;
+  z-index:1;
 }
 .site-footer .footer-main{
   display:grid;
-  grid-template-columns:repeat(4, minmax(0,1fr));
-  gap:24px;
+  grid-template-columns:repeat(4, minmax(220px,1fr));
+  gap:clamp(18px, 3vw, 48px);
 }
 .footer-col{
   display:flex;
@@ -856,7 +871,7 @@ input:focus, textarea:focus{
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
-  text-shadow:0 0 18px rgba(139,92,246,0.25);
+  text-shadow:0 0 14px rgba(139,92,246,0.45);
 }
 .footer-links{
   list-style:none;
