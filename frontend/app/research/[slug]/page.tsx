@@ -46,6 +46,8 @@ export default function WritingPage({ params }: WritingPageProps) {
     notFound();
   }
 
+  const isPaper = isPaperDocument(post);
+
   const posts = getWritingList().filter((item) => item.kind === post.kind);
   const postIndex = posts.findIndex((item) => item.slug === post.slug);
   const newerPost = postIndex > 0 ? posts[postIndex - 1] : null;
@@ -53,14 +55,16 @@ export default function WritingPage({ params }: WritingPageProps) {
   const dateText = post.displayDate ?? dateFormatter.format(new Date(post.date));
 
   return (
-    <main className={`page ${styles.page} ${researchSans.variable} ${researchSerif.variable}`}>
+    <main
+      className={`page ${styles.page} ${isPaper ? styles.detailPage : ""} ${researchSans.variable} ${researchSerif.variable}`}
+    >
       <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
         <Link href={getWritingRoute()}>Research</Link>
         <span>/</span>
         <span>{post.title}</span>
       </nav>
 
-      {isPaperDocument(post) ? (
+      {isPaper ? (
         <>
           <PaperLayoutView paper={post} />
 

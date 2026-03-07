@@ -5,6 +5,11 @@
   font-family: var(--font-research-sans), "Segoe UI", sans-serif;
 }
 
+.detailPage {
+  max-width: min(1560px, calc(100vw - 32px));
+  padding-inline: clamp(14px, 2vw, 28px);
+}
+
 .notesPanel {
   border-radius: 22px;
   border: 1px solid rgba(148, 163, 184, 0.22);
@@ -547,9 +552,9 @@
   border-radius: 28px;
   border: 1px solid rgba(148, 163, 184, 0.24);
   background:
-    radial-gradient(circle at top, rgba(245, 158, 11, 0.12), transparent 28%),
-    linear-gradient(160deg, rgba(9, 18, 30, 0.98), rgba(5, 11, 20, 0.99));
-  padding: 24px;
+    radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 34%),
+    linear-gradient(165deg, rgba(7, 17, 29, 0.985), rgba(5, 12, 23, 0.99));
+  padding: 28px;
   box-shadow: 0 28px 60px rgba(2, 6, 23, 0.48);
 }
 
@@ -562,7 +567,7 @@
 
 .paperEyebrow {
   margin: 0;
-  color: rgba(245, 158, 11, 0.84);
+  color: rgba(125, 211, 252, 0.88);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -572,7 +577,7 @@
 .paperViewerTitle {
   margin: 10px 0 0;
   max-width: 920px;
-  color: #fff7eb;
+  color: #eff7ff;
   font-family: var(--font-research-serif), Georgia, serif;
   font-size: clamp(32px, 4vw, 48px);
   line-height: 1.08;
@@ -582,7 +587,7 @@
 .paperViewerByline {
   margin: 12px 0 0;
   max-width: 840px;
-  color: rgba(191, 215, 236, 0.78);
+  color: rgba(186, 214, 236, 0.74);
   font-size: 12px;
   line-height: 1.6;
   letter-spacing: 0.08em;
@@ -592,7 +597,7 @@
 .paperViewerExcerpt {
   margin: 14px 0 0;
   max-width: 780px;
-  color: rgba(225, 234, 245, 0.82);
+  color: rgba(217, 231, 246, 0.82);
   font-size: 15px;
   line-height: 1.7;
 }
@@ -620,14 +625,14 @@
 }
 
 .paperAction {
-  border: 1px solid rgba(245, 158, 11, 0.42);
-  background: rgba(245, 158, 11, 0.16);
-  color: #fde4b1;
+  border: 1px solid rgba(125, 211, 252, 0.4);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.08));
+  color: #dff6ff;
 }
 
 .paperActionMuted {
   border: 1px solid rgba(148, 163, 184, 0.28);
-  background: rgba(15, 23, 42, 0.38);
+  background: rgba(15, 23, 42, 0.52);
   color: rgba(218, 233, 247, 0.9);
 }
 
@@ -647,8 +652,8 @@
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.26);
-  background: rgba(13, 23, 38, 0.84);
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  background: rgba(8, 18, 31, 0.92);
   color: rgba(225, 235, 247, 0.92);
   font-size: 11px;
   font-weight: 700;
@@ -661,11 +666,35 @@
   margin-top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  min-height: 78vh;
+  max-height: calc(100vh - 156px);
+  overflow-y: auto;
+  padding: 16px 18px 18px 12px;
+  border-radius: 22px;
+  border: 1px solid rgba(125, 211, 252, 0.14);
+  background: linear-gradient(180deg, rgba(5, 13, 23, 0.68), rgba(8, 18, 31, 0.18));
+  scrollbar-width: thin;
+  scrollbar-color: rgba(125, 211, 252, 0.5) rgba(15, 23, 42, 0.56);
+}
+
+.paperPages::-webkit-scrollbar {
+  width: 10px;
+}
+
+.paperPages::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.56);
+  border-radius: 999px;
+}
+
+.paperPages::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.6), rgba(14, 165, 233, 0.42));
+  border-radius: 999px;
+  border: 2px solid rgba(15, 23, 42, 0.56);
 }
 
 .paperSheet {
-  width: min(100%, 880px);
+  width: min(100%, 1120px);
   margin: 0 auto;
 }
 
@@ -675,7 +704,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  color: rgba(184, 211, 235, 0.72);
+  color: rgba(184, 218, 241, 0.7);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -689,8 +718,12 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow:
-    0 30px 50px rgba(2, 6, 23, 0.4),
-    0 0 0 1px rgba(203, 213, 225, 0.62);
+    0 26px 48px rgba(2, 6, 23, 0.34),
+    0 0 0 1px rgba(148, 163, 184, 0.38);
+}
+
+.paperFigureAsset {
+  filter: drop-shadow(0 12px 22px rgba(15, 23, 42, 0.18));
 }
 
 .paperSupportGrid {
@@ -899,6 +932,10 @@
   .articleAside {
     position: static;
   }
+
+  .detailPage {
+    max-width: min(100%, calc(100vw - 24px));
+  }
 }
 
 @media (max-width: 720px) {
@@ -944,6 +981,13 @@
     padding: 18px;
   }
 
+  .paperPages {
+    min-height: 66vh;
+    max-height: calc(100vh - 216px);
+    gap: 18px;
+    padding: 10px 10px 12px 4px;
+  }
+
   .paperViewerTitle {
     font-size: clamp(28px, 8vw, 38px);
   }
@@ -951,6 +995,10 @@
   .paperSheetMeta {
     font-size: 10px;
     letter-spacing: 0.08em;
+  }
+
+  .paperSheet {
+    width: 100%;
   }
 
   .statGrid {

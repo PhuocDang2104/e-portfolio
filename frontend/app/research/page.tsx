@@ -38,8 +38,7 @@ export default function ResearchHubPage() {
                   <h2 className={styles.archiveTitle}>Full research papers</h2>
                 </div>
                 <p className={styles.archiveSubtitle}>
-                  Detailed paper views preserve the PDF page layout and reserve figure slots for
-                  future asset linking.
+                  Source-linked replicas with mapped figures, local PDFs, and paper metadata.
                 </p>
               </div>
 

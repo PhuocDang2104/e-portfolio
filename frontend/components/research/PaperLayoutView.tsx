@@ -63,7 +63,7 @@ export default function PaperLayoutView({ paper }: PaperLayoutViewProps) {
               className={styles.paperSvg}
               aria-label={`${paper.title} page ${page.number}`}
             >
-              <rect x="0" y="0" width={page.width} height={page.height} fill="#fffdfa" />
+              <rect x="0" y="0" width={page.width} height={page.height} fill="#f7fbff" />
 
               {page.figures.map((figure) => {
                 const assetUrl = paper.figureAssets[figure.id];
@@ -72,6 +72,7 @@ export default function PaperLayoutView({ paper }: PaperLayoutViewProps) {
                   return (
                     <image
                       key={figure.id}
+                      className={styles.paperFigureAsset}
                       href={assetUrl}
                       x={figure.x}
                       y={figure.y}
@@ -90,8 +91,8 @@ export default function PaperLayoutView({ paper }: PaperLayoutViewProps) {
                       width={figure.width}
                       height={figure.height}
                       rx="8"
-                      fill="#fff7ed"
-                      stroke="#d97706"
+                      fill="#e8f5ff"
+                      stroke="#0284c7"
                       strokeDasharray="8 6"
                     />
                     <text
@@ -99,7 +100,7 @@ export default function PaperLayoutView({ paper }: PaperLayoutViewProps) {
                       y={figure.y + 26}
                       fontSize="12"
                       fontWeight="700"
-                      fill="#9a3412"
+                      fill="#075985"
                       fontFamily="Arial, Helvetica, sans-serif"
                     >
                       Figure asset placeholder
@@ -108,7 +109,7 @@ export default function PaperLayoutView({ paper }: PaperLayoutViewProps) {
                       x={figure.x + 14}
                       y={figure.y + 46}
                       fontSize="11"
-                      fill="#7c2d12"
+                      fill="#0f172a"
                       fontFamily="Arial, Helvetica, sans-serif"
                     >
                       {figure.id}

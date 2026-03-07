@@ -1,4 +1,5 @@
 import ShowcaseCarousel from "@/components/ShowcaseCarousel/ShowcaseCarousel";
+import CertificationGallery from "@/components/home/CertificationGallery";
 import { EncryptedText } from "@/components/ui/encrypted-text";
 import HomeAsk from "./_components/HomeAsk";
 
@@ -368,18 +369,7 @@ export default function Page() {
           <h2 className="section-title" id="exp-title">
             Certifications
           </h2>
-          <div className="timeline">
-            <div className="item reveal">
-              <strong>IELTS 6.5</strong>
-            </div>
-            <div className="item reveal">
-              <strong>Udemy Advanced Python / C / C++ Course</strong>
-            </div>
-            <div className="item reveal">
-              <strong>UEHG club</strong>
-              <div className="muted small">Charitable journeys to Bình Thuận & Đắk Nông schools</div>
-            </div>
-          </div>
+          <CertificationGallery />
         </section>
 
         <section className="content reveal" id="skills" aria-labelledby="skills-title">

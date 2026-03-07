@@ -36,8 +36,11 @@ export const RESEARCH_PAPERS: ResearchPaperDefinition[] = [
     sourceUrl: "https://arxiv.org/abs/1706.03762",
     sourceLabel: "arXiv",
     layout: attentionLayout as PaperLayout,
-    // Example: { "p03-figure-01": "/research/figures/attention/p03-figure-01.png" }
-    figureAssets: {}
+    figureAssets: {
+      "p03-figure-01": "/research/figures/p01/p01_fig1.jpg",
+      "p04-figure-01": "/research/figures/p01/p01_fig2.jpg",
+      "p08-figure-01": "/research/figures/p01/p01_table1.jpg"
+    }
   },
   {
     kind: "paper",
@@ -66,7 +69,18 @@ export const RESEARCH_PAPERS: ResearchPaperDefinition[] = [
     sourceUrl: "https://arxiv.org/abs/2508.02739",
     sourceLabel: "arXiv",
     layout: kronosLayout as PaperLayout,
-    // Example: { "p02-figure-01": "/research/figures/kronos/p02-figure-01.png" }
-    figureAssets: {}
+    figureAssets: {
+      "p02-figure-01": "/research/figures/p02/p02_fig1.jpg",
+      "p03-figure-01": "/research/figures/p02/p02_formula1.jpg",
+      "p03-figure-02": "/research/figures/p02/p02_fig3.jpg",
+      "p05-figure-01": "/research/figures/p02/p02_fig2.jpg",
+      "p07-figure-01": "/research/figures/p02/p02_formula2.jpg",
+      "p08-figure-01": "/research/figures/p02/p02_table1.jpg",
+      "p09-figure-01": "/research/figures/p02/p02_fig4.jpg",
+      "p12-figure-01": "/research/figures/p02/p02_fig5.jpg",
+      "p14-figure-01": "/research/figures/p02/p02_table2.jpg",
+      "p15-figure-01": "/research/figures/p02/p02_fig6.jpg",
+      "p16-figure-01": "/research/figures/p02/p02_fig7.jpg"
+    }
   }
 ];
