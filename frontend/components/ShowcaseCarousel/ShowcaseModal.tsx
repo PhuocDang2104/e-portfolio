@@ -7,11 +7,12 @@ type ShowcaseModalProps = {
   open: boolean;
   onClose: () => void;
   show?: ShowItem;
+  ctaLabel?: string;
 };
 
 const buildPdfSrc = (src: string) => `${src}#toolbar=0&navpanes=0&scrollbar=0`;
 
-const ShowcaseModal = ({ open, onClose, show }: ShowcaseModalProps) => {
+const ShowcaseModal = ({ open, onClose, show, ctaLabel }: ShowcaseModalProps) => {
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -82,9 +83,11 @@ const ShowcaseModal = ({ open, onClose, show }: ShowcaseModalProps) => {
           <div className="flex-1 space-y-3">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-pearl/70">
-                  {show.year}
-                </p>
+                {show.year && (
+                  <p className="text-xs uppercase tracking-[0.18em] text-pearl/70">
+                    {show.year}
+                  </p>
+                )}
                 <h3 className="font-display text-2xl font-bold text-foam">{show.title}</h3>
                 <p className="text-sm text-foam/80">{show.subtitle}</p>
               </div>
@@ -97,16 +100,18 @@ const ShowcaseModal = ({ open, onClose, show }: ShowcaseModalProps) => {
                 ×
               </button>
             </div>
-            <p className="text-sm text-foam/80">
-              <strong className="text-foam">{show.location}</strong>
-            </p>
+            {show.location && (
+              <p className="text-sm text-foam/80">
+                <strong className="text-foam">{show.location}</strong>
+              </p>
+            )}
             <p className="text-sm text-foam/80">{show.fullDescription}</p>
             <div className="pt-2">
               <a
                 href={show.projectUrl}
                 className="project-detail-btn"
               >
-                <span>Project detail</span>
+                <span>{ctaLabel ?? "Project detail"}</span>
                 <span className="project-detail-btn__arrow" aria-hidden="true">
                   -&gt;
                 </span>

@@ -1,3 +1,6 @@
+import ShowcaseCarousel from "@/components/ShowcaseCarousel/ShowcaseCarousel";
+import { galleryItems } from "@/components/ShowcaseCarousel/shows";
+
 export default function Page() {
   return (
     <>
@@ -35,8 +38,8 @@ export default function Page() {
           <div className="hero-right reveal">
             <div className="vnpt-hero-media">
               <img
-                src="/static/images/vnpt-ai/vnpt-ai-banner.png"
-                alt="MeetMate SAAR banner"
+                src="/static/images/vnpt-ai/vnpt_team.jpg"
+                alt="VNPT AI Hackathon team"
                 className="vnpt-hero-img"
               />
             </div>
@@ -260,22 +263,28 @@ export default function Page() {
 
               <div className="meetmate-arch-track">
                 <figure className="meetmate-arch-slide meetmate-arch-slide--one">
-                  <img
-                    src="/static/images/vnpt-ai/meetmate_architect_1.png"
-                    alt="MeetMate full-stack architecture slide 1"
-                  />
+                  <a className="meetmate-arch-zoom" href="#arch-lightbox-1">
+                    <img
+                      src="/static/images/vnpt-ai/meetmate_architect_1.png"
+                      alt="MeetMate full-stack architecture slide 1"
+                    />
+                  </a>
                 </figure>
                 <figure className="meetmate-arch-slide meetmate-arch-slide--two">
-                  <img
-                    src="/static/images/vnpt-ai/meetmate_architect_2.png"
-                    alt="MeetMate full-stack architecture slide 2"
-                  />
+                  <a className="meetmate-arch-zoom" href="#arch-lightbox-2">
+                    <img
+                      src="/static/images/vnpt-ai/meetmate_architect_2.png"
+                      alt="MeetMate full-stack architecture slide 2"
+                    />
+                  </a>
                 </figure>
                 <figure className="meetmate-arch-slide meetmate-arch-slide--three">
-                  <img
-                    src="/static/images/vnpt-ai/meetmate_architect_3.png"
-                    alt="MeetMate full-stack architecture slide 3"
-                  />
+                  <a className="meetmate-arch-zoom" href="#arch-lightbox-3">
+                    <img
+                      src="/static/images/vnpt-ai/meetmate_architect_3.png"
+                      alt="MeetMate full-stack architecture slide 3"
+                    />
+                  </a>
                 </figure>
               </div>
             </div>
@@ -287,6 +296,42 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        <div className="saar-lightbox" id="arch-lightbox-1" aria-hidden="true">
+          <div className="saar-lightbox-inner" role="dialog" aria-label="Architecture slide 1">
+            <a className="saar-lightbox-close" href="#" aria-label="Close" data-lightbox-close>
+              x
+            </a>
+            <img
+              src="/static/images/vnpt-ai/meetmate_architect_1.png"
+              alt="MeetMate full-stack architecture slide 1 enlarged"
+            />
+          </div>
+        </div>
+
+        <div className="saar-lightbox" id="arch-lightbox-2" aria-hidden="true">
+          <div className="saar-lightbox-inner" role="dialog" aria-label="Architecture slide 2">
+            <a className="saar-lightbox-close" href="#" aria-label="Close" data-lightbox-close>
+              x
+            </a>
+            <img
+              src="/static/images/vnpt-ai/meetmate_architect_2.png"
+              alt="MeetMate full-stack architecture slide 2 enlarged"
+            />
+          </div>
+        </div>
+
+        <div className="saar-lightbox" id="arch-lightbox-3" aria-hidden="true">
+          <div className="saar-lightbox-inner" role="dialog" aria-label="Architecture slide 3">
+            <a className="saar-lightbox-close" href="#" aria-label="Close" data-lightbox-close>
+              x
+            </a>
+            <img
+              src="/static/images/vnpt-ai/meetmate_architect_3.png"
+              alt="MeetMate full-stack architecture slide 3 enlarged"
+            />
+          </div>
+        </div>
 
         <section
           className="content meetmate-saar reveal"
@@ -414,100 +459,54 @@ export default function Page() {
               </article>
             </div>
           </div>
-
-          <div className="saar-lightbox" id="saar-lightbox-pre" aria-hidden="true">
-            <div className="saar-lightbox-inner" role="dialog" aria-label="Pre-meeting AI diagram">
-              <a className="saar-lightbox-close" href="#" aria-label="Close">
-                x
-              </a>
-              <img
-                src="/static/images/vnpt-ai/pre-meeting-ai.png"
-                alt="Pre-meeting AI architecture diagram enlarged"
-              />
-            </div>
-          </div>
-
-          <div className="saar-lightbox" id="saar-lightbox-in" aria-hidden="true">
-            <div className="saar-lightbox-inner" role="dialog" aria-label="In-meeting AI diagram">
-              <a className="saar-lightbox-close" href="#" aria-label="Close">
-                x
-              </a>
-              <img
-                src="/static/images/vnpt-ai/in-meeting-ai.png"
-                alt="In-meeting AI architecture diagram enlarged"
-              />
-            </div>
-          </div>
-
-          <div className="saar-lightbox" id="saar-lightbox-post" aria-hidden="true">
-            <div className="saar-lightbox-inner" role="dialog" aria-label="Post-meeting AI diagram">
-              <a className="saar-lightbox-close" href="#" aria-label="Close">
-                x
-              </a>
-              <img
-                src="/static/images/vnpt-ai/post-meeting-ai.png"
-                alt="Post-meeting AI architecture diagram enlarged"
-              />
-            </div>
-          </div>
         </section>
 
-        <section className="content art-gallery reveal" id="gallery" aria-labelledby="gallery-title">
-          <h2 className="section-title" id="gallery-title">
-            Art Gallery
-          </h2>
-          <p className="muted">
-            Curated visual highlights. Replace the placeholder images with your own.
-          </p>
-
-          <div className="art-gallery-frame">
-            <div className="art-gallery-track">
-              <figure className="art-card art-card--wide" id="art-1">
-                <img
-                  src="/static/images/vnpt-ai/vnpt-ai-banner.png"
-                  alt="Gallery placeholder 1"
-                />
-                <figcaption>Showcase cover</figcaption>
-              </figure>
-              <figure className="art-card" id="art-2">
-                <img
-                  src="/static/images/vnpt-ai/meetmate_architect_1.png"
-                  alt="Gallery placeholder 2"
-                />
-                <figcaption>System overview</figcaption>
-              </figure>
-              <figure className="art-card art-card--tall" id="art-3">
-                <img
-                  src="/static/images/vnpt-ai/meetmate_architect_2.png"
-                  alt="Gallery placeholder 3"
-                />
-                <figcaption>Deployment view</figcaption>
-              </figure>
-              <figure className="art-card" id="art-4">
-                <img
-                  src="/static/images/vnpt-ai/meetmate_architect_3.png"
-                  alt="Gallery placeholder 4"
-                />
-                <figcaption>Infrastructure layers</figcaption>
-              </figure>
-              <figure className="art-card art-card--wide" id="art-5">
-                <img
-                  src="/static/images/vnpt-ai/meetmate_SAARchitect.png"
-                  alt="Gallery placeholder 5"
-                />
-                <figcaption>Agentic RAG flow</figcaption>
-              </figure>
-            </div>
+        <div className="saar-lightbox" id="saar-lightbox-pre" aria-hidden="true">
+          <div className="saar-lightbox-inner" role="dialog" aria-label="Pre-meeting AI diagram">
+            <a className="saar-lightbox-close" href="#" aria-label="Close" data-lightbox-close>
+              x
+            </a>
+            <img
+              src="/static/images/vnpt-ai/pre-meeting-ai.png"
+              alt="Pre-meeting AI architecture diagram enlarged"
+            />
           </div>
+        </div>
 
-          <div className="art-gallery-nav" aria-label="Gallery navigation">
-            <a className="art-dot" href="#art-1" aria-label="Go to artwork 1"></a>
-            <a className="art-dot" href="#art-2" aria-label="Go to artwork 2"></a>
-            <a className="art-dot" href="#art-3" aria-label="Go to artwork 3"></a>
-            <a className="art-dot" href="#art-4" aria-label="Go to artwork 4"></a>
-            <a className="art-dot" href="#art-5" aria-label="Go to artwork 5"></a>
+        <div className="saar-lightbox" id="saar-lightbox-in" aria-hidden="true">
+          <div className="saar-lightbox-inner" role="dialog" aria-label="In-meeting AI diagram">
+            <a className="saar-lightbox-close" href="#" aria-label="Close" data-lightbox-close>
+              x
+            </a>
+            <img
+              src="/static/images/vnpt-ai/in-meeting-ai.png"
+              alt="In-meeting AI architecture diagram enlarged"
+            />
           </div>
-        </section>
+        </div>
+
+        <div className="saar-lightbox" id="saar-lightbox-post" aria-hidden="true">
+          <div className="saar-lightbox-inner" role="dialog" aria-label="Post-meeting AI diagram">
+            <a className="saar-lightbox-close" href="#" aria-label="Close" data-lightbox-close>
+              x
+            </a>
+            <img
+              src="/static/images/vnpt-ai/post-meeting-ai.png"
+              alt="Post-meeting AI architecture diagram enlarged"
+            />
+          </div>
+        </div>
+
+        <ShowcaseCarousel
+          items={galleryItems}
+          sectionId="gallery"
+          sectionClassName="mt-12 mb-12 py-12 gallery-bleed"
+          containerClassName="max-w-none"
+          eyebrow="MeetMate visual archive"
+          title="Art Gallery"
+          description="Swipe to view the key visuals."
+          modalCtaLabel="View full"
+        />
 
         <section className="content reveal" id="deployment" aria-labelledby="deployment-title">
           <h2 className="section-title" id="deployment-title">

@@ -84,3 +84,61 @@ export const shows: ShowItem[] = [
     projectUrl: "/intel_ai_project"
   }
 ];
+
+export const galleryItems: ShowItem[] = [
+  {
+    id: "gallery-01",
+    title: "MeetMate",
+    subtitle: "Banner",
+    posterSrc: "/static/images/vnpt-ai/vnpt-ai-banner.png",
+    year: "MeetMate",
+    location: "VNPT AI Hackathon 2025",
+    shortSummary: "Product banner snapshot.",
+    fullDescription: "The MeetMate SAAR banner used across the hackathon showcase.",
+    projectUrl: "/static/images/vnpt-ai/vnpt-ai-banner.png"
+  },
+  {
+    id: "gallery-02",
+    title: "System Map",
+    subtitle: "Overview",
+    posterSrc: "/static/images/vnpt-ai/meetmate_architect_1.png",
+    year: "Architecture",
+    location: "Full-stack view",
+    shortSummary: "End-to-end system overview.",
+    fullDescription: "Full-stack system architecture overview for MeetMate SAAR.",
+    projectUrl: "/static/images/vnpt-ai/meetmate_architect_1.png"
+  },
+  {
+    id: "gallery-03",
+    title: "Deployment",
+    subtitle: "Security",
+    posterSrc: "/static/images/vnpt-ai/meetmate_architect_2.png",
+    year: "Architecture",
+    location: "Deployment layer",
+    shortSummary: "Deployment & security layout.",
+    fullDescription: "Deployment layers and security architecture for enterprise rollout.",
+    projectUrl: "/static/images/vnpt-ai/meetmate_architect_2.png"
+  },
+  {
+    id: "gallery-04",
+    title: "Integration",
+    subtitle: "Ecosystem",
+    posterSrc: "/static/images/vnpt-ai/meetmate_architect_3.png",
+    year: "Architecture",
+    location: "System integration",
+    shortSummary: "Integration layers and services.",
+    fullDescription: "Integration map across services, storage, and tool workflows.",
+    projectUrl: "/static/images/vnpt-ai/meetmate_architect_3.png"
+  },
+  {
+    id: "gallery-05",
+    title: "SAAR Flow",
+    subtitle: "AI Core",
+    posterSrc: "/static/images/vnpt-ai/meetmate_SAARchitect.png",
+    year: "AI Architecture",
+    location: "Agentic RAG",
+    shortSummary: "Stage-aware AI architecture.",
+    fullDescription: "Stage-aware agentic adaptive RAG architecture diagram.",
+    projectUrl: "/static/images/vnpt-ai/meetmate_SAARchitect.png"
+  }
+];

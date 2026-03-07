@@ -65,6 +65,7 @@ function init() {
       if (selector === '#') return;
       const target = document.querySelector(selector);
       if (target) {
+        if (target.classList.contains('saar-lightbox')) return;
         e.preventDefault();
         const offset = 72; // navbar
         const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -275,6 +276,100 @@ function init() {
       measure();
       update();
     });
+  })();
+
+  (function setupLightbox() {
+    const getLightboxes = () => Array.from(document.querySelectorAll('.saar-lightbox'));
+
+    const getLightboxFromHash = () => {
+      const hash = window.location.hash;
+      if (!hash || hash.length <= 1) return null;
+      let target = null;
+      try {
+        target = document.querySelector(hash);
+      } catch {
+        return null;
+      }
+      if (target && target.classList.contains('saar-lightbox')) {
+        return target;
+      }
+      return null;
+    };
+
+    const openLightbox = (box) => {
+      if (!box) return;
+      getLightboxes().forEach((item) => {
+        const isActive = item === box;
+        item.classList.toggle('is-open', isActive);
+        item.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+      document.body.classList.add('lightbox-open');
+    };
+
+    const closeLightbox = () => {
+      getLightboxes().forEach((item) => {
+        item.classList.remove('is-open');
+        item.setAttribute('aria-hidden', 'true');
+      });
+      document.body.classList.remove('lightbox-open');
+
+      const hash = window.location.hash;
+      if (hash && hash.length > 1) {
+        const target = getLightboxFromHash();
+        if (target) {
+          history.replaceState(null, document.title, window.location.pathname + window.location.search);
+        }
+      }
+    };
+
+    const syncFromHash = () => {
+      const target = getLightboxFromHash();
+      if (target) {
+        openLightbox(target);
+        return;
+      }
+      closeLightbox();
+    };
+
+    document.addEventListener('click', (event) => {
+      const target = event.target instanceof Element ? event.target : event.target.parentElement;
+      if (!target) return;
+
+      const trigger = target.closest('a[href^="#saar-lightbox"], a[href^="#arch-lightbox"]');
+      if (trigger) {
+        const href = trigger.getAttribute('href');
+        if (href) {
+          const box = document.querySelector(href);
+          if (box && box.classList.contains('saar-lightbox')) {
+            event.preventDefault();
+            openLightbox(box);
+          }
+        }
+        return;
+      }
+
+      const closeTrigger = target.closest('[data-lightbox-close]');
+      if (closeTrigger) {
+        event.preventDefault();
+        closeLightbox();
+        return;
+      }
+
+      const lightbox = target.closest('.saar-lightbox');
+      if (!lightbox) return;
+      const inner = lightbox.querySelector('.saar-lightbox-inner');
+      if (inner && inner.contains(target)) return;
+      event.preventDefault();
+      closeLightbox();
+    });
+
+    window.addEventListener('hashchange', syncFromHash);
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      closeLightbox();
+    });
+
+    syncFromHash();
   })();
 }
 

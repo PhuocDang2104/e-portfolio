@@ -15,22 +15,22 @@ const QUICK_PROMPTS = [
   "Who are you and what do you build?",
   "What is your most standout project?",
   "What are your core skills?",
-  "How can I reach you quickly?",
+  "How can I reach you quickly?"
 ];
 
 const MOCK_RESPONSES: Record<string, string> = {
   "Who are you and what do you build?":
-    "I'm Phuoc Dang, an AI & Embedded Software Engineer focused on reliable AI systems, agentic RAG, and production-ready backend services.",
+    "I am Phuoc Dang, an AI and Embedded Software Engineer focused on reliable AI systems, agentic RAG, and production backend services.",
   "What is your most standout project?":
-    "VNPT AI Hackathon — MeetMate SAAR. I led the stage-aware agentic RAG architecture, safety checks, and real-time orchestration for enterprise rollout.",
+    "VNPT AI Hackathon - MeetMate SAAR. I led stage-aware agentic RAG architecture, safety checks, and real-time orchestration for enterprise rollout.",
   "What are your core skills?":
-    "Strongest areas: LLM/RAG systems, backend APIs (FastAPI/Flask), ML/DL pipelines, vector search with PostgreSQL/pgvector, and production deployment.",
+    "Strongest areas: LLM and RAG systems, backend APIs (FastAPI and Flask), ML and DL pipelines, vector search with PostgreSQL and pgvector, and deployment.",
   "How can I reach you quickly?":
-    "Email: phuoc.dang2104@gmail.com • GitHub: PhuocDang2104 • LinkedIn: Phuoc Dang."
+    "Email: phuoc.dang2104@gmail.com | GitHub: PhuocDang2104 | LinkedIn: Phuoc Dang."
 };
+
 const DEFAULT_MOCK_RESPONSE =
   "I can share project highlights, technical deep dives, or help you find the right section of the portfolio.";
-const SOUND_KEY = "uehg-ai-sound";
 const SESSION_KEY = "uehg-ai-session";
 
 const createId = () => {
@@ -42,11 +42,6 @@ const createId = () => {
 
 const MeetMateChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState<boolean>(() => {
-    if (typeof window === "undefined") return true;
-    const saved = localStorage.getItem(SOUND_KEY);
-    return saved ? saved === "true" : true;
-  });
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -57,10 +52,6 @@ const MeetMateChatWidget = () => {
   const openAudioRef = useRef<HTMLAudioElement | null>(null);
   const sendAudioRef = useRef<HTMLAudioElement | null>(null);
   const sessionIdRef = useRef<string | null>(null);
-
-  useEffect(() => {
-    localStorage.setItem(SOUND_KEY, String(soundEnabled));
-  }, [soundEnabled]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -75,7 +66,6 @@ const MeetMateChatWidget = () => {
   }, []);
 
   const playAudio = (ref: MutableRefObject<HTMLAudioElement | null>, src: string) => {
-    if (!soundEnabled) return;
     let audio = ref.current;
     if (!audio) {
       audio = new Audio(src);
@@ -110,12 +100,14 @@ const MeetMateChatWidget = () => {
 
   const sendMessage = async (text: string) => {
     if (!text.trim()) return;
+
     const userMsg: ChatMessage = {
       id: createId(),
       role: "user",
       text: text.trim(),
       ts: Date.now()
     };
+
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setIsTyping(true);
@@ -155,6 +147,7 @@ const MeetMateChatWidget = () => {
     setIsOpen(true);
     playAudio(openAudioRef, "/sounds/open.mp3");
   };
+
   const handleClose = () => setIsOpen(false);
 
   useEffect(() => {
@@ -179,7 +172,7 @@ const MeetMateChatWidget = () => {
 
   const icon = (
     <div className="ai-chat-fab">
-      <div className="ai-chat-fab__hint">Ask me!</div>
+      <div className="ai-chat-fab__hint">Ask me</div>
       <button aria-label="Open AI assistant" onClick={handleOpen} className="ai-chat-fab__button">
         <div className="ai-chat-fab__icon">
           <img src="/assets/Phuoc_chatbot.png" alt="AI assistant" draggable={false} />
@@ -197,31 +190,24 @@ const MeetMateChatWidget = () => {
         <div className="ai-chat-window__inner">
           <div className="ai-chat-header">
             <div className="ai-chat-title">
-              <span>Phước's AI Assistant</span>
-              <div className="ai-chat-eq">
-                {[1, 2, 3].map((i) => (
-                  <span key={i} style={{ animationDelay: `${i * 120}ms` }} />
-                ))}
+              <span>Phuoc AI Assistant</span>
+              <div className="ai-chat-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="4" y="5" width="16" height="14" rx="4" stroke="currentColor" />
+                  <circle cx="9" cy="11" r="1.3" fill="currentColor" />
+                  <circle cx="15" cy="11" r="1.3" fill="currentColor" />
+                  <path d="M8.5 15h7" stroke="currentColor" strokeLinecap="round" />
+                </svg>
               </div>
             </div>
             <div className="ai-chat-controls">
-              <label className="ai-chat-sound">
-                <input
-                  type="checkbox"
-                  checked={soundEnabled}
-                  onChange={(e) => setSoundEnabled(e.target.checked)}
-                />
-                Sound
-              </label>
               <button aria-label="Close" onClick={handleClose} className="ai-chat-close">
-                ×
+                X
               </button>
             </div>
           </div>
 
-          <div className="ai-chat-intro">
-            I am an AI chatbot on behalf of Dang Nhu Phuoc. Feel free to ask.
-          </div>
+          <div className="ai-chat-intro">I am an AI chatbot on behalf of Dang Nhu Phuoc.</div>
 
           <div ref={listRef} className="ai-chat-messages">
             <div className="ai-chat-suggestions">
@@ -234,6 +220,7 @@ const MeetMateChatWidget = () => {
                 ))}
               </div>
             </div>
+
             {messages.map((m) => (
               <div key={m.id} className={`ai-chat-bubble ai-chat-bubble--${m.role}`}>
                 {m.text.split("\n").map((line, idx) => (
@@ -241,9 +228,10 @@ const MeetMateChatWidget = () => {
                 ))}
               </div>
             ))}
+
             {isTyping && (
               <div className="ai-chat-bubble ai-chat-bubble--assistant ai-chat-typing">
-                <div className="ai-chat-eq">
+                <div className="ai-chat-typing-dots" aria-hidden="true">
                   {[1, 2, 3].map((i) => (
                     <span key={i} style={{ animationDelay: `${i * 120}ms` }} />
                   ))}

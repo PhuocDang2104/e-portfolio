@@ -17,7 +17,27 @@ const normalizeOffset = (value: number, width: number) => {
 
 const buildPdfSrc = (src: string) => `${src}#toolbar=0&navpanes=0&scrollbar=0`;
 
-const ShowcaseCarousel = () => {
+type ShowcaseCarouselProps = {
+  items?: ShowItem[];
+  sectionId?: string;
+  sectionClassName?: string;
+  containerClassName?: string;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  modalCtaLabel?: string;
+};
+
+const ShowcaseCarousel = ({
+  items = shows,
+  sectionId = "achievements",
+  sectionClassName,
+  containerClassName,
+  eyebrow = "Awards archive",
+  title = "Awards & Achievements",
+  description = "Drag horizontally to explore the highlights.",
+  modalCtaLabel
+}: ShowcaseCarouselProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [activeShow, setActiveShow] = useState<ShowItem | null>(null);
@@ -35,7 +55,8 @@ const ShowcaseCarousel = () => {
   const paused = isHovered || isDragging;
   const pausedRef = useRef(false);
 
-  const duplicated = useMemo(() => [...shows, ...shows], []);
+  const itemCount = items.length;
+  const duplicated = useMemo(() => [...items, ...items], [items]);
 
   useEffect(() => {
     pausedRef.current = paused;
@@ -50,7 +71,7 @@ const ShowcaseCarousel = () => {
       const items = el.children;
       let loopWidth = el.scrollWidth / 2;
       const first = items[0] as HTMLElement | undefined;
-      const second = items[shows.length] as HTMLElement | undefined;
+      const second = items[itemCount] as HTMLElement | undefined;
       if (first && second) {
         loopWidth = second.offsetLeft - first.offsetLeft;
       }
@@ -127,8 +148,8 @@ const ShowcaseCarousel = () => {
 
   return (
     <section
-      id="achievements"
-      className="relative isolate w-full overflow-hidden py-8"
+      id={sectionId}
+      className={`relative isolate w-full overflow-hidden py-8 ${sectionClassName ?? ""}`.trim()}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#0b1020] via-[#0f182e] to-[#0b1226]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(142,240,255,0.12),transparent_45%),radial-gradient(circle_at_80%_10%,rgba(255,141,106,0.12),transparent_45%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,0.04),transparent_40%)]" />
@@ -137,15 +158,19 @@ const ShowcaseCarousel = () => {
         style={{ backgroundImage: noiseTexture }}
       />
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-1 px-6">
-        <p className="text-xs uppercase tracking-[0.2em] text-foam/70">Awards archive</p>
+      <div
+        className={`relative z-10 mx-auto flex max-w-6xl flex-col gap-1 px-6 ${
+          containerClassName ?? ""
+        }`.trim()}
+      >
+        <p className="text-xs uppercase tracking-[0.2em] text-foam/70">{eyebrow}</p>
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h3 className="font-display m-0 text-2xl font-bold text-foam sm:text-3xl">
-              Awards & Achievements
+              {title}
             </h3>
             <p className="text-xs text-foam/70 sm:text-sm">
-              Drag horizontally to explore the highlights.
+              {description}
             </p>
           </div>
           <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
@@ -241,6 +266,7 @@ const ShowcaseCarousel = () => {
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         show={activeShow ?? undefined}
+        ctaLabel={modalCtaLabel}
       />
     </section>
   );

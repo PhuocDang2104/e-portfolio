@@ -4,7 +4,6 @@
 
 - frontend/  Next.js (App Router) + TypeScript
 - backend/   FastAPI (API-first)
-- static/, templates/, app.py remain as legacy reference
 
 ## Development
 
