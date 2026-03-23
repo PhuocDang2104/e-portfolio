@@ -80,7 +80,7 @@ export default function PostCard({ post }: PostCardProps) {
 
         <div className={styles.postActions}>
           <Link href={detailHref} className={styles.cardActionPrimary}>
-            Replica view
+            Replica
           </Link>
 
           {paper ? (
@@ -91,7 +91,7 @@ export default function PostCard({ post }: PostCardProps) {
                 rel="noreferrer"
                 className={styles.cardActionSecondary}
               >
-                Local PDF
+                Repo PDF
               </a>
               <a
                 href={paper.sourceUrl}

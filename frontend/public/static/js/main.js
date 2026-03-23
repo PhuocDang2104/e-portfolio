@@ -132,31 +132,59 @@ function init() {
     const hero = document.querySelector('.home-hero');
     if (!hero) return;
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let ticking = false;
+
+    const resetHeroState = () => {
+      hero.style.setProperty('--hero-shift', '0px');
+      hero.style.setProperty('--hero-blur', '0px');
+      hero.style.setProperty('--hero-opacity', '1');
+      hero.style.setProperty('--hero-scale', '1');
+      hero.style.setProperty('--hero-visual-shift', '0px');
+      hero.style.setProperty('--hero-visual-opacity', '0.9');
+      hero.style.setProperty('--hero-visual-two-x', '0px');
+      hero.style.setProperty('--hero-visual-two-y', '0px');
+      hero.style.setProperty('--hero-visual-three-x', '0px');
+      hero.style.setProperty('--hero-visual-three-y', '0px');
+      hero.style.setProperty('--hero-visual-four-x', '0px');
+      hero.style.setProperty('--hero-visual-four-y', '0px');
+      hero.style.setProperty('--hero-cue-shift', '0px');
+      hero.style.setProperty('--hero-cue-opacity', '1');
+      hero.style.setProperty('--hero-image-shift', '0px');
+      hero.style.setProperty('--hero-image-scale', '1');
+      hero.style.setProperty('--hero-image-opacity', '1');
+    };
+
     const update = () => {
       ticking = false;
+      if (prefersReducedMotion.matches) {
+        resetHeroState();
+        return;
+      }
+
       const rect = hero.getBoundingClientRect();
       const height = hero.offsetHeight || window.innerHeight;
       const scrolled = Math.min(Math.max(-rect.top, 0), height);
       const progress = Math.min(scrolled / height, 1);
 
-      const shift = -140 * progress;
-      const blur = 4 * progress;
-      const opacity = 1 - progress * 0.9;
-      const scale = 1 - progress * 0.1;
-      const visualShift = -120 * progress;
-      const visualOpacity = 0.9 - progress * 0.6;
-      const cueOpacity = 1 - progress * 1.2;
-      const cueShift = 12 * progress;
-      const imageShift = Math.min(scrolled * 1.1, height * 0.65);
-      const imageScale = 1 + progress * 0.35;
-      const imageOpacity = 1 - progress * 0.35;
-      const visualTwoX = 220 * progress;
-      const visualTwoY = -200 * progress;
-      const visualThreeX = -260 * progress;
-      const visualThreeY = -220 * progress;
-      const visualFourX = 240 * progress;
-      const visualFourY = 200 * progress;
+      const eased = 1 - Math.pow(1 - progress, 2.4);
+      const shift = -96 * eased;
+      const blur = 2.2 * eased;
+      const opacity = 1 - eased * 0.72;
+      const scale = 1 - eased * 0.05;
+      const visualShift = -78 * eased;
+      const visualOpacity = 0.9 - eased * 0.34;
+      const cueOpacity = 1 - eased * 0.95;
+      const cueShift = 10 * eased;
+      const imageShift = Math.min(scrolled * 0.82, height * 0.48);
+      const imageScale = 1 + eased * 0.18;
+      const imageOpacity = 1 - eased * 0.16;
+      const visualTwoX = 150 * eased;
+      const visualTwoY = -132 * eased;
+      const visualThreeX = -168 * eased;
+      const visualThreeY = -150 * eased;
+      const visualFourX = 156 * eased;
+      const visualFourY = 126 * eased;
 
       hero.style.setProperty('--hero-shift', `${shift}px`);
       hero.style.setProperty('--hero-blur', `${blur}px`);
@@ -187,6 +215,7 @@ function init() {
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
+    prefersReducedMotion.addEventListener?.('change', onScroll);
   })();
 
   (function setupScrollMedia() {
@@ -195,71 +224,68 @@ function init() {
     const floating = document.querySelector('.scroll-media');
     if (!anchor || !target || !floating) return;
 
-    const speed = 0.05;
-    const startScale = 0.86;
-    let startRect = null;
-    let endRect = null;
-    let endScroll = 0;
+    const floatingImage = floating.querySelector('.scroll-media-img');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const startScale = 0.88;
     let ticking = false;
+    let anchorRadius = 24;
+    let targetRadius = 18;
 
-    const measure = () => {
-      const scrollY = window.pageYOffset;
-      const scrollX = window.pageXOffset;
-      const anchorRect = anchor.getBoundingClientRect();
-      const targetRect = target.getBoundingClientRect();
-      const baseRadius = parseFloat(getComputedStyle(anchor).borderRadius) || 24;
-      const scaledWidth = anchorRect.width * startScale;
-      const scaledHeight = anchorRect.height * startScale;
-      const scaledTop = anchorRect.top + (anchorRect.height - scaledHeight) / 2;
-      const scaledLeft = anchorRect.left + (anchorRect.width - scaledWidth) / 2;
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+    const easeOutCubic = (value) => 1 - Math.pow(1 - value, 3);
 
-      startRect = {
-        top: scaledTop,
-        left: scaledLeft,
-        width: scaledWidth,
-        height: scaledHeight,
-        radius: baseRadius * startScale
-      };
-
-      const startDocTop = startRect.top + scrollY;
-
-      endRect = {
-        top: targetRect.top + scrollY,
-        left: targetRect.left + scrollX,
-        width: targetRect.width,
-        height: targetRect.height,
-        radius: parseFloat(getComputedStyle(target).borderRadius) || 18
-      };
-
-      const distance = endRect.top - startDocTop;
-      endScroll = Math.max(1, distance / (1 + speed));
+    const measureStatic = () => {
+      anchorRadius = parseFloat(getComputedStyle(anchor).borderRadius) || 24;
+      targetRadius = parseFloat(getComputedStyle(target).borderRadius) || 18;
     };
 
     const update = () => {
       ticking = false;
-      if (!startRect || !endRect) return;
+      if (prefersReducedMotion.matches) {
+        floating.style.opacity = '0';
+        if (floatingImage) {
+          floatingImage.style.transform = 'scale(1)';
+        }
+        return;
+      }
 
       const scrollY = window.pageYOffset;
-      const scrollX = window.pageXOffset;
-      const progressRaw = scrollY / endScroll;
-      const progress = Math.min(Math.max(progressRaw, 0), 1);
-      const blur = Math.max(0, 0.5 * (1 - progress));
+      const anchorRect = anchor.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      if (!anchorRect.width || !anchorRect.height || !targetRect.width || !targetRect.height) {
+        floating.style.opacity = '0';
+        return;
+      }
 
-      const targetTop = endRect.top - scrollY;
-      const targetLeft = endRect.left - scrollX;
-      const currentTop = progress >= 1 ? targetTop : startRect.top + scrollY * speed;
-      const currentLeft = startRect.left + (targetLeft - startRect.left) * progress;
-      const currentWidth = startRect.width + (endRect.width - startRect.width) * progress;
-      const currentHeight = startRect.height + (endRect.height - startRect.height) * progress;
-      const currentRadius = startRect.radius + (endRect.radius - startRect.radius) * progress;
+      const startWidth = anchorRect.width * startScale;
+      const startHeight = anchorRect.height * startScale;
+      const startTop = anchorRect.top + (anchorRect.height - startHeight) / 2;
+      const startLeft = anchorRect.left + (anchorRect.width - startWidth) / 2;
+      const startDocTop = startTop + scrollY;
+      const targetDocTop = targetRect.top + scrollY;
+      const travelDistance = Math.max(targetDocTop - startDocTop, 1);
+      const progress = clamp(scrollY / travelDistance, 0, 1);
+      const eased = easeOutCubic(progress);
+      const currentTop = startTop + (targetRect.top - startTop) * eased;
+      const currentLeft = startLeft + (targetRect.left - startLeft) * eased;
+      const nextWidth = startWidth + (targetRect.width - startWidth) * eased;
+      const nextHeight = startHeight + (targetRect.height - startHeight) * eased;
+      const scaleX = nextWidth / startWidth;
+      const scaleY = nextHeight / startHeight;
+      const currentRadius = anchorRadius * startScale + (targetRadius - anchorRadius * startScale) * eased;
+      const blur = (1 - eased) * 0.45;
+      const imageScale = 1.06 - eased * 0.06;
 
-      floating.style.opacity = '1';
-      floating.style.filter = `blur(${blur}px)`;
-      floating.style.top = `${currentTop}px`;
-      floating.style.left = `${currentLeft}px`;
-      floating.style.width = `${currentWidth}px`;
-      floating.style.height = `${currentHeight}px`;
+      floating.style.width = `${startWidth}px`;
+      floating.style.height = `${startHeight}px`;
       floating.style.borderRadius = `${currentRadius}px`;
+      floating.style.opacity = progress <= 0.02 && scrollY < 8 ? '0' : '1';
+      floating.style.filter = `blur(${blur}px)`;
+      floating.style.transform = `translate3d(${currentLeft}px, ${currentTop}px, 0) scale(${scaleX}, ${scaleY})`;
+
+      if (floatingImage) {
+        floatingImage.style.transform = `scale(${imageScale})`;
+      }
     };
 
     const onScroll = () => {
@@ -269,13 +295,15 @@ function init() {
       }
     };
 
-    measure();
+    measureStatic();
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', () => {
-      measure();
+      measureStatic();
       update();
     });
+    window.addEventListener('load', update);
+    prefersReducedMotion.addEventListener?.('change', update);
   })();
 
   (function setupLightbox() {

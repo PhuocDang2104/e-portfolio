@@ -10,59 +10,39 @@
   padding-inline: clamp(14px, 2vw, 28px);
 }
 
-.notesPanel {
-  border-radius: 22px;
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  background: linear-gradient(150deg, rgba(9, 22, 36, 0.95), rgba(6, 14, 24, 0.97));
-  padding: 20px;
-  box-shadow: 0 22px 48px rgba(2, 6, 23, 0.42);
-}
-
-.notesPanelHead {
+.libraryHeader {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 12px;
+  gap: 18px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
 }
 
-.notesPanelTitle {
+.libraryTitle {
   margin: 0;
   font-family: var(--font-research-serif), Georgia, serif;
   color: #f5fbff;
-  font-size: clamp(26px, 3.4vw, 34px);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-size: clamp(34px, 4.2vw, 48px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
 }
 
-.notesPanelMeta {
+.libraryCount {
   margin: 0;
   color: rgba(184, 211, 235, 0.78);
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   font-weight: 700;
 }
 
 .libraryIntro {
-  margin: 12px 0 0;
+  margin: 18px 0 0;
   max-width: 760px;
   color: rgba(203, 226, 243, 0.84);
   font-size: 15px;
-  line-height: 1.72;
-}
-
-.libraryStack {
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.librarySection {
-  border-radius: 22px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  background: linear-gradient(150deg, rgba(9, 22, 36, 0.94), rgba(6, 14, 24, 0.96));
-  padding: 24px;
+  line-height: 1.78;
 }
 
 .featuredSection,
@@ -226,10 +206,10 @@
 
 .postGrid {
   list-style: none;
-  margin: 14px 0 0;
+  margin: 28px 0 0;
   padding: 0;
   display: grid;
-  gap: 10px;
+  gap: 18px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -241,27 +221,30 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  border-radius: 14px;
-  border: 1px solid rgba(148, 163, 184, 0.24);
-  background: linear-gradient(170deg, rgba(8, 22, 36, 0.86), rgba(8, 17, 30, 0.9));
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 38%),
+    linear-gradient(165deg, rgba(8, 20, 34, 0.76), rgba(6, 14, 24, 0.92));
   text-decoration: none;
   color: inherit;
   overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 18px 36px rgba(2, 6, 23, 0.24);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
 .postCard:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
   border-color: rgba(125, 211, 252, 0.56);
-  box-shadow: 0 12px 24px rgba(2, 6, 23, 0.34);
+  box-shadow: 0 24px 48px rgba(2, 6, 23, 0.32);
 }
 
 .postMediaLink {
   width: 100%;
   display: block;
-  aspect-ratio: 16 / 8;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.24);
-  background: rgba(15, 23, 42, 0.5);
+  aspect-ratio: 16 / 9;
+  padding: 12px 12px 0;
+  background: transparent;
   text-decoration: none;
 }
 
@@ -270,6 +253,9 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.52);
 }
 
 .postImageFallback {
@@ -280,6 +266,8 @@
   justify-content: center;
   color: rgba(195, 217, 238, 0.75);
   font-size: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
 }
 
 .paperPreview {
@@ -287,7 +275,7 @@
   justify-content: flex-end;
   flex-direction: column;
   gap: 10px;
-  padding: 14px;
+  padding: 18px;
   background:
     linear-gradient(135deg, rgba(255, 253, 250, 0.96), rgba(247, 240, 224, 0.96)),
     radial-gradient(circle at top right, rgba(245, 158, 11, 0.16), transparent 55%);
@@ -331,7 +319,7 @@
   flex-direction: column;
   gap: 0;
   flex: 1 1 auto;
-  padding: 14px;
+  padding: 16px 16px 18px;
 }
 
 .postAuthor {
@@ -345,8 +333,8 @@
 
 .postTitle {
   margin-top: 7px;
-  font-size: 20px;
-  line-height: 1.24;
+  font-size: 22px;
+  line-height: 1.2;
 }
 
 .postTitleLink {
@@ -360,10 +348,10 @@
 
 .postExcerpt {
   margin-top: 8px;
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.68;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -391,8 +379,8 @@
   margin-top: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  padding-top: 14px;
+  gap: 10px;
+  padding-top: 16px;
 }
 
 .cardActionPrimary,
@@ -406,27 +394,27 @@
   text-decoration: none;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 8px 12px;
+  padding: 8px 13px;
   transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
 }
 
 .cardActionPrimary {
-  border: 1px solid rgba(245, 158, 11, 0.42);
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.08));
+  border: 1px solid rgba(245, 158, 11, 0.34);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(251, 191, 36, 0.07));
   color: #ffe6b0;
 }
 
 .cardActionSecondary {
-  border: 1px solid rgba(125, 211, 252, 0.38);
-  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(125, 211, 252, 0.3);
+  background: rgba(56, 189, 248, 0.08);
   color: #bdeaff;
 }
 
 .cardActionGhost {
-  border: 1px solid rgba(148, 163, 184, 0.26);
-  background: rgba(15, 23, 42, 0.46);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.42);
   color: rgba(220, 232, 244, 0.86);
 }
 
@@ -930,20 +918,15 @@
     padding-bottom: 62px;
   }
 
-  .notesPanel {
-    border-radius: 16px;
-    padding: 16px;
-  }
-
-  .notesPanelHead {
+  .libraryHeader {
     align-items: flex-start;
     flex-direction: column;
     gap: 6px;
+    padding-bottom: 16px;
   }
 
-  .librarySection {
-    border-radius: 18px;
-    padding: 18px;
+  .libraryTitle {
+    font-size: clamp(28px, 8vw, 38px);
   }
 
   .hero,
@@ -967,15 +950,15 @@
     padding: 18px;
   }
 
+  .paperViewerTitle {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+
   .paperPages {
     min-height: 66vh;
     max-height: calc(100vh - 216px);
     gap: 18px;
     padding: 10px 10px 12px 4px;
-  }
-
-  .paperViewerTitle {
-    font-size: clamp(28px, 8vw, 38px);
   }
 
   .paperSheetMeta {

@@ -392,20 +392,27 @@ export default function Page() {
             <div className="skills-row reveal">
               <div className="skills-label">GenAI / LLM Systems</div>
               <div className="skills-grid">
-                <span className="skill">Agentic RAG (hybrid retrieval, citations)</span>
-                <span className="skill">tool-calling APIs</span>
-                <span className="skill">prompt orchestration (LangGraph/ LangChain)</span>
-                <span className="skill">safety/guardrails & evaluation (grounding/faithfulness)</span>
+                <span className="skill">Agentic AI systems (LangGraph, LangChain)</span>
+                <span className="skill">RAG</span>
+                <span className="skill">hybrid retrieval</span>
+                <span className="skill">tool-calling agents</span>
+                <span className="skill">prompt orchestration</span>
+                <span className="skill">prompt design (few-shot, CoT)</span>
+                <span className="skill">context/memory management</span>
               </div>
             </div>
 
             <div className="skills-row reveal">
               <div className="skills-label">ML / DL</div>
               <div className="skills-grid">
-                <span className="skill">NLP (Hugging Face Transformers, spaCy, BERT/NER)</span>
-                <span className="skill">Deep Learning (1D-CNN, MLP)</span>
+                <span className="skill">PyTorch</span>
+                <span className="skill">TensorFlow/Keras</span>
+                <span className="skill">Transformer NLP (Hugging Face, BERT, NER)</span>
+                <span className="skill">CNN</span>
+                <span className="skill">MLP</span>
+                <span className="skill">attention mechanisms</span>
                 <span className="skill">classical ML (XGBoost)</span>
-                <span className="skill">dataset prep & evaluation (TensorFlow)</span>
+                <span className="skill">model evaluation & optimization</span>
               </div>
             </div>
 
@@ -414,20 +421,17 @@ export default function Page() {
               <div className="skills-grid">
                 <span className="skill">FastAPI/Flask</span>
                 <span className="skill">REST APIs</span>
-                <span className="skill">WebSocket</span>
+                <span className="skill">WebSocket/gRPC streaming</span>
                 <span className="skill">async/background jobs (Redis, Celery)</span>
-                <span className="skill">service modularization</span>
-                <span className="skill">API design & integration</span>
               </div>
             </div>
 
             <div className="skills-row reveal">
-              <div className="skills-label">DevOps / Production</div>
+              <div className="skills-label">MLOps & Deployment</div>
               <div className="skills-grid">
-                <span className="skill">Dockerized services</span>
-                <span className="skill">basic CI/CD</span>
-                <span className="skill">deployment & production debugging</span>
-                <span className="skill">logging/monitoring</span>
+                <span className="skill">Model serving via API (REST, WebSocket/gRPC)</span>
+                <span className="skill">Dockerized AI services</span>
+                <span className="skill">logging/observability</span>
               </div>
             </div>
 
@@ -445,19 +449,15 @@ export default function Page() {
               <div className="skills-grid">
                 <span className="skill">Git/GitHub</span>
                 <span className="skill">Docker</span>
-                <span className="skill">CMake</span>
                 <span className="skill">Jupyter</span>
                 <span className="skill">VSCode</span>
-                <span className="skill">Bash scripting & cron automation</span>
+                <span className="skill">Bash scripting</span>
               </div>
             </div>
 
             <div className="skills-row reveal">
-              <div className="skills-label">IoT / Real-time OS</div>
+              <div className="skills-label">Real-time & Embedded OS</div>
               <div className="skills-grid">
-                <span className="skill">Thread</span>
-                <span className="skill">BLE</span>
-                <span className="skill">MQTT/TCP-IP basics</span>
                 <span className="skill">RTOS (FreeRTOS, MicriumOS)</span>
                 <span className="skill">Embedded Linux</span>
               </div>
