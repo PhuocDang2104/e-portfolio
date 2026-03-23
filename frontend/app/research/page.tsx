@@ -37,9 +37,6 @@ export default function ResearchHubPage() {
                   <p className={styles.sectionLabel}>Paper Archive</p>
                   <h2 className={styles.archiveTitle}>Full research papers</h2>
                 </div>
-                <p className={styles.archiveSubtitle}>
-                  Source-linked replicas with mapped figures, local PDFs, and paper metadata.
-                </p>
               </div>
 
               <ul className={styles.postGrid}>

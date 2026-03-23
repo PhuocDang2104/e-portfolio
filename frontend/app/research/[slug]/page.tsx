@@ -8,7 +8,7 @@ import PaperLayoutView from "@/components/research/PaperLayoutView";
 import styles from "@/components/research/research.module.css";
 import { researchSans, researchSerif } from "@/lib/research-fonts";
 import { isPaperDocument } from "@/lib/research-types";
-import { getAllWritingSlugs, getWritingDocument, getWritingList, getWritingRoute } from "@/lib/writing";
+import { getAllWritingSlugs, getWritingDocument, getWritingRoute } from "@/lib/writing";
 
 type WritingPageProps = {
   params: {
@@ -48,10 +48,6 @@ export default function WritingPage({ params }: WritingPageProps) {
 
   const isPaper = isPaperDocument(post);
 
-  const posts = getWritingList().filter((item) => item.kind === post.kind);
-  const postIndex = posts.findIndex((item) => item.slug === post.slug);
-  const newerPost = postIndex > 0 ? posts[postIndex - 1] : null;
-  const olderPost = postIndex >= 0 && postIndex < posts.length - 1 ? posts[postIndex + 1] : null;
   const dateText = post.displayDate ?? dateFormatter.format(new Date(post.date));
 
   return (
@@ -93,25 +89,6 @@ export default function WritingPage({ params }: WritingPageProps) {
                 </div>
               </div>
             )}
-
-            <div className={styles.asideBlock}>
-              <p className={styles.asideLabel}>Continue Reading</p>
-              <div className={styles.asideLinks}>
-                {newerPost ? (
-                  <Link href={getWritingRoute(newerPost.slug)} className={styles.asideLink}>
-                    Newer: {newerPost.title}
-                  </Link>
-                ) : null}
-                {olderPost ? (
-                  <Link href={getWritingRoute(olderPost.slug)} className={styles.asideLink}>
-                    Older: {olderPost.title}
-                  </Link>
-                ) : null}
-                <Link href={getWritingRoute()} className={styles.asideLink}>
-                  Back to library
-                </Link>
-              </div>
-            </div>
           </section>
         </>
       ) : (
@@ -160,25 +137,6 @@ export default function WritingPage({ params }: WritingPageProps) {
                   </div>
                 </div>
               )}
-
-              <div className={styles.asideBlock}>
-                <p className={styles.asideLabel}>Continue Reading</p>
-                <div className={styles.asideLinks}>
-                  {newerPost ? (
-                    <Link href={getWritingRoute(newerPost.slug)} className={styles.asideLink}>
-                      Newer: {newerPost.title}
-                    </Link>
-                  ) : null}
-                  {olderPost ? (
-                    <Link href={getWritingRoute(olderPost.slug)} className={styles.asideLink}>
-                      Older: {olderPost.title}
-                    </Link>
-                  ) : null}
-                  <Link href={getWritingRoute()} className={styles.asideLink}>
-                    Back to all notes
-                  </Link>
-                </div>
-              </div>
             </aside>
           </div>
         </article>
