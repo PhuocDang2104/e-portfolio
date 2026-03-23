@@ -1342,7 +1342,7 @@ h2.section-title{font-size:22px;margin:0 0 12px 0}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .about-grid{
   display:grid;
-  grid-template-columns:minmax(240px, 1fr) 1.35fr;
+  grid-template-columns:1fr;
   gap:24px;
   align-items:center;
 }
@@ -1352,15 +1352,9 @@ h2.section-title{font-size:22px;margin:0 0 12px 0}
   aspect-ratio:1 / 1;
   border-radius:18px;
   overflow:hidden;
-  background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 20px 44px rgba(2,6,23,0.32);
-}
-.about-media-image{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
+  background:transparent;
+  border:0;
+  box-shadow:none;
 }
 .about-body{display:flex;flex-direction:column;gap:8px}
 .about-body .muted{line-height:1.38}
@@ -2222,42 +2216,15 @@ footer{
   z-index:4;
   pointer-events:none;
   will-change:transform, opacity;
+  overflow:visible;
 }
 .home-hero-anchor-image{
   width:100%;
   height:100%;
   display:block;
   object-fit:cover;
-  border-radius:inherit;
-}
-.scroll-media{
-  position:fixed;
-  top:0;
-  left:0;
-  width:1px;
-  height:1px;
-  opacity:0;
-  border-radius:24px;
-  overflow:hidden;
-  transform:translate3d(0, 0, 0);
-  transform-origin:top left;
-  z-index:1;
-  pointer-events:none;
-  filter:blur(0px);
-  transition:opacity 0.2s ease, filter 0.2s ease;
-  will-change:transform, width, height, opacity, filter, border-radius;
-  contain:layout paint style;
-  backface-visibility:hidden;
-}
-.scroll-media-img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  transform:scale(1.06);
-  transform-origin:center;
-  will-change:transform;
-  backface-visibility:hidden;
+  border-radius:0;
+  box-shadow:none;
 }
 .home-scroll-cue{
   position:absolute;
@@ -2386,14 +2353,8 @@ footer{
   .home-hero-content,
   .home-hero-visuals,
   .home-scroll-cue,
-  .home-hero-scroll-anchor,
-  .scroll-media,
-  .scroll-media-img {
+  .home-hero-scroll-anchor {
     transition: none !important;
-  }
-
-  .scroll-media {
-    display: none;
   }
 }
 
