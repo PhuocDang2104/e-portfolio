@@ -101,13 +101,6 @@ export default function CertificationGallery() {
 
   return (
     <>
-      <div className={styles.intro}>
-        <p className={styles.lead}>
-          Selected certificates with direct preview. The gallery keeps each document in its native
-          orientation so portrait and landscape certificates do not get forced into the same frame.
-        </p>
-      </div>
-
       <div className={styles.grid}>
         {certifications.map((item) => (
           <button
@@ -126,7 +119,6 @@ export default function CertificationGallery() {
               >
                 <div className={styles.previewFallback}>PDF preview</div>
               </object>
-              <div className={styles.previewShade} />
             </div>
 
             <div className={styles.cardBody}>
@@ -153,36 +145,8 @@ export default function CertificationGallery() {
           />
 
           <div className={styles.modal} style={getCardTheme(activeItem)}>
-            <div className={styles.modalHead}>
-              <div className={styles.modalText}>
-                <p className={styles.modalLabel}>{activeItem.label}</p>
-                <h4 id={`${activeItem.id}-title`} className={styles.modalTitle}>
-                  {activeItem.title}
-                </h4>
-                <p className={styles.modalDescription}>{activeItem.description}</p>
-              </div>
-
-              <div className={styles.modalActions}>
-                <a
-                  href={activeItem.pdfSrc}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.modalLink}
-                >
-                  Open PDF
-                </a>
-                <button
-                  type="button"
-                  className={styles.closeButton}
-                  onClick={() => setActiveId(null)}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-
             <div
-              className={`${styles.modalViewport} ${getModalViewportClassName(activeItem.format)}`}
+              className={`${styles.modalPreview} ${getModalViewportClassName(activeItem.format)}`}
             >
               <object
                 data={buildPdfSrc(activeItem.pdfSrc)}
@@ -202,6 +166,36 @@ export default function CertificationGallery() {
                   </a>
                 </div>
               </object>
+            </div>
+
+            <div className={styles.modalContent}>
+              <div className={styles.modalHead}>
+                <div className={styles.modalText}>
+                  <p className={styles.modalLabel}>{activeItem.label}</p>
+                  <h4 id={`${activeItem.id}-title`} className={styles.modalTitle}>
+                    {activeItem.title}
+                  </h4>
+                  <p className={styles.modalDescription}>{activeItem.description}</p>
+                </div>
+              </div>
+
+              <div className={styles.modalActions}>
+                <a
+                  href={activeItem.pdfSrc}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.modalLink}
+                >
+                  Open PDF
+                </a>
+                <button
+                  type="button"
+                  className={styles.closeButton}
+                  onClick={() => setActiveId(null)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>

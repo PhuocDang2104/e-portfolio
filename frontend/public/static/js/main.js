@@ -178,7 +178,7 @@ function init() {
       const cueShift = 10 * eased;
       const imageShift = Math.min(scrolled * 0.82, height * 0.48);
       const imageScale = 1 + eased * 0.18;
-      const imageOpacity = 1 - eased * 0.16;
+      const imageOpacity = 1 - eased * 1.18;
       const visualTwoX = 150 * eased;
       const visualTwoY = -132 * eased;
       const visualThreeX = -168 * eased;
@@ -279,7 +279,7 @@ function init() {
       floating.style.width = `${startWidth}px`;
       floating.style.height = `${startHeight}px`;
       floating.style.borderRadius = `${currentRadius}px`;
-      floating.style.opacity = progress <= 0.02 && scrollY < 8 ? '0' : '1';
+      floating.style.opacity = progress <= 0.08 ? '0' : '1';
       floating.style.filter = `blur(${blur}px)`;
       floating.style.transform = `translate3d(${currentLeft}px, ${currentTop}px, 0) scale(${scaleX}, ${scaleY})`;
 

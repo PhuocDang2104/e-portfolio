@@ -2210,10 +2210,18 @@ footer{
   height:clamp(220px, 28vw, 420px);
   transform:translate3d(var(--hero-image-x), var(--hero-image-shift), 0) scale(var(--hero-image-scale));
   transform-origin:left center;
-  opacity:0;
-  z-index:1;
+  opacity:var(--hero-image-opacity);
+  z-index:4;
   pointer-events:none;
   will-change:transform, opacity;
+}
+.home-hero-anchor-image{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  border-radius:inherit;
+  box-shadow:0 24px 54px rgba(2,6,23,0.34);
 }
 .scroll-media{
   position:fixed;
@@ -2285,27 +2293,26 @@ footer{
 
 /* Ask AI bar */
 .home-ask-stack { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); margin-top: 56px; width: clamp(280px, 90vw, 720px); max-width: 720px; }
-.home-ask { display: flex; align-items: center; gap: 10px; padding: 5px 20px; min-height: 40px; border-radius: 999px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.12); position: relative; overflow: hidden; max-width: 100%; width: 100%; margin: 0 auto; box-shadow: 0 16px 34px rgba(2,6,23,0.35), 0 0 0 1px rgba(255,255,255,0.04); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.home-ask { display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 18px; min-height: 58px; border-radius: 999px; background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.08)); border: 1px solid rgba(255,255,255,0.16); position: relative; overflow: hidden; max-width: 100%; width: 100%; margin: 0 auto; box-shadow: 0 20px 40px rgba(2,6,23,0.34); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
 .home-ask__icon { color: var(--accent); opacity: 0.85; }
-.home-ask__input { flex: 1; border: 1px solid rgba(15,23,42,0.08); background: rgba(255,255,255,0.72); font-size: 0.88rem; color: var(--text-primary); outline: none; position: relative; z-index: 1; line-height: 1.35; border-radius: 999px; padding: 8px 12px; transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
-.home-ask__input:focus { border-color: rgba(30,136,229,0.45); box-shadow: 0 0 0 3px rgba(30,136,229,0.16); background: rgba(255,255,255,0.92); }
-.home-ask__input::placeholder { color: var(--text-secondary); opacity: 0.62; }
-.home-ask__btn { position: relative; z-index: 1; border: none; border-radius: 999px; padding: 5px 18px; font-weight: 600; background: var(--cta-gradient); color: var(--text-on-accent); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 12px 24px rgba(247, 167, 69, 0.28); }
+.home-ask__input { flex: 1; min-width: 0; border: 0; background: transparent; font-size: 0.95rem; color: rgba(248,251,255,0.96); outline: none; position: relative; z-index: 1; line-height: 1.5; border-radius: 0; padding: 0; box-shadow: none; transition: color 0.2s ease, opacity 0.2s ease; }
+.home-ask__input:focus { border: 0; box-shadow: none; background: transparent; }
+.home-ask__input::placeholder { color: rgba(233,242,255,0.56); opacity: 1; }
+.home-ask__btn { position: relative; z-index: 1; border: none; border-radius: 999px; padding: 10px 18px; font-weight: 600; background: var(--cta-gradient); color: var(--text-on-accent); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 12px 24px rgba(247, 167, 69, 0.28); }
 .home-ask__btn:disabled { cursor: not-allowed; opacity: 0.7; box-shadow: 0 8px 16px rgba(247, 167, 69, 0.2); }
 .home-ask__input:disabled { opacity: 0.7; }
 .home-ask__btn:hover { transform: translateY(-1px); box-shadow: 0 14px 24px rgba(247, 167, 69, 0.32); }
-.home-ask::before { content: ''; position: absolute; inset: -240%; z-index: 0; background: conic-gradient( from 90deg at 50% 50%, rgba(255, 255, 255, 0.75) 0%, #f7a745 32%, #c8873b 62%, rgba(255, 255, 255, 0.75) 100% ); animation: home-ask-spin 7s linear infinite; opacity: 0.28; filter: blur(1.5px); pointer-events: none; }
-.home-ask::after { content: ''; position: absolute; inset: 1px; border-radius: 999px; background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,255,255,0.86)); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.32), inset 0 -12px 24px rgba(2,6,23,0.06); z-index: 0; pointer-events: none; }
+.home-ask::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(circle at left center, rgba(247,167,69,0.18), transparent 30%), linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03)); pointer-events: none; }
+.home-ask::after { content: ''; position: absolute; inset: 0; border-radius: 999px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.14); z-index: 0; pointer-events: none; }
 .home-ask > * { position: relative; z-index: 1; }
-.home-ask:focus-within { box-shadow: 0 18px 36px rgba(30,136,229,0.32), 0 0 0 1px rgba(139,92,246,0.45); }
-.home-ask:focus-within::before { opacity: 0.5; background: conic-gradient( from 90deg at 50% 50%, rgba(139, 92, 246, 0.85) 0%, rgba(30, 136, 229, 0.85) 40%, rgba(139, 92, 246, 0.65) 70%, rgba(30, 136, 229, 0.85) 100% ); }
+.home-ask:focus-within { border-color: rgba(160,196,255,0.36); box-shadow: 0 22px 44px rgba(30,136,229,0.2), 0 0 0 1px rgba(160,196,255,0.18); }
+.home-ask:focus-within::before { background: radial-gradient(circle at left center, rgba(30,136,229,0.24), transparent 34%), linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04)); }
 .home-ask-response { width: 100%; max-width: 100%; margin: 0 auto; padding: 12px 16px; border-radius: var(--radius-lg); background: var(--bg-elevated); border: 1px solid var(--border); box-shadow: var(--card-shadow-soft); display: flex; flex-direction: column; gap: 6px; color: var(--text-primary); }
 .home-ask-response__label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
 .home-ask-response__text { font-size: 0.95rem; line-height: 1.6; white-space: pre-wrap; }
 .home-ask-response--error { border-color: rgba(239, 68, 68, 0.28); background: rgba(239, 68, 68, 0.08); color: var(--error); }
 .home-ask-response--error .home-ask-response__label { color: var(--error); }
 
-@keyframes home-ask-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes moveHorizontal {
   0% {
     transform: translateX(-50%) translateY(-10%);

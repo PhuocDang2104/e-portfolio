@@ -38,7 +38,13 @@ export default function Page() {
           />
         </div>
 
-        <div className="home-hero-scroll-anchor" aria-hidden="true"></div>
+        <div className="home-hero-scroll-anchor" aria-hidden="true">
+          <img
+            src="/static/images/hero/hero-1.png"
+            alt=""
+            className="home-hero-anchor-image"
+          />
+        </div>
 
         <div className="page hero-inner home-hero-inner">
           <div className="hero-left home-hero-content reveal">
