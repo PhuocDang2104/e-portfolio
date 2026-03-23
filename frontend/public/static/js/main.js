@@ -176,9 +176,9 @@ function init() {
       const visualOpacity = 0.9 - eased * 0.34;
       const cueOpacity = 1 - eased * 0.95;
       const cueShift = 10 * eased;
-      const imageShift = Math.min(scrolled * 0.82, height * 0.48);
-      const imageScale = 1 + eased * 0.18;
-      const imageOpacity = 1 - eased * 1.18;
+      const imageShift = Math.min(scrolled * 0.16, 36);
+      const imageScale = 1 - eased * 0.04;
+      const imageOpacity = 1 - eased * 0.18;
       const visualTwoX = 150 * eased;
       const visualTwoY = -132 * eased;
       const visualThreeX = -168 * eased;

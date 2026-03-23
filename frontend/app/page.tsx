@@ -38,7 +38,7 @@ export default function Page() {
           />
         </div>
 
-        <div className="home-hero-scroll-anchor" aria-hidden="true">
+        <div className="home-hero-scroll-anchor about-media" aria-hidden="true">
           <img
             src="/static/images/hero/hero-1.png"
             alt=""
@@ -64,14 +64,16 @@ export default function Page() {
         </div>
       </section>
 
-      <div className="scroll-media" aria-hidden="true">
-        <img src="/static/images/hero/hero-1.png" alt="" className="scroll-media-img" />
-      </div>
-
       <div className="page">
         <section className="content reveal" id="about" aria-labelledby="about-title">
           <div className="about-grid">
-            <div className="about-media" aria-hidden="true"></div>
+            <div className="about-media" aria-hidden="true">
+              <img
+                src="/static/images/hero/hero-1.png"
+                alt=""
+                className="about-media-image"
+              />
+            </div>
             <div className="about-body">
               <h2 className="section-title" id="about-title">
                 About
