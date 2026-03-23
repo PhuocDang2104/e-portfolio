@@ -218,6 +218,59 @@ function init() {
     prefersReducedMotion.addEventListener?.('change', onScroll);
   })();
 
+  (function setupScrollMedia() {
+    const anchor = document.querySelector('.home-hero-scroll-anchor');
+    const target = document.querySelector('.about-media');
+    const floating = document.querySelector('.scroll-media');
+    if (!anchor || !target || !floating) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let ticking = false;
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+    const easeOutCubic = (value) => 1 - Math.pow(1 - value, 3);
+
+    const update = () => {
+      ticking = false;
+
+      const scrollY = window.pageYOffset;
+      const anchorRect = anchor.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      if (!anchorRect.width || !anchorRect.height || !targetRect.width || !targetRect.height) {
+        floating.style.opacity = '0';
+        return;
+      }
+
+      const distance = Math.max(targetRect.top - anchorRect.top, 1);
+      const progress = prefersReducedMotion.matches ? 1 : clamp(scrollY / distance, 0, 1);
+      const eased = easeOutCubic(progress);
+      const nextTop = anchorRect.top + (targetRect.top - anchorRect.top) * eased;
+      const nextLeft = anchorRect.left + (targetRect.left - anchorRect.left) * eased;
+      const nextWidth = anchorRect.width + (targetRect.width - anchorRect.width) * eased;
+      const nextHeight = anchorRect.height + (targetRect.height - anchorRect.height) * eased;
+      const scaleX = nextWidth / anchorRect.width;
+      const scaleY = nextHeight / anchorRect.height;
+
+      floating.style.opacity = '1';
+      floating.style.width = `${anchorRect.width}px`;
+      floating.style.height = `${anchorRect.height}px`;
+      floating.style.transform = `translate3d(${nextLeft}px, ${nextTop}px, 0) scale(${scaleX}, ${scaleY})`;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', onScroll);
+    prefersReducedMotion.addEventListener?.('change', onScroll);
+  })();
+
   (function setupLightbox() {
     const getLightboxes = () => Array.from(document.querySelectorAll('.saar-lightbox'));
 
